@@ -1,0 +1,118 @@
+.residencies-section {
+  background: linear-gradient(180deg, #f8f7f5 0%, #f0efeb 100%);
+}
+
+.residencies-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Unit Types */
+.unit-types {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin: 4rem 0;
+}
+
+.unit-card {
+  background: white;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  transition: var(--transition);
+}
+
+.unit-card h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: var(--primary-dark);
+}
+
+.unit-size {
+  font-size: 0.8rem;
+  color: var(--text-light);
+  margin-bottom: 1rem;
+}
+
+.unit-price {
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+/* Amenities */
+.amenities-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: var(--primary-dark);
+  margin-bottom: 2rem;
+  margin-top: 3rem;
+}
+
+.amenities-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.amenity-card {
+  background: white;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  transition: var(--transition);
+}
+
+.amenity-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  transition: var(--transition);
+}
+
+.amenity-card:hover .amenity-icon {
+  background: var(--accent);
+  color: white;
+}
+
+.amenity-card h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: var(--primary-dark);
+}
+
+.amenity-card p {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .unit-types,
+  .amenities-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .unit-types,
+  .amenities-grid {
+    grid-template-columns: 1fr;
+  }
+}

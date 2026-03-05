@@ -1,0 +1,101 @@
+.architecture-section {
+  background: var(--primary-dark);
+  color: var(--primary-light);
+  position: relative;
+}
+
+.architecture-section .section-title {
+  color: var(--primary-light);
+}
+
+.architecture-section .section-text {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.architecture-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.architecture-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  margin-top: 5rem;
+}
+
+.arch-item {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 2rem;
+  position: relative;
+  transition: var(--transition);
+}
+
+.arch-item:hover {
+  border-color: var(--accent);
+}
+
+.arch-icon {
+  font-size: 2rem;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+}
+
+.arch-item h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  color: var(--primary-light);
+}
+
+.arch-item p {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+.arch-number {
+  position: absolute;
+  top: 2rem;
+  right: 0;
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.2);
+}
+
+/* Background decoration */
+.arch-decoration {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.grid-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 100px 100px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .architecture-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .architecture-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .arch-item {
+    padding-right: 3rem;
+  }
+}

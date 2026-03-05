@@ -1,0 +1,195 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-dark: #1a2a3a;
+  --primary-light: #f8f7f5;
+  --accent: #c9a962;
+  --accent-hover: #b8963f;
+  --text-dark: #1e2d3d;
+  --text-light: #7a8a9a;
+  --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--primary-light);
+  color: var(--text-dark);
+  line-height: 1.8;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition-fast);
+}
+
+button {
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+}
+
+/* Section defaults */
+section {
+  min-height: 100vh;
+  padding: 8rem 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.section-label {
+  font-size: 0.7rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 300;
+  line-height: 1.2;
+  margin-bottom: 2rem;
+  color: var(--primary-dark);
+}
+
+.section-title .title-light {
+  opacity: 0.7;
+}
+
+.section-text {
+  max-width: 600px;
+  color: var(--text-light);
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* Buttons */
+.btn-primary {
+  display: inline-block;
+  padding: 1.2rem 3rem;
+  background: var(--primary-dark);
+  color: var(--primary-light);
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  border: none;
+  transition: var(--transition);
+}
+
+.btn-primary:hover {
+  background: var(--accent);
+  color: var(--primary-dark);
+}
+
+.btn-secondary {
+  display: inline-block;
+  padding: 1.2rem 3rem;
+  background: transparent;
+  color: var(--primary-dark);
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  border: 1px solid var(--primary-dark);
+  transition: var(--transition);
+}
+
+.btn-secondary:hover {
+  background: var(--primary-dark);
+  color: var(--primary-light);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--primary-light);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-hover);
+}
+
+/* Selection */
+::selection {
+  background: var(--accent);
+  color: var(--primary-dark);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  section {
+    padding: 6rem 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 4rem 1.5rem;
+  }
+}
+
+/* Greek Language Typography Adjustments */
+/* Do NOT rescale Greek heading font-sizes – use the same clamp() sizes as English.
+   Only tighten tracking slightly so longer Greek headlines fit more gracefully. */
+html[data-lang="GR"] .hero-title,
+html[data-lang="GR"] .hero-title-large,
+html[data-lang="GR"] .section-title,
+html[data-lang="GR"] .editorial-headline,
+html[data-lang="GR"] .split-headline,
+html[data-lang="GR"] .explore-title,
+html[data-lang="GR"] .featured-card-title,
+html[data-lang="GR"] .closing-headline,
+html[data-lang="GR"] .arch-hero .hero-title,
+html[data-lang="GR"] .intro-headline,
+html[data-lang="GR"] blockquote {
+  letter-spacing: -0.01em;
+}
+
+html[data-lang="GR"] .editorial-label,
+html[data-lang="GR"] .explore-label,
+html[data-lang="GR"] .featured-title,
+html[data-lang="GR"] .section-label {
+  letter-spacing: 0.2em;
+}
+
+/* Greek-specific bump for small all-caps labels */
+html[data-lang="GR"] .page-label,
+html[data-lang="GR"] .next-link .next-label,
+html[data-lang="GR"] .about-slider-label,
+html[data-lang="GR"] .intro-label,
+html[data-lang="GR"] .info-label,
+html[data-lang="GR"] .hero-by-label,
+html[data-lang="GR"] .stat-label,
+html[data-lang="GR"] .amenities-title,
+html[data-lang="GR"] .contact-label {
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+}

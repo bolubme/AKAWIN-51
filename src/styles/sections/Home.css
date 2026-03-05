@@ -1,0 +1,134 @@
+.home-section {
+  background: linear-gradient(135deg, #f8f7f5 0%, #ebe9e4 100%);
+  position: relative;
+}
+
+.hero-content {
+  max-width: 900px;
+  z-index: 2;
+}
+
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(4rem, 12vw, 10rem);
+  font-weight: 300;
+  line-height: 0.9;
+  letter-spacing: -3px;
+  margin-bottom: 0.5rem;
+}
+
+.title-line {
+  display: block;
+}
+
+.title-accent {
+  color: var(--accent);
+  display: block;
+  font-size: 0.8em;
+}
+
+.hero-subtitle {
+  font-size: 0.9rem;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 3rem;
+}
+
+.hero-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--text-light);
+  max-width: 550px;
+  margin-bottom: 3rem;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.scroll-indicator span {
+  font-size: 0.65rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-light);
+}
+
+.scroll-line {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scaleY(0.8);
+  }
+}
+
+/* Decorations */
+.hero-decoration {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.decoration-circle {
+  position: absolute;
+  right: -20%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 800px;
+  height: 800px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.decoration-line {
+  position: absolute;
+  bottom: 30%;
+  right: 10%;
+  width: 200px;
+  height: 1px;
+  background: var(--accent);
+  transform-origin: left;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: clamp(3rem, 15vw, 5rem);
+  }
+
+  .hero-cta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .scroll-indicator {
+    bottom: 2rem;
+  }
+}

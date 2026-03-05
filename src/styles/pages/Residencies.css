@@ -1,0 +1,697 @@
+@import './base.css';
+
+.residencies-page {
+  background: var(--primary-light);
+  padding: 0 !important;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hero Section */
+.residencies-hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  overflow: hidden;
+}
+
+.residencies-hero .hero-background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.residencies-hero .hero-background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.residencies-hero .hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.residencies-hero .hero-content {
+  position: absolute;
+  bottom: 160px;
+  left: 60px;
+  z-index: 2;
+}
+
+.residencies-hero .hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 500;
+  color: #fff;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  white-space: pre-line;
+}
+
+.residencies-hero .hero-prompts {
+  position: absolute;
+  bottom: 40px;
+  left: 60px;
+  right: 60px;
+  display: flex;
+  gap: 60px;
+  z-index: 2;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 24px;
+}
+
+.residencies-hero .hero-prompt {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.residencies-hero .prompt-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.residencies-hero .prompt-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  opacity: 0.6;
+}
+
+/* Intro Section */
+.residencies-intro {
+  padding: 200px 60px 120px !important;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+  min-height: auto !important;
+  display: block !important;
+}
+
+.intro-label {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 48px !important;
+}
+
+.intro-headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  font-weight: 400;
+  color: var(--primary-dark);
+  line-height: 1.15;
+  margin-bottom: 56px !important;
+}
+
+.intro-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: rgba(26, 26, 26, 0.65);
+  max-width: 700px;
+  margin: 0 auto !important;
+}
+
+/* Unit Selector Tabs - Top Bar */
+.residencies-unit-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 20px 60px !important;
+  background: var(--primary-light);
+  border-bottom: 1px solid rgba(26, 26, 26, 0.08);
+}
+
+.residencies-tab {
+  background: none;
+  border: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(26, 26, 26, 0.4);
+  cursor: pointer;
+  padding: 8px 0;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.residencies-tab::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.residencies-tab:hover,
+.residencies-tab.active {
+  color: var(--primary-dark);
+}
+
+.residencies-tab.active::after {
+  transform: scaleX(1);
+}
+
+/* Main Split Layout */
+.residencies-split {
+  display: grid;
+  grid-template-columns: 48% 52%;
+  min-height: 80vh;
+}
+
+/* Left Side - Text Content */
+.residencies-text {
+  padding: 80px 80px 80px 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--primary-light);
+}
+
+.residencies-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 400;
+  color: var(--primary-dark);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  line-height: 1.1;
+}
+
+.residencies-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 40px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(26, 26, 26, 0.1);
+}
+
+.residencies-meta span {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(26, 26, 26, 0.5);
+}
+
+.meta-divider {
+  color: rgba(26, 26, 26, 0.2) !important;
+}
+
+.residencies-description {
+  margin-bottom: 40px;
+}
+
+.residencies-description p {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: rgba(26, 26, 26, 0.75);
+  margin-bottom: 24px;
+}
+
+.residencies-features-intro {
+  font-style: italic;
+  color: rgba(26, 26, 26, 0.65) !important;
+}
+
+.residencies-features-list {
+  margin: 20px 0;
+}
+
+.residencies-features-list p {
+  font-size: 0.9rem !important;
+  margin-bottom: 8px !important;
+  color: var(--primary-dark) !important;
+}
+
+.residencies-closing {
+  margin-top: 24px;
+}
+
+.residencies-inquiry {
+  display: inline-block;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--primary-dark);
+  text-decoration: none;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--accent);
+  transition: all 0.3s ease;
+}
+
+.residencies-inquiry:hover {
+  color: var(--accent);
+}
+
+/* Right Side - Image Gallery */
+.residencies-gallery {
+  position: relative;
+  overflow: hidden;
+  background: #1a1a1a;
+}
+
+.gallery-image-wrapper {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.gallery-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Navigation Arrows */
+.gallery-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.gallery-nav:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.gallery-nav svg {
+  stroke: rgba(255, 255, 255, 0.8);
+}
+
+.gallery-prev {
+  left: 30px;
+}
+
+.gallery-next {
+  right: 30px;
+}
+
+/* Image Counter */
+.gallery-counter {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Amenities Section */
+.residencies-amenities {
+  padding: 60px 60px !important;
+  background: #f8f7f5;
+  min-height: auto !important;
+  display: block !important;
+}
+
+.residencies-amenities .amenities-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 400;
+  color: var(--primary-dark);
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.residencies-amenities .amenities-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.amenity-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.amenity-item .amenity-icon {
+  font-size: 1.5rem;
+  color: var(--accent);
+  opacity: 0.8;
+  flex-shrink: 0;
+}
+
+.amenity-content h4 {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--primary-dark);
+  margin-bottom: 6px;
+  letter-spacing: 0.02em;
+}
+
+.amenity-content p {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  color: rgba(26, 26, 26, 0.5);
+  line-height: 1.5;
+}
+
+/* CTA Section */
+.residencies-cta {
+  padding: 60px 60px !important;
+  background: var(--primary-dark);
+  min-height: auto !important;
+  display: block !important;
+}
+
+.cta-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.cta-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 400;
+  color: var(--primary-light);
+  margin-bottom: 30px;
+  line-height: 1.3;
+}
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--primary-light);
+  text-decoration: none;
+  padding: 18px 36px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.cta-button svg {
+  stroke: currentColor;
+  transition: transform 0.3s ease;
+}
+
+.cta-button:hover svg {
+  transform: translateX(5px);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .residencies-hero .hero-content {
+    bottom: 140px;
+    left: 50px;
+  }
+  
+  .residencies-hero .hero-prompts {
+    left: 50px;
+    right: 50px;
+  }
+
+  .residencies-text {
+    padding: 60px 50px 60px 60px;
+  }
+  
+  .residencies-title {
+    font-size: clamp(2rem, 3.5vw, 3rem);
+  }
+}
+
+@media (max-width: 1024px) {
+  .residencies-hero .hero-content {
+    bottom: 140px;
+    left: 40px;
+  }
+  
+  .residencies-hero .hero-prompts {
+    left: 40px;
+    right: 40px;
+    gap: 40px;
+  }
+
+  .residencies-intro {
+    padding: 40px 40px 20px !important;
+  }
+
+  .residencies-split {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  
+  .residencies-text {
+    padding: 60px 40px;
+    order: 2;
+  }
+  
+  .residencies-gallery {
+    order: 1;
+    height: 60vh;
+    min-height: 400px;
+  }
+  
+  .residencies-unit-tabs {
+    padding: 20px 30px;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  
+  .residencies-tab {
+    font-size: 0.7rem;
+  }
+  
+  .residencies-amenities .amenities-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+  
+  .residencies-amenities {
+    padding: 50px 40px;
+  }
+  
+  .residencies-cta {
+    padding: 50px 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .residencies-hero {
+    height: 80vh;
+    min-height: 500px;
+  }
+  
+  .residencies-hero .hero-content {
+    bottom: 140px;
+    left: 24px;
+  }
+  
+  .residencies-hero .hero-title {
+    font-size: clamp(2.5rem, 10vw, 4rem);
+  }
+  
+  .residencies-hero .hero-prompts {
+    left: 24px;
+    right: 24px;
+    bottom: 30px;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+  
+  .residencies-hero .prompt-title {
+    font-size: 0.8rem;
+  }
+  
+  .residencies-hero .prompt-sub {
+    font-size: 0.7rem;
+  }
+
+  .residencies-text {
+    padding: 40px 24px;
+  }
+  
+  .residencies-title {
+    font-size: 1.8rem;
+    letter-spacing: 0.1em;
+  }
+  
+  .residencies-meta {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .residencies-description p {
+    font-size: 0.9rem;
+  }
+  
+  .residencies-gallery {
+    height: 50vh;
+    min-height: 350px;
+  }
+  
+  .gallery-nav {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .gallery-prev {
+    left: 16px;
+  }
+  
+  .gallery-next {
+    right: 16px;
+  }
+  
+  .gallery-counter {
+    bottom: 16px;
+    right: 16px;
+  }
+  
+  .residencies-unit-tabs {
+    padding: 16px 24px;
+    gap: 16px;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+  }
+  
+  .residencies-tab {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  
+  .residencies-intro {
+    padding: 30px 24px 20px !important;
+  }
+  
+  .intro-headline {
+    font-size: 1.8rem;
+  }
+  
+  .intro-text {
+    font-size: 0.9rem;
+  }
+  
+  .residencies-amenities {
+    padding: 56px 24px 48px;
+  }
+  
+  .residencies-amenities .amenities-title {
+    font-size: 1.25rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-align: left;
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(26, 26, 26, 0.08);
+  }
+  
+  .residencies-amenities .amenities-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .residencies-amenities .amenity-item {
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 24px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 12px;
+    border: 1px solid rgba(26, 26, 26, 0.06);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .residencies-amenities .amenity-item:active {
+    border-color: rgba(26, 26, 26, 0.1);
+  }
+  
+  .residencies-amenities .amenity-icon {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    line-height: 1;
+    background: rgba(201, 169, 98, 0.12);
+    color: var(--accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  
+  .residencies-amenities .amenity-content {
+    min-width: 0;
+  }
+  
+  .residencies-amenities .amenity-content h4 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    margin-bottom: 4px;
+  }
+  
+  .residencies-amenities .amenity-content p {
+    font-size: 0.78rem;
+    color: rgba(26, 26, 26, 0.5);
+    line-height: 1.45;
+  }
+  
+  .residencies-cta {
+    padding: 40px 24px;
+  }
+  
+  .cta-text {
+    font-size: 1.3rem;
+  }
+  
+  .cta-button {
+    padding: 16px 28px;
+    font-size: 0.75rem;
+  }
+}
