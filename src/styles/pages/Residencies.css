@@ -695,3 +695,81 @@
     font-size: 0.75rem;
   }
 }
+
+
+/* ============================================
+   MOBILE AMENITIES - COMPACT 2-COLUMN GRID
+   ============================================ */
+@media (max-width: 768px) {
+  .residencies-amenities {
+    padding: 50px 20px !important;
+  }
+
+  .residencies-amenities .amenities-title {
+    font-size: 1.5rem;
+    margin-bottom: 32px;
+  }
+
+  .residencies-amenities .amenities-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+  
+  .residencies-amenities .amenity-item {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    gap: 10px !important;
+    padding: 20px 12px !important;
+    background: white !important;
+    border-radius: 12px !important;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06) !important;
+    border: 1px solid rgba(0, 0, 0, 0.04) !important;
+    min-height: 110px !important;
+  }
+  
+  .residencies-amenities .amenity-icon {
+    width: 36px !important;
+    height: 36px !important;
+    color: var(--accent) !important;
+    flex-shrink: 0 !important;
+    background: transparent !important;
+  }
+  
+  .residencies-amenities .amenity-icon svg {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  
+  .residencies-amenities .amenity-label {
+    font-size: 0.7rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.03em !important;
+    line-height: 1.3 !important;
+    color: var(--primary-dark) !important;
+    margin: 0 !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .residencies-amenities .amenities-grid {
+    gap: 10px !important;
+  }
+  
+  .residencies-amenities .amenity-item {
+    padding: 16px 10px !important;
+    min-height: 100px !important;
+  }
+  
+  .residencies-amenities .amenity-icon {
+    width: 32px !important;
+    height: 32px !important;
+  }
+  
+  .residencies-amenities .amenity-label {
+    font-size: 0.65rem !important;
+  }
+}

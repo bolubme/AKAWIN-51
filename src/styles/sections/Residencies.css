@@ -25,7 +25,7 @@
 }
 
 .unit-card h4 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-heading);
   font-size: 1.5rem;
   font-weight: 500;
   margin-bottom: 0.5rem;
@@ -47,72 +47,103 @@
 
 /* Amenities */
 .amenities-heading {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-heading);
   font-size: 1.8rem;
   font-weight: 400;
   color: var(--primary-dark);
-  margin-bottom: 2rem;
-  margin-top: 3rem;
+  margin-bottom: 3rem;
+  margin-top: 4rem;
+  text-align: center;
 }
 
 .amenities-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2.5rem 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
-.amenity-card {
-  background: white;
-  padding: 2.5rem 2rem;
-  text-align: center;
-  border: 1px solid rgba(0, 0, 0, 0.03);
-  transition: var(--transition);
-}
-
-.amenity-icon {
-  width: 60px;
-  height: 60px;
-  margin: 0 auto 1.5rem;
+.amenity-item {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+.amenity-item .amenity-icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 0.75rem;
   color: var(--accent);
-  border: 1px solid var(--accent);
-  border-radius: 50%;
   transition: var(--transition);
 }
 
-.amenity-card:hover .amenity-icon {
-  background: var(--accent);
-  color: white;
+.amenity-item .amenity-icon svg {
+  width: 100%;
+  height: 100%;
 }
 
-.amenity-card h4 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.3rem;
-  font-weight: 500;
-  margin-bottom: 0.5rem;
+.amenity-item:hover .amenity-icon {
+  transform: scale(1.1);
   color: var(--primary-dark);
 }
 
-.amenity-card p {
-  font-size: 0.85rem;
+.amenity-title {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 400;
   color: var(--text-light);
-  line-height: 1.6;
+  letter-spacing: 0.5px;
+  line-height: 1.4;
+  max-width: 100px;
 }
 
 /* Responsive */
 @media (max-width: 1200px) {
-  .unit-types,
-  .amenities-grid {
+  .unit-types {
     grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .amenities-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .amenities-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem 1rem;
+  }
+  
+  .amenity-item .amenity-icon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .amenity-title {
+    font-size: 0.75rem;
   }
 }
 
 @media (max-width: 600px) {
-  .unit-types,
-  .amenities-grid {
+  .unit-types {
     grid-template-columns: 1fr;
+  }
+  
+  .amenities-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 1rem;
+  }
+  
+  .amenity-item .amenity-icon {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .amenity-title {
+    font-size: 0.7rem;
   }
 }

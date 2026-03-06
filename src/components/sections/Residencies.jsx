@@ -1,17 +1,8 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
+import { useLanguage } from '../../i18n/LanguageContext'
+import AmenityIcons from '../AmenityIcons'
 import '../../styles/sections/Residencies.css'
-
-const amenities = [
-  { icon: '◇', title: 'Private Terraces', description: 'Expansive outdoor spaces with panoramic views' },
-  { icon: '○', title: 'Wellness Center', description: 'State-of-the-art fitness & spa facilities' },
-  { icon: '□', title: 'Concierge Service', description: '24/7 dedicated personal assistance' },
-  { icon: '△', title: 'Rooftop Lounge', description: 'Exclusive entertaining & relaxation space' },
-  { icon: '◎', title: 'Smart Home', description: 'Integrated technology throughout' },
-  { icon: '⬡', title: 'Private Parking', description: 'Secure underground with EV charging' },
-  { icon: '✧', title: 'Garden Courtyard', description: 'Tranquil landscaped common areas' },
-  { icon: '◈', title: 'Business Center', description: 'Professional meeting & work spaces' },
-]
 
 const unitTypes = [
   { type: 'Studio', size: '45-55 m²', price: 'From $350K' },
@@ -21,6 +12,7 @@ const unitTypes = [
 ]
 
 function Residencies() {
+  const { t } = useLanguage()
   const [ref, inView] = useInView({
     threshold: 0.1,
     triggerOnce: true,
@@ -115,27 +107,20 @@ function Residencies() {
           className="amenities-grid"
           variants={containerVariants}
         >
-          {amenities.map((amenity, index) => (
+          {t.amenities.map((amenity) => (
             <motion.div 
-              key={amenity.title}
-              className="amenity-card"
+              key={amenity.id}
+              className="amenity-item"
               variants={cardVariants}
               whileHover={{ 
-                y: -10,
-                transition: { duration: 0.3 }
+                y: -5,
+                transition: { duration: 0.2 }
               }}
             >
-              <motion.div 
-                className="amenity-icon"
-                whileHover={{ 
-                  scale: 1.1,
-                  rotate: 5,
-                }}
-              >
-                {amenity.icon}
-              </motion.div>
-              <h4>{amenity.title}</h4>
-              <p>{amenity.description}</p>
+              <div className="amenity-icon">
+                <AmenityIcons type={amenity.id} />
+              </div>
+              <span className="amenity-title">{amenity.title}</span>
             </motion.div>
           ))}
         </motion.div>

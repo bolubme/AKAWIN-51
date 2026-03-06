@@ -65,13 +65,8 @@ function Home() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Preload all editorial images on mount so they're cached before scroll
-  useEffect(() => {
-    editorialImages.forEach((src) => {
-      const img = new Image()
-      img.src = src
-    })
-  }, [])
+  // Removed eager image preloading to reduce data usage
+  // Images now load lazily as user scrolls
 
   // CSS-based reveal: single observer adds .visible class, CSS handles animation on GPU
   useEffect(() => {
@@ -182,6 +177,7 @@ function Home() {
                 muted
                 loop
                 playsInline
+                preload="metadata"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
               />
               <div className="hero-overlay"></div>
@@ -202,10 +198,29 @@ function Home() {
                 <span className="title-main">AKAKIWN</span>
                 <span className="title-number">50</span>
               </h1>
+              <p className="hero-tagline">{t.home.heroTagline}</p>
               <div className="hero-divider"></div>
               <p className="hero-description">
                 {t.home.heroDescription || 'A landmark residential project in the heart of Marousi, where modern architecture meets the warmth of Mediterranean living.'}
               </p>
+              
+              {/* Key Facts */}
+              <div className="hero-facts">
+                {t.home.heroFacts?.map((fact, index) => (
+                  <div key={index} className="hero-fact">
+                    <span className="fact-value">{fact.value}</span>
+                    <span className="fact-label">{fact.label}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* CTA Button */}
+              <Link to="/residencies" className="hero-cta-button">
+                {t.home.heroCta}
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </Link>
             </motion.div>
 
             {/* Bottom Controls */}
@@ -252,6 +267,46 @@ function Home() {
         </div>
       </motion.div>
 
+      {/* Highlights Section - Why Choose Us */}
+      <section className="highlights-section">
+        <div className="highlights-content reveal">
+          <span className="highlights-label">{t.home.highlightsLabel}</span>
+          <div className="highlights-grid">
+            {t.home.highlights?.map((item, index) => (
+              <div key={index} className="highlight-card">
+                <div className="highlight-icon">
+                  {item.icon === 'location' && (
+                    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <path d="M24 4c-8.8 0-16 7.2-16 16 0 12 16 24 16 24s16-12 16-24c0-8.8-7.2-16-16-16z"/>
+                      <circle cx="24" cy="20" r="6"/>
+                    </svg>
+                  )}
+                  {item.icon === 'design' && (
+                    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <rect x="6" y="6" width="36" height="36" rx="2"/>
+                      <path d="M6 18h36M18 18v24"/>
+                    </svg>
+                  )}
+                  {item.icon === 'amenities' && (
+                    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <circle cx="24" cy="24" r="18"/>
+                      <path d="M24 12v12l8 4"/>
+                    </svg>
+                  )}
+                  {item.icon === 'quality' && (
+                    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <path d="M24 4l6 12 14 2-10 10 2 14-12-6-12 6 2-14L4 18l14-2z"/>
+                    </svg>
+                  )}
+                </div>
+                <h3 className="highlight-title">{item.title}</h3>
+                <p className="highlight-desc">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Editorial Section */}
       <section className="editorial-section">
 
@@ -269,7 +324,7 @@ function Home() {
         {/* 02 — Full-width Hero Image */}
         <div className="editorial-full-image reveal">
           <div className="full-image-wrapper">
-            <img src="/media/optimized/shapes_(8).jpg" alt="Penthouse Collection" decoding="async" />
+            <img src="/media/optimized/shapes_(8).jpg" alt="Penthouse Collection" decoding="async" loading="lazy" />
           </div>
           <div className="full-image-caption">
             <span className="caption-number">01</span>
@@ -290,7 +345,7 @@ function Home() {
           <div className="explore-grid">
             <Link to="/residencies" className="explore-card reveal-child">
               <div className="explore-card-image">
-                <img src="/media/optimized/shapes_(8).jpg" alt="The Residences" />
+                <img src="/media/optimized/shapes_(8).jpg" alt="The Residences" loading="lazy" />
               </div>
               <div className="explore-card-content">
                 <span className="explore-card-number">01</span>
@@ -304,7 +359,7 @@ function Home() {
             </Link>
             <Link to="/architecture" className="explore-card reveal-child delay-1">
               <div className="explore-card-image">
-                <img src="/media/optimized/shapes_(9).jpg" alt="The Architecture" />
+                <img src="/media/optimized/shapes_(9).jpg" alt="The Architecture" loading="lazy" />
               </div>
               <div className="explore-card-content">
                 <span className="explore-card-number">02</span>
@@ -318,7 +373,7 @@ function Home() {
             </Link>
             <Link to="/location" className="explore-card reveal-child delay-2">
               <div className="explore-card-image">
-                <img src="/media/optimized/shapes_(10).jpg" alt="The Location" />
+                <img src="/media/optimized/shapes_(10).jpg" alt="The Location" loading="lazy" />
               </div>
               <div className="explore-card-content">
                 <span className="explore-card-number">03</span>
@@ -336,7 +391,7 @@ function Home() {
         {/* Building Exterior Image */}
         <div className="building-showcase reveal">
           <div className="showcase-image">
-            <img src="/media/optimized/shapes_(9).jpg" alt="AKAKIWN 50 Exterior" decoding="async" />
+            <img src="/media/optimized/shapes_(9).jpg" alt="AKAKIWN 50 Exterior" decoding="async" loading="lazy" />
           </div>
           <p className="showcase-caption">MAROUSI, ATHENS — EXTERIOR PERSPECTIVE</p>
         </div>
@@ -348,7 +403,7 @@ function Home() {
             <Link to="/residencies" className="featured-card reveal-child">
               <span className="featured-side-text">DISCOVER</span>
               <div className="featured-card-image">
-                <img src="/media/optimized/shapes_(8).jpg" alt="Garden Suites" />
+                <img src="/media/optimized/shapes_(8).jpg" alt="Garden Suites" loading="lazy" />
                 <div className="featured-overlay">
                   <span className="featured-view">VIEW</span>
                 </div>
@@ -367,7 +422,7 @@ function Home() {
             </Link>
             <Link to="/residencies" className="featured-card reveal-child delay-1">
               <div className="featured-card-image">
-                <img src="/media/optimized/shapes_(10).jpg" alt="Penthouse Collection" />
+                <img src="/media/optimized/shapes_(10).jpg" alt="Penthouse Collection" loading="lazy" />
                 <div className="featured-overlay">
                   <span className="featured-view">VIEW</span>
                 </div>
@@ -406,21 +461,21 @@ function Home() {
             </Link>
           </div>
           <div className="split-image reveal-child delay-1">
-            <img src="/media/optimized/shapes_(9).jpg" alt="Sky Residences" decoding="async" />
+            <img src="/media/optimized/shapes_(9).jpg" alt="Sky Residences" decoding="async" loading="lazy" />
           </div>
         </div>
 
         {/* 04 — Two Column Images */}
         <div className="editorial-duo reveal">
           <div className="duo-left reveal-child">
-            <img src="/media/optimized/shapes_(10).jpg" alt="Garden Suites" decoding="async" />
+            <img src="/media/optimized/shapes_(10).jpg" alt="Garden Suites" decoding="async" loading="lazy" />
             <div className="duo-caption">
               <span className="caption-number">02</span>
               <p>{t.home.gardenSuites}</p>
             </div>
           </div>
           <div className="duo-right reveal-child delay-1">
-            <img src="/media/optimized/shapes_(11).jpg" alt="Building Detail" decoding="async" />
+            <img src="/media/optimized/shapes_(11).jpg" alt="Building Detail" decoding="async" loading="lazy" />
             <div className="duo-caption">
               <span className="caption-number">03</span>
               <p>{t.home.architecturalDetail}</p>
@@ -454,20 +509,20 @@ function Home() {
             </Link>
           </div>
           <div className="split-image reveal-child">
-            <img src="/media/optimized/shapes_(6).jpg" alt="Location View" decoding="async" />
+            <img src="/media/optimized/shapes_(6).jpg" alt="Location View" decoding="async" loading="lazy" />
           </div>
         </div>
 
         {/* 07 — Three Column Images */}
         <div className="editorial-trio reveal">
           <div className="trio-item reveal-child">
-            <img src="/media/optimized/shapes_(3).jpg" alt="Interior Detail" decoding="async" />
+            <img src="/media/optimized/shapes_(3).jpg" alt="Interior Detail" decoding="async" loading="lazy" />
           </div>
           <div className="trio-item trio-offset reveal-child delay-1">
-            <img src="/media/optimized/shapes_(7).jpg" alt="Exterior View" decoding="async" />
+            <img src="/media/optimized/shapes_(7).jpg" alt="Exterior View" decoding="async" loading="lazy" />
           </div>
           <div className="trio-item reveal-child delay-2">
-            <img src="/media/optimized/V1.jpg" alt="Aerial View" decoding="async" />
+            <img src="/media/optimized/V1.jpg" alt="Aerial View" decoding="async" loading="lazy" />
           </div>
         </div>
 

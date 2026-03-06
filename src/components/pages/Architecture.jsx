@@ -143,7 +143,7 @@ function Architecture() {
         </motion.div>
 
         <motion.div className="info-image" variants={itemVariants}>
-          <img src={image4} alt="Architectural detail" />
+          <img src={image4} alt="Architectural detail" loading="lazy" />
           <p className="image-caption">{t.architecture.imageCaption1 || "The building's facade balances privacy with openness, creating a dialogue between interior and exterior spaces."}</p>
         </motion.div>
       </motion.section>
@@ -166,7 +166,7 @@ function Architecture() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
             >
-              <img src={img.src} alt={img.alt} />
+              <img src={img.src} alt={img.alt} loading="lazy" />
             </motion.div>
           ))}
         </div>
@@ -181,7 +181,7 @@ function Architecture() {
         viewport={{ once: true, margin: "-100px" }}
       >
         <motion.div className="content-image" variants={itemVariants}>
-          <img src={image5} alt="Design detail" />
+          <img src={image5} alt="Design detail" loading="lazy" />
           <p className="image-caption">{t.architecture.imageCaption2 || "To complement the urban environment, we introduced tactile warmth and softness through the use of natural materials and carefully selected colors."}</p>
         </motion.div>
 
@@ -205,6 +205,7 @@ function Architecture() {
           muted 
           loop 
           playsInline
+          preload="metadata"
           src="/media/Video3_002.mp4"
         />
       </motion.section>
@@ -224,7 +225,7 @@ function Architecture() {
         </motion.div>
 
         <motion.div className="content-image" variants={itemVariants}>
-          <img src={image6} alt="Interior view" />
+          <img src={image6} alt="Interior view" loading="lazy" />
           <p className="image-caption">{t.architecture.imageCaption3 || "Vast vertical surfaces and natural light dominate the environment, creating a striking yet harmonious atmosphere."}</p>
         </motion.div>
       </motion.section>
@@ -247,7 +248,7 @@ function Architecture() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
             >
-              <img src={img.src} alt={img.alt} />
+              <img src={img.src} alt={img.alt} loading="lazy" />
             </motion.div>
           ))}
         </div>
@@ -275,7 +276,7 @@ function Architecture() {
               onClick={() => openLightbox(index)}
             >
               <div className="thumb-image">
-                <img src={img.src} alt={img.alt} />
+                <img src={img.src} alt={img.alt} loading="lazy" />
               </div>
               <span className="thumbnail-number">{String(index + 1).padStart(2, '0')}</span>
             </motion.div>

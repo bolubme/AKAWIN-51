@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { useLanguage } from '../../i18n/LanguageContext'
+import AmenityIcons from '../AmenityIcons'
 import '../../styles/pages/Residencies.css'
 
 // Import images for each unit type (multiple images per unit for the slider)
@@ -208,18 +209,17 @@ function Residencies() {
         <div className="amenities-grid">
           {t.residencies.amenities.map((amenity, index) => (
             <motion.div 
-              key={amenity.title}
+              key={amenity.id}
               className="amenity-item"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
+              transition={{ delay: index * 0.03 }}
             >
-              <span className="amenity-icon">{amenity.icon}</span>
-              <div className="amenity-content">
-                <h4>{amenity.title}</h4>
-                <p>{amenity.desc}</p>
+              <div className="amenity-icon">
+                <AmenityIcons type={amenity.id} />
               </div>
+              <span className="amenity-label">{amenity.title}</span>
             </motion.div>
           ))}
         </div>

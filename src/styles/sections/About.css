@@ -62,7 +62,7 @@
 }
 
 .value-item h4 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-heading);
   font-size: 1.3rem;
   color: var(--primary-light);
   margin-bottom: 0.3rem;
@@ -88,7 +88,7 @@
 }
 
 .stat-number {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-heading);
   font-size: 4rem;
   font-weight: 300;
   color: var(--accent);

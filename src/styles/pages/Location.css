@@ -41,7 +41,7 @@
 }
 
 .location-hero .hero-title {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-heading);
   font-size: clamp(3rem, 7vw, 5.5rem);
   font-weight: 500;
   color: #fff;
@@ -77,14 +77,14 @@
 }
 
 .location-hero .prompt-title {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-body);
   font-size: 0.85rem;
   font-weight: 600;
   color: #fff;
 }
 
 .location-hero .prompt-sub {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-body);
   font-size: 0.75rem;
   font-weight: 400;
   opacity: 0.6;
@@ -148,7 +148,7 @@
 }
 
 .stat-value {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-heading);
   font-size: 1.6rem;
   font-weight: 600;
   color: var(--accent);
@@ -156,7 +156,7 @@
 }
 
 .stat-label {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-body);
   font-size: 0.7rem;
   font-weight: 500;
   text-transform: uppercase;
@@ -170,7 +170,7 @@
 }
 
 .amenities-title {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-body);
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.12em;
@@ -208,14 +208,14 @@
 }
 
 .amenity-name {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-body);
   font-size: 0.95rem;
   font-weight: 500;
   color: var(--primary-dark);
 }
 
 .amenity-type {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-body);
   font-size: 0.7rem;
   color: rgba(26, 26, 26, 0.5);
   text-transform: uppercase;
@@ -223,7 +223,7 @@
 }
 
 .amenity-distance {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-heading);
   font-size: 1.1rem;
   font-weight: 600;
   color: var(--accent);
@@ -234,7 +234,7 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-body);
   font-size: 0.85rem;
   color: var(--primary-dark);
   text-decoration: none;

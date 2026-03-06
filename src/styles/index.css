@@ -13,6 +13,10 @@
   --text-light: #7a8a9a;
   --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Font family variables for consistency */
+  --font-heading: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 html {
@@ -20,17 +24,20 @@ html {
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-body);
   background-color: var(--primary-light);
   color: var(--text-dark);
   line-height: 1.8;
   font-weight: 300;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-heading);
   font-weight: 400;
 }
 
@@ -41,7 +48,7 @@ a {
 }
 
 button {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-body);
   cursor: pointer;
 }
 
@@ -65,7 +72,7 @@ section {
 }
 
 .section-title {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-heading);
   font-size: clamp(2.5rem, 6vw, 4.5rem);
   font-weight: 300;
   line-height: 1.2;
@@ -157,8 +164,7 @@ section {
 }
 
 /* Greek Language Typography Adjustments */
-/* Do NOT rescale Greek heading font-sizes – use the same clamp() sizes as English.
-   Only tighten tracking slightly so longer Greek headlines fit more gracefully. */
+/* Scale down Greek text to match English visual size */
 html[data-lang="GR"] .hero-title,
 html[data-lang="GR"] .hero-title-large,
 html[data-lang="GR"] .section-title,
@@ -170,7 +176,22 @@ html[data-lang="GR"] .closing-headline,
 html[data-lang="GR"] .arch-hero .hero-title,
 html[data-lang="GR"] .intro-headline,
 html[data-lang="GR"] blockquote {
+  font-size: 0.92em;
   letter-spacing: -0.01em;
+}
+
+html[data-lang="GR"] .title-main,
+html[data-lang="GR"] .title-number {
+  font-size: 0.9em;
+}
+
+html[data-lang="GR"] .hero-description,
+html[data-lang="GR"] .split-body,
+html[data-lang="GR"] .explore-card-desc,
+html[data-lang="GR"] .featured-card-desc,
+html[data-lang="GR"] .info-content p,
+html[data-lang="GR"] .content-text p {
+  font-size: 0.95em;
 }
 
 html[data-lang="GR"] .editorial-label,
@@ -178,18 +199,4 @@ html[data-lang="GR"] .explore-label,
 html[data-lang="GR"] .featured-title,
 html[data-lang="GR"] .section-label {
   letter-spacing: 0.2em;
-}
-
-/* Greek-specific bump for small all-caps labels */
-html[data-lang="GR"] .page-label,
-html[data-lang="GR"] .next-link .next-label,
-html[data-lang="GR"] .about-slider-label,
-html[data-lang="GR"] .intro-label,
-html[data-lang="GR"] .info-label,
-html[data-lang="GR"] .hero-by-label,
-html[data-lang="GR"] .stat-label,
-html[data-lang="GR"] .amenities-title,
-html[data-lang="GR"] .contact-label {
-  font-size: 0.8rem;
-  letter-spacing: 0.16em;
 }

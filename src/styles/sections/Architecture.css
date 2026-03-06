@@ -43,7 +43,7 @@
 }
 
 .arch-item h4 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-heading);
   font-size: 1.6rem;
   font-weight: 400;
   margin-bottom: 1rem;

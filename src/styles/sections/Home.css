@@ -9,7 +9,7 @@
 }
 
 .hero-title {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-heading);
   font-size: clamp(4rem, 12vw, 10rem);
   font-weight: 300;
   line-height: 0.9;
@@ -36,7 +36,7 @@
 }
 
 .hero-tagline {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-heading);
   font-size: clamp(1.2rem, 2.5vw, 1.6rem);
   font-weight: 300;
   font-style: italic;

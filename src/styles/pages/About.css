@@ -36,7 +36,7 @@
 }
 
 .about-hero-title {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-heading);
   font-size: clamp(3rem, 7vw, 5.5rem);
   font-weight: 500;
   color: #fff;
@@ -65,13 +65,13 @@
 }
 
 .about-hero-prompt strong {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-body);
   font-size: 0.85rem;
   font-weight: 600;
 }
 
 .about-hero-prompt span {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-body);
   font-size: 0.75rem;
   font-weight: 400;
   opacity: 0.6;
@@ -154,7 +154,7 @@
 }
 
 .about-slider-label {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-body);
   font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 0.2em;
@@ -164,7 +164,7 @@
 }
 
 .about-slider-headline {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-heading);
   font-size: clamp(1.8rem, 2.5vw, 2.4rem);
   font-weight: 400;
   font-style: italic;
@@ -174,7 +174,7 @@
 }
 
 .about-slider-paragraph {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-body);
   font-size: 0.9rem;
   line-height: 1.8;
   color: rgba(26, 26, 26, 0.65);
@@ -256,7 +256,7 @@
 }
 
 .about-philosophy-title h2 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-heading);
   font-size: clamp(1.6rem, 2.2vw, 2rem);
   font-weight: 400;
   letter-spacing: 0.18em;
@@ -273,7 +273,7 @@
 }
 
 .about-philosophy-content p {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-body);
   font-size: 0.95rem;
   line-height: 1.85;
   color: rgba(70, 70, 70, 0.85);
@@ -299,7 +299,7 @@
 }
 
 .about-team-title {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-heading);
   font-size: 2.5rem;
   font-weight: 400;
   font-style: italic;
@@ -351,7 +351,7 @@
 }
 
 .team-card-name {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-body);
   font-size: 1.1rem;
   font-weight: 600;
   color: var(--primary-dark);
@@ -359,7 +359,7 @@
 }
 
 .team-card-role {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-body);
   font-size: 0.85rem;
   font-style: italic;
   color: rgba(26, 26, 26, 0.6);
@@ -367,7 +367,7 @@
 }
 
 .team-card-email {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-body);
   font-size: 0.85rem;
   font-weight: 400;
   color: var(--accent);
@@ -381,7 +381,7 @@
 }
 
 .team-card-bio {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-body);
   font-size: 0.9rem;
   line-height: 1.7;
   color: rgba(26, 26, 26, 0.65);
