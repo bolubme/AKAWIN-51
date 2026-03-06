@@ -1585,7 +1585,7 @@
 .highlight-text {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
 }
 
 .highlight-title {
@@ -1642,21 +1642,37 @@
   }
   
   .highlights-content {
-    padding: 24px 20px;
+    padding: 18px 20px;
+    gap: 14px;
+  }
+  
+  .highlights-label {
+    font-size: 0.65rem;
+    margin-bottom: 0;
   }
   
   .highlights-grid {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 10px;
   }
   
   .highlight-card {
-    gap: 12px;
+    gap: 10px;
+    align-items: center;
   }
   
   .highlight-icon {
-    width: 28px;
-    height: 28px;
+    width: 24px;
+    height: 24px;
+  }
+  
+  .highlight-title {
+    font-size: 0.7rem;
+  }
+  
+  .highlight-desc {
+    font-size: 0.68rem;
+    line-height: 1.4;
   }
 }
 
