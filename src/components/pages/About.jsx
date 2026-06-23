@@ -13,13 +13,6 @@ const sliderImages = [
   '/media/shapes_8.png',
 ]
 
-// Team member images
-const teamImages = [
-  '/media/shapes_9.png',
-  '/media/shapes_10.png',
-  '/media/shapes_11.png',
-]
-
 function About() {
   const { t } = useLanguage()
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -73,6 +66,15 @@ function About() {
 
       {/* Image Slider Section - Text Left, Image Right */}
       <section className="about-slider-section">
+        <motion.div
+          className="about-story-logo"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <img src="/media/domisense-logo.png" alt="Domisense — Residential Constructions" />
+        </motion.div>
         <div className="about-slider-inner">
           {/* Left: Text content */}
           <div className="about-slider-text">
@@ -159,9 +161,41 @@ function About() {
         </motion.div>
       </section>
 
-      {/* Team Section */}
+      {/* Disciplines — Architecture · Construction · Development */}
+      <section className="about-disciplines-section">
+        <motion.div
+          className="about-disciplines-inner"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="about-disciplines-header">
+            <span className="about-disciplines-intro">{t.about.disciplinesIntro}</span>
+            <h2 className="about-disciplines-title">{t.about.disciplinesTitle}</h2>
+          </div>
+          <div className="about-disciplines-grid">
+            {t.about.disciplines.map((d, index) => (
+              <motion.div
+                key={d.title}
+                className="discipline-card"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <span className="discipline-number">{d.number}</span>
+                <h3 className="discipline-title">{d.title}</h3>
+                <p className="discipline-desc">{d.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Team Section — organised by discipline */}
       <section className="about-team-section">
-        <motion.div 
+        <motion.div
           className="about-team-inner"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -173,26 +207,28 @@ function About() {
             <div className="about-team-underline"></div>
           </div>
 
-          <div className="about-team-grid">
-            {t.about.team.map((member, index) => (
-              <motion.div 
-                key={member.name}
-                className="team-card"
+          <div className="about-team-disciplines">
+            {t.about.teamGroups.map((group, gi) => (
+              <motion.div
+                key={group.group}
+                className="team-discipline"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.5, delay: gi * 0.1 }}
               >
-                <div className="team-card-image">
-                  <img src={teamImages[index]} alt={member.name} loading="lazy" />
-                </div>
-                <div className="team-card-info">
-                  <h3 className="team-card-name">{member.name}</h3>
-                  <span className="team-card-role">{member.role}</span>
-                  <a href={`mailto:${member.name.toLowerCase().replace(' ', '.')}@domisense.com`} className="team-card-email">
-                    {member.name.toLowerCase().replace(' ', '.')}@domisense.com
-                  </a>
-                  <p className="team-card-bio">{member.bio}</p>
+                <h3 className="team-discipline-name">{group.group}</h3>
+                <div className="team-discipline-roles">
+                  {group.roles.map((role) => (
+                    <div key={role.role} className="team-role-row">
+                      <span className="team-role-label">{role.role}</span>
+                      <div className="team-role-names">
+                        {role.names.map((name) => (
+                          <span key={name} className="team-role-name">{name}</span>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </motion.div>
             ))}

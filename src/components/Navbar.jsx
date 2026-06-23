@@ -4,33 +4,6 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useLanguage } from '../i18n/LanguageContext'
 import '../styles/Navbar.css'
 
-const menuImage = '/media/shapes_11.png'
-
-// Lazy load menu image
-const LazyMenuImage = () => {
-  const [isLoaded, setIsLoaded] = useState(false)
-  const imgRef = useRef()
-
-  useEffect(() => {
-    const img = new Image()
-    img.src = menuImage
-    img.onload = () => {
-      setIsLoaded(true)
-      if (imgRef.current) {
-        imgRef.current.src = menuImage
-      }
-    }
-  }, [])
-
-  return (
-    <img 
-      ref={imgRef}
-      alt="AKAKIWN 50 Interior"
-      style={{ opacity: isLoaded ? 1 : 0 }}
-    />
-  )
-}
-
 const navLinks = [
   { key: 'home', path: '/' },
   { key: 'architecture', path: '/architecture' },
@@ -90,18 +63,23 @@ function Navbar() {
     navigate(path)
   }
 
+  const backdropVariants = {
+    closed: { opacity: 0, transition: { duration: 0.3, ease: [0.4, 0, 0.2, 1] } },
+    open: { opacity: 1, transition: { duration: 0.4, ease: [0.4, 0, 0.2, 1] } }
+  }
+
   const menuVariants = {
     closed: {
-      opacity: 0,
+      x: '100%',
       transition: {
-        duration: 0.3,
+        duration: 0.4,
         ease: [0.4, 0, 0.2, 1]
       }
     },
     open: {
-      opacity: 1,
+      x: 0,
       transition: {
-        duration: 0.4,
+        duration: 0.5,
         ease: [0.4, 0, 0.2, 1]
       }
     }
@@ -188,76 +166,83 @@ function Navbar() {
 
       <AnimatePresence>
         {isMenuOpen && (
-          <motion.div 
-            className="fullscreen-menu"
-            variants={menuVariants}
-            initial="closed"
-            animate="open"
-            exit="closed"
-          >
-            <div className="menu-content">
-              <div className="menu-left">
-                <motion.nav 
-                  className="menu-links"
-                  variants={linkContainerVariants}
-                  initial="closed"
-                  animate="open"
-                  exit="closed"
-                >
-                  {navLinks.map((link) => (
-                    <motion.div
-                      key={link.key}
-                      className="menu-link-wrapper"
-                      variants={linkVariants}
+          <>
+            <motion.div
+              className="menu-backdrop"
+              variants={backdropVariants}
+              initial="closed"
+              animate="open"
+              exit="closed"
+              onClick={() => setIsMenuOpen(false)}
+            />
+            <motion.aside
+              className="menu-sidebar"
+              variants={menuVariants}
+              initial="closed"
+              animate="open"
+              exit="closed"
+            >
+              <motion.nav
+                className="menu-links"
+                variants={linkContainerVariants}
+                initial="closed"
+                animate="open"
+                exit="closed"
+              >
+                {navLinks.map((link) => (
+                  <motion.div
+                    key={link.key}
+                    className="menu-link-wrapper"
+                    variants={linkVariants}
+                  >
+                    <button
+                      className={`menu-link ${hoveredLink && hoveredLink !== link.key ? 'faded' : ''} ${location.pathname === link.path ? 'active' : ''}`}
+                      onClick={() => handleNavClick(link.path)}
+                      onMouseEnter={() => setHoveredLink(link.key)}
+                      onMouseLeave={() => setHoveredLink(null)}
                     >
-                      <button
-                        className={`menu-link ${hoveredLink && hoveredLink !== link.key ? 'faded' : ''} ${location.pathname === link.path ? 'active' : ''}`}
-                        onClick={() => handleNavClick(link.path)}
-                        onMouseEnter={() => setHoveredLink(link.key)}
-                        onMouseLeave={() => setHoveredLink(null)}
-                      >
-                        {t.nav[link.key]}
-                      </button>
-                    </motion.div>
-                  ))}
-                </motion.nav>
+                      {t.nav[link.key]}
+                    </button>
+                  </motion.div>
+                ))}
+              </motion.nav>
 
-                <motion.div 
-                  className="menu-footer"
-                  variants={footerVariants}
-                  initial="closed"
-                  animate="open"
-                  exit="closed"
-                >
-                  <div className="menu-contact">
-                    <p className="contact-label">{t.nav.getInTouch}</p>
-                    <a href="tel:+302100000000" className="contact-phone">{t.nav.phone}</a>
-                    <a href={`mailto:${t.nav.email}`} className="contact-email">
-                      {t.nav.email}
+              <motion.div
+                className="menu-footer"
+                variants={footerVariants}
+                initial="closed"
+                animate="open"
+                exit="closed"
+              >
+                <div className="menu-contact-col">
+                  <p className="contact-label">{t.nav.emailLabel}</p>
+                  <a href={`mailto:${t.nav.email}`} className="contact-value">
+                    {t.nav.email}
+                  </a>
+                  <div className="menu-socials">
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+                        <rect x="2" y="2" width="20" height="20" rx="5"/>
+                        <circle cx="12" cy="12" r="4"/>
+                        <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+                      </svg>
+                    </a>
+                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M14 8.5h2V5.5h-2.3c-2 0-3.2 1.2-3.2 3.4v1.6H8.5v3h2v7h3v-7h2.3l.4-3H13.5V9.2c0-.5.2-.7.7-.7H14z"/>
+                      </svg>
                     </a>
                   </div>
-                  <button className="menu-cta" onClick={() => handleNavClick('/contact')}>
-                    {t.nav.scheduleVisit}
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
-                  </button>
-                </motion.div>
-              </div>
-
-              <div className="menu-right">
-                <motion.div 
-                  className="menu-image"
-                  initial={{ opacity: 0, scale: 1.1 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.7, delay: 0.2 }}
-                >
-                  <LazyMenuImage />
-                </motion.div>
-              </div>
-            </div>
-          </motion.div>
+                </div>
+                <div className="menu-contact-col">
+                  <p className="contact-label">{t.nav.telLabel}</p>
+                  <a href={`tel:${t.nav.phone.replace(/\s/g, '')}`} className="contact-value">
+                    {t.nav.phone}
+                  </a>
+                </div>
+              </motion.div>
+            </motion.aside>
+          </>
         )}
       </AnimatePresence>
     </>

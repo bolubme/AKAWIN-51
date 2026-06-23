@@ -186,28 +186,15 @@ function Contact() {
           {/* Contact Info */}
           <motion.div className="contact-info" variants={itemVariants}>
             <div className="info-card">
-              <h3>{t.contact.visitTitle}</h3>
-              <p>{t.contact.visitDesc}</p>
-              
               <div className="info-details">
                 <div className="info-item">
-                  <strong>{t.contact.showroom || 'Showroom'}</strong>
-                  <span>Akakion 50, Marousi<br/>151 25, Athens, Greece</span>
-                </div>
-                
-                <div className="info-item">
                   <strong>{t.contact.phoneTitle}</strong>
-                  <span>+30 210 000 0000</span>
-                </div>
-                
-                <div className="info-item">
-                  <strong>{t.contact.emailTitle}</strong>
-                  <span>{t.contact.emailValue}</span>
+                  <a href={`tel:${t.nav.phone.replace(/\s/g, '')}`}>{t.nav.phone}</a>
                 </div>
 
                 <div className="info-item">
-                  <strong>{t.contact.hoursTitle || 'Hours'}</strong>
-                  <span>Mon–Fri: 9am–7pm<br/>Sat–Sun: 10am–5pm</span>
+                  <strong>{t.contact.emailTitle}</strong>
+                  <a href={`mailto:${t.contact.emailValue}`}>{t.contact.emailValue}</a>
                 </div>
               </div>
 

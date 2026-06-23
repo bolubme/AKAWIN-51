@@ -250,11 +250,18 @@
   color: rgba(26, 26, 26, 0.5);
 }
 
-.info-item span {
+.info-item span,
+.info-item a {
   font-family: 'Inter', sans-serif;
   font-size: 0.95rem;
   line-height: 1.6;
   color: var(--primary-dark);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.info-item a:hover {
+  color: var(--accent);
 }
 
 /* Back Link */

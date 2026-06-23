@@ -85,6 +85,17 @@
   display: block !important;
 }
 
+.about-story-logo {
+  margin-bottom: 60px;
+  padding-right: 60px;
+}
+
+.about-story-logo img {
+  height: 130px;
+  width: auto;
+  display: block;
+}
+
 .about-slider-inner {
   display: grid;
   grid-template-columns: minmax(0, 0.45fr) minmax(0, 0.55fr);
@@ -387,6 +398,140 @@
   color: rgba(26, 26, 26, 0.65);
 }
 
+/* ========== Disciplines (Architecture · Construction · Development) ========== */
+.about-disciplines-section {
+  min-height: auto !important;
+  padding: 90px 60px !important;
+  background: #f5f3f0;
+  display: block !important;
+}
+
+.about-disciplines-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-disciplines-header {
+  margin-bottom: 56px;
+}
+
+.about-disciplines-intro {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.about-disciplines-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--primary-dark);
+}
+
+.about-disciplines-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px;
+}
+
+.discipline-card {
+  border-top: 1px solid rgba(26, 26, 26, 0.15);
+  padding-top: 24px;
+}
+
+.discipline-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  color: var(--accent);
+}
+
+.discipline-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: var(--primary-dark);
+  margin: 8px 0 16px;
+}
+
+.discipline-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: rgba(26, 26, 26, 0.65);
+}
+
+/* ========== Team by discipline ========== */
+.about-team-disciplines {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+
+.team-discipline-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--primary-dark);
+  padding-bottom: 18px;
+  margin-bottom: 28px;
+  border-bottom: 1px solid rgba(26, 26, 26, 0.12);
+}
+
+.team-discipline-roles {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.team-role-row {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.team-role-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--primary-dark);
+}
+
+.team-role-names {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.team-role-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  color: rgba(26, 26, 26, 0.7);
+}
+
+@media (max-width: 768px) {
+  .about-disciplines-section {
+    padding: 60px 24px !important;
+  }
+
+  .about-disciplines-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .team-role-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
 /* ========== Responsive ========== */
 @media (max-width: 1024px) {
   .about-hero-content {
@@ -471,6 +616,15 @@
 
   .about-slider-section {
     padding: 60px 24px 50px !important;
+  }
+
+  .about-story-logo {
+    margin-bottom: 40px;
+    padding-right: 0;
+  }
+
+  .about-story-logo img {
+    height: 90px;
   }
 
   .about-slider-inner {

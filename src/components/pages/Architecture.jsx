@@ -52,7 +52,7 @@ function Architecture() {
   ]
 
   // All index images combined
-  const allIndexImages = [...galleryImages, ...galleryImages2, ...galleryImages, ...galleryImages2, ...galleryImages, ...galleryImages2, ...galleryImages, ...galleryImages2]
+  const allIndexImages = [...galleryImages, ...galleryImages2, ...galleryImages, ...galleryImages2]
 
   // Lightbox state
   const [lightboxOpen, setLightboxOpen] = useState(false)
@@ -119,21 +119,38 @@ function Architecture() {
         viewport={{ once: true, margin: "-100px" }}
       >
         <motion.div className="info-sidebar" variants={itemVariants}>
+          <h3 className="project-info-title">{t.architecture.projectInfoTitle || 'Project Info'}</h3>
           <div className="info-item">
-            <span className="info-label">{t.architecture.locationLabel || 'LOCATION'}</span>
+            <span className="info-label">{t.architecture.officeLabel || 'Architectural Office'}</span>
+            <span className="info-value">{t.architecture.officeValue || 'Domisense Studio'}</span>
+          </div>
+          <div className="info-item">
+            <span className="info-label">{t.architecture.locationLabel || 'Location'}</span>
             <span className="info-value">{t.architecture.locationValue || 'Marousi, Athens'}</span>
           </div>
           <div className="info-item">
-            <span className="info-label">{t.architecture.architectLabel || 'ARCHITECT'}</span>
-            <span className="info-value">{t.architecture.architectValue || 'Domisense Studio'}</span>
+            <span className="info-label">{t.architecture.areaLabel || 'Area'}</span>
+            <span className="info-value">{t.architecture.areaValue || '3,200 m²'}</span>
           </div>
           <div className="info-item">
-            <span className="info-label">{t.architecture.categoryLabel || 'CATEGORY'}</span>
-            <span className="info-value">{t.architecture.categoryValue || 'Residential'}</span>
+            <span className="info-label">{t.architecture.structuralLabel || 'Structural Engineer'}</span>
+            <span className="info-value">{t.architecture.structuralValue || 'Domisense Engineering'}</span>
           </div>
           <div className="info-item">
-            <span className="info-label">{t.architecture.yearLabel || 'YEAR'}</span>
-            <span className="info-value">{t.architecture.yearValue || '2025'}</span>
+            <span className="info-label">{t.architecture.mechanicalLabel || 'Mechanical Engineer'}</span>
+            <span className="info-value">{t.architecture.mechanicalValue || 'Domisense Engineering'}</span>
+          </div>
+          <div className="info-item">
+            <span className="info-label">{t.architecture.developerLabel || 'Developer'}</span>
+            <span className="info-value">{t.architecture.developerValue || 'Domisense'}</span>
+          </div>
+          <div className="info-item">
+            <span className="info-label">{t.architecture.completionLabel || 'Year of Completion'}</span>
+            <span className="info-value">{t.architecture.completionValue || '2026'}</span>
+          </div>
+          <div className="info-item">
+            <span className="info-label">{t.architecture.typeLabel || 'Type'}</span>
+            <span className="info-value">{t.architecture.typeValue || 'Residential'}</span>
           </div>
         </motion.div>
 
@@ -148,27 +165,40 @@ function Architecture() {
         </motion.div>
       </motion.section>
 
-      {/* First Gallery */}
-      <motion.section 
-        className="arch-gallery"
+      {/* First Gallery - big full-bleed */}
+      <motion.section
+        className="arch-gallery-large"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
-        <div className="gallery-grid three-col">
-          {galleryImages.map((img, index) => (
-            <motion.div 
-              key={index}
-              className="gallery-item"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-            >
-              <img src={img.src} alt={img.alt} />
-            </motion.div>
-          ))}
+        <motion.div
+          className="gallery-full"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <img src={image1} alt="Exterior view" />
+        </motion.div>
+        <div className="gallery-pair">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+          >
+            <img src={image2} alt="Interior detail" />
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+          >
+            <img src={image3} alt="Living space" />
+          </motion.div>
         </div>
       </motion.section>
 
@@ -229,28 +259,41 @@ function Architecture() {
         </motion.div>
       </motion.section>
 
-      {/* Second Gallery */}
-      <motion.section 
-        className="arch-gallery"
+      {/* Second Gallery - big full-bleed */}
+      <motion.section
+        className="arch-gallery-large"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
-        <div className="gallery-grid three-col">
-          {galleryImages2.map((img, index) => (
-            <motion.div 
-              key={index}
-              className="gallery-item"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-            >
-              <img src={img.src} alt={img.alt} />
-            </motion.div>
-          ))}
+        <div className="gallery-pair">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+          >
+            <img src={image4} alt="Natural light" />
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+          >
+            <img src={image5} alt="Modern design" />
+          </motion.div>
         </div>
+        <motion.div
+          className="gallery-full"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <img src={image6} alt="Architectural detail" />
+        </motion.div>
       </motion.section>
 
       {/* Thumbnail Grid - INDEX */}

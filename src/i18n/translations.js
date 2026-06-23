@@ -12,13 +12,18 @@ const translations = {
       close: 'Close',
       getInTouch: 'Get in touch',
       phone: '+30 210 000 0000',
-      email: 'inquiries@akakiwn50.com',
+      email: 'info@akakiwn50.com',
       scheduleVisit: 'Schedule a Visit',
+      emailLabel: 'Email',
+      telLabel: 'Tel',
+      menuCaption: 'AKAKIWN 50',
+      menuCaptionSub: 'Marousi, Athens',
     },
 
     // Footer
     footer: {
       subtitle: 'by Domisense',
+      statement: 'We shape spaces where modern living finds its form.',
       copyright: `© ${new Date().getFullYear()} AKAKIWN 50 by Domisense. All rights reserved.`,
     },
 
@@ -94,6 +99,22 @@ const translations = {
       categoryValue: 'Residential',
       yearLabel: 'YEAR',
       yearValue: '2025',
+      // Project Info box
+      projectInfoTitle: 'Project Info',
+      officeLabel: 'Architectural Office',
+      officeValue: 'Domisense Studio',
+      areaLabel: 'Area',
+      areaValue: '3,200 m²',
+      structuralLabel: 'Structural Engineer',
+      structuralValue: 'Domisense Engineering',
+      mechanicalLabel: 'Mechanical Engineer',
+      mechanicalValue: 'Domisense Engineering',
+      developerLabel: 'Developer',
+      developerValue: 'Domisense',
+      completionLabel: 'Year of Completion',
+      completionValue: '2026',
+      typeLabel: 'Type',
+      typeValue: 'Residential',
       infoParagraph1: "Situated on Akakion Street in the heart of Marousi — one of Athens' most prestigious northern suburbs — AKAKIWN 50 represents a new standard in residential architecture. The building's design philosophy embraces the harmony between nature and contemporary living.",
       infoParagraph2: "The design, inspired by the Mediterranean climate and lifestyle, uses natural materials as a canvas, allowing each residence to tell its own story and inspiring residents to imagine their own dream spaces.",
       // Image captions
@@ -218,6 +239,8 @@ const translations = {
       inquire: 'Inquire About This Unit',
       featuresIntro: 'Each residence is designed with attention to every detail, offering the highest standard of modern living with premium finishes throughout.',
       closingText: 'Our residences reflect a commitment to quality craftsmanship, sustainable materials, and timeless design — creating spaces that inspire connection with both the environment and community.',
+      galleryLabel: 'Gallery',
+      galleryTitle: 'Inside the Residences',
       amenitiesTitle: 'Premium Amenities',
       amenities: [
         { icon: '◇', title: 'Private Terraces', desc: 'Panoramic views' },
@@ -279,11 +302,37 @@ const translations = {
         { year: '2020', event: 'Sustainability award' },
         { year: '2024', event: 'AKAKIWN 50 launch' },
       ],
+      // Disciplines (Architecture · Construction · Development)
+      disciplinesTitle: 'What We Do',
+      disciplinesIntro: 'Architecture · Construction · Development',
+      disciplines: [
+        { number: '01', title: 'Architecture', desc: 'From concept to detail, we design residential spaces where light, material and proportion work in harmony with the way people live.' },
+        { number: '02', title: 'Construction', desc: 'We deliver with uncompromising standards of craftsmanship, managing every stage of the build with precision and care.' },
+        { number: '03', title: 'Development', desc: 'We identify, plan and develop landmark residential projects that create lasting value for residents and communities alike.' },
+      ],
       teamTitle: 'Our Team',
-      team: [
-        { name: 'Alexandros Papadopoulos', role: 'Founder / CEO', bio: 'With over 20 years in real estate development, Alexandros founded Domisense with a vision to redefine residential living in Athens through sustainable design and innovation.' },
-        { name: 'Elena Konstantinou', role: 'Lead Architect', bio: 'Elena brings a decade of award-winning architectural practice to Domisense, specializing in biophilic design and the seamless integration of indoor and outdoor spaces.' },
-        { name: 'Nikolaos Georgiou', role: 'Interior Designer', bio: 'Nikolaos combines Mediterranean warmth with contemporary minimalism, curating interiors that feel both timeless and deeply personal for every resident.' },
+      teamGroups: [
+        {
+          group: 'Architectural Team',
+          roles: [
+            { role: 'Lead Architect', names: ['Elena Konstantinou'] },
+            { role: 'Architects — Design Team', names: ['Nikolaos Georgiou', 'Maria Antoniou', 'Dimitris Pavlou', 'Sofia Markou', 'Katerina Tsili'] },
+          ],
+        },
+        {
+          group: 'Structural Team',
+          roles: [
+            { role: 'Lead Structural Engineer', names: ['Fotini Karagianni'] },
+            { role: 'Structural Engineers', names: ['George Kostoulas', 'Spyros Moutsios', 'Spyros Dimitropoulos', 'Dimitris Panagiotou'] },
+          ],
+        },
+        {
+          group: 'Development',
+          roles: [
+            { role: 'Founder / CEO', names: ['Alexandros Papadopoulos'] },
+            { role: 'Project Management', names: ['Domisense Development Team'] },
+          ],
+        },
       ],
       nextLabel: 'Next',
       nextTitle: 'Get In Touch',
@@ -322,7 +371,7 @@ const translations = {
       showroomAddr: 'Akakion 50, Marousi\n151 25, Athens, Greece',
       phoneTitle: 'Phone',
       emailTitle: 'Email',
-      emailValue: 'hello@domisense.com',
+      emailValue: 'info@akakiwn50.com',
       hoursTitle: 'Hours',
       hoursValue: 'Mon–Fri: 9am–7pm\nSat–Sun: 10am–5pm',
       backToHome: 'Back to Home',
@@ -342,13 +391,18 @@ const translations = {
       close: 'Κλείσιμο',
       getInTouch: 'Επικοινωνήστε μαζί μας',
       phone: '+30 210 000 0000',
-      email: 'inquiries@akakiwn50.com',
+      email: 'info@akakiwn50.com',
       scheduleVisit: 'Κλείστε Επίσκεψη',
+      emailLabel: 'Email',
+      telLabel: 'Τηλ',
+      menuCaption: 'AKAKIWN 50',
+      menuCaptionSub: 'Μαρούσι, Αθήνα',
     },
 
     // Footer
     footer: {
       subtitle: 'από Domisense',
+      statement: 'Διαμορφώνουμε χώρους όπου η σύγχρονη ζωή βρίσκει τη μορφή της.',
       copyright: `© ${new Date().getFullYear()} AKAKIWN 50 από Domisense. Με επιφύλαξη παντός δικαιώματος.`,
     },
 
@@ -417,6 +471,22 @@ const translations = {
       categoryValue: 'Κατοικίες',
       yearLabel: 'ΕΤΟΣ',
       yearValue: '2025',
+      // Project Info box
+      projectInfoTitle: 'Στοιχεία Έργου',
+      officeLabel: 'Αρχιτεκτονικό Γραφείο',
+      officeValue: 'Domisense Studio',
+      areaLabel: 'Επιφάνεια',
+      areaValue: '3.200 τ.μ.',
+      structuralLabel: 'Στατικός Μηχανικός',
+      structuralValue: 'Domisense Engineering',
+      mechanicalLabel: 'Μηχανολόγος Μηχανικός',
+      mechanicalValue: 'Domisense Engineering',
+      developerLabel: 'Κατασκευαστής',
+      developerValue: 'Domisense',
+      completionLabel: 'Έτος Ολοκλήρωσης',
+      completionValue: '2026',
+      typeLabel: 'Τύπος',
+      typeValue: 'Κατοικίες',
       infoParagraph1: 'Στην οδό Ακακίων στην καρδιά του Μαρουσίου — ένα από τα πιο αριστοκρατικά βόρεια προάστια της Αθήνας — το AKAKIWN 50 αντιπροσωπεύει ένα νέο πρότυπο στην οικιστική αρχιτεκτονική. Η σχεδιαστική φιλοσοφία του κτιρίου αγκαλιάζει την αρμονία μεταξύ φύσης και σύγχρονης διαβίωσης.',
       infoParagraph2: 'Ο σχεδιασμός, εμπνευσμένος από το μεσογειακό κλίμα και τρόπο ζωής, χρησιμοποιεί φυσικά υλικά ως καμβά, επιτρέποντας σε κάθε κατοικία να αφηγείται τη δική της ιστορία εμπνέοντας τους κατοίκους να φανταστούν τους δικούς τους ονειρεμένους χώρους.',
       // Image captions
@@ -541,6 +611,8 @@ const translations = {
       inquire: 'Ρωτήστε για αυτή τη Μονάδα',
       featuresIntro: 'Κάθε κατοικία σχεδιάστηκε με προσοχή σε κάθε λεπτομέρεια, προσφέροντας το υψηλότερο επίπεδο σύγχρονης διαβίωσης με premium φινιρίσματα.',
       closingText: 'Οι κατοικίες μας αντικατοπτρίζουν τη δέσμευσή μας για ποιοτική κατασκευή, βιώσιμα υλικά και διαχρονικό σχεδιασμό — δημιουργώντας χώρους που εμπνέουν σύνδεση τόσο με το περιβάλλον όσο και με την κοινότητα.',
+      galleryLabel: 'Συλλογή',
+      galleryTitle: 'Μέσα στις Κατοικίες',
       amenitiesTitle: 'Κορυφαίες Παροχές',
       amenities: [
         { icon: '◇', title: 'Ιδιωτικές Βεράντες', desc: 'Πανοραμική θέα' },
@@ -602,11 +674,37 @@ const translations = {
         { year: '2020', event: 'Βραβείο βιωσιμότητας' },
         { year: '2024', event: 'Λανσάρισμα AKAKIWN 50' },
       ],
+      // Disciplines (Αρχιτεκτονική · Κατασκευή · Ανάπτυξη)
+      disciplinesTitle: 'Τι Κάνουμε',
+      disciplinesIntro: 'Αρχιτεκτονική · Κατασκευή · Ανάπτυξη',
+      disciplines: [
+        { number: '01', title: 'Αρχιτεκτονική', desc: 'Από την ιδέα έως τη λεπτομέρεια, σχεδιάζουμε κατοικίες όπου το φως, το υλικό και η αναλογία λειτουργούν αρμονικά με τον τρόπο ζωής των ανθρώπων.' },
+        { number: '02', title: 'Κατασκευή', desc: 'Παραδίδουμε με ασυμβίβαστα πρότυπα κατασκευής, διαχειριζόμενοι κάθε στάδιο με ακρίβεια και φροντίδα.' },
+        { number: '03', title: 'Ανάπτυξη', desc: 'Εντοπίζουμε, σχεδιάζουμε και αναπτύσσουμε ορόσημα οικιστικά έργα που δημιουργούν διαχρονική αξία για τους κατοίκους και τις κοινότητες.' },
+      ],
       teamTitle: 'Η Ομάδα μας',
-      team: [
-        { name: 'Αλέξανδρος Παπαδόπουλος', role: 'Ιδρυτής / Διευθύνων Σύμβουλος', bio: 'Με πάνω από 20 χρόνια στην ανάπτυξη ακινήτων, ο Αλέξανδρος ίδρυσε τη Domisense με όραμα να επαναπροσδιορίσει την κατοικία στην Αθήνα μέσω βιώσιμου σχεδιασμού και καινοτομίας.' },
-        { name: 'Ελένη Κωνσταντίνου', role: 'Επικεφαλής Αρχιτέκτονας', bio: 'Η Ελένη φέρνει μια δεκαετία βραβευμένης αρχιτεκτονικής πρακτικής στη Domisense, εξειδικευμένη στον βιοφιλικό σχεδιασμό και την αρμονική ένταξη εσωτερικών και εξωτερικών χώρων.' },
-        { name: 'Νικόλαος Γεωργίου', role: 'Σχεδιαστής Εσωτερικών Χώρων', bio: 'Ο Νικόλαος συνδυάζει τη μεσογειακή ζεστασιά με τον σύγχρονο μινιμαλισμό, δημιουργώντας εσωτερικούς χώρους διαχρονικούς και βαθιά προσωπικούς.' },
+      teamGroups: [
+        {
+          group: 'Αρχιτεκτονική Ομάδα',
+          roles: [
+            { role: 'Επικεφαλής Αρχιτέκτονας', names: ['Ελένη Κωνσταντίνου'] },
+            { role: 'Αρχιτέκτονες — Ομάδα Σχεδιασμού', names: ['Νικόλαος Γεωργίου', 'Μαρία Αντωνίου', 'Δημήτρης Παύλου', 'Σοφία Μάρκου', 'Κατερίνα Τσίλη'] },
+          ],
+        },
+        {
+          group: 'Στατική Ομάδα',
+          roles: [
+            { role: 'Επικεφαλής Στατικός Μηχανικός', names: ['Φωτεινή Καραγιάννη'] },
+            { role: 'Στατικοί Μηχανικοί', names: ['Γιώργος Κωστούλας', 'Σπύρος Μούτσιος', 'Σπύρος Δημητρόπουλος', 'Δημήτρης Παναγιώτου'] },
+          ],
+        },
+        {
+          group: 'Ανάπτυξη',
+          roles: [
+            { role: 'Ιδρυτής / Διευθύνων Σύμβουλος', names: ['Αλέξανδρος Παπαδόπουλος'] },
+            { role: 'Διαχείριση Έργου', names: ['Ομάδα Ανάπτυξης Domisense'] },
+          ],
+        },
       ],
       nextLabel: 'Επόμενο',
       nextTitle: 'Επικοινωνήστε',
@@ -645,7 +743,7 @@ const translations = {
       showroomAddr: 'Ακακίων 50, Μαρούσι\n151 25, Αθήνα, Ελλάδα',
       phoneTitle: 'Τηλέφωνο',
       emailTitle: 'Email',
-      emailValue: 'hello@domisense.com',
+      emailValue: 'info@akakiwn50.com',
       hoursTitle: 'Ωράριο',
       hoursValue: 'Δευ–Παρ: 9πμ–7μμ\nΣάβ–Κυρ: 10πμ–5μμ',
       backToHome: 'Πίσω στην Αρχική',
