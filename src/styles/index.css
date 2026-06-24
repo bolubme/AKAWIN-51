@@ -20,7 +20,7 @@ html {
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   background-color: var(--primary-light);
   color: var(--text-dark);
   line-height: 1.8;
@@ -30,7 +30,7 @@ body {
 
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Jost', sans-serif;
   font-weight: 400;
 }
 
@@ -41,7 +41,7 @@ a {
 }
 
 button {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   cursor: pointer;
 }
 
@@ -65,7 +65,7 @@ section {
 }
 
 .section-title {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Jost', sans-serif;
   font-size: clamp(2.5rem, 6vw, 4.5rem);
   font-weight: 300;
   line-height: 1.2;

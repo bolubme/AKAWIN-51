@@ -44,7 +44,7 @@
 }
 
 .residencies-hero .hero-title {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Jost', sans-serif;
   font-size: clamp(3rem, 7vw, 5.5rem);
   font-weight: 500;
   color: #fff;
@@ -74,13 +74,13 @@
 }
 
 .residencies-hero .prompt-title {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 0.85rem;
   font-weight: 600;
 }
 
 .residencies-hero .prompt-sub {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 0.75rem;
   font-weight: 400;
   opacity: 0.6;
@@ -98,7 +98,7 @@
 
 .intro-label {
   display: block;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 0.2em;
@@ -108,7 +108,7 @@
 }
 
 .intro-headline {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Jost', sans-serif;
   font-size: clamp(3rem, 6vw, 4.5rem);
   font-weight: 400;
   color: var(--primary-dark);
@@ -117,7 +117,7 @@
 }
 
 .intro-text {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 1rem;
   line-height: 1.8;
   color: rgba(26, 26, 26, 0.65);
@@ -138,7 +138,7 @@
 .residencies-tab {
   background: none;
   border: none;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.15em;
@@ -188,7 +188,7 @@
 }
 
 .residencies-title {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Jost', sans-serif;
   font-size: clamp(2.5rem, 4vw, 3.5rem);
   font-weight: 400;
   color: var(--primary-dark);
@@ -208,7 +208,7 @@
 }
 
 .residencies-meta span {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 0.1em;
@@ -244,14 +244,14 @@
 }
 
 .pictogram-value {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Jost', sans-serif;
   font-size: 1.25rem;
   font-weight: 500;
   color: var(--primary-dark);
 }
 
 .pictogram-label {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 0.62rem;
   font-weight: 600;
   letter-spacing: 0.14em;
@@ -264,7 +264,7 @@
 }
 
 .residencies-description p {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 0.95rem;
   line-height: 1.8;
   color: rgba(26, 26, 26, 0.75);
@@ -292,7 +292,7 @@
 
 .residencies-inquiry {
   display: inline-block;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.1em;
@@ -366,7 +366,7 @@
   position: absolute;
   bottom: 30px;
   right: 30px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 0.75rem;
   font-weight: 400;
   letter-spacing: 0.1em;
@@ -382,7 +382,7 @@
 }
 
 .residencies-amenities .amenities-title {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Jost', sans-serif;
   font-size: clamp(1.5rem, 2.5vw, 2rem);
   font-weight: 400;
   color: var(--primary-dark);
@@ -412,7 +412,7 @@
 }
 
 .amenity-content h4 {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--primary-dark);
@@ -421,7 +421,7 @@
 }
 
 .amenity-content p {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 0.8rem;
   color: rgba(26, 26, 26, 0.5);
   line-height: 1.5;
@@ -442,7 +442,7 @@
 }
 
 .cta-text {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Jost', sans-serif;
   font-size: clamp(1.5rem, 2.5vw, 2rem);
   font-weight: 400;
   color: var(--primary-light);
@@ -454,7 +454,7 @@
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 0.8rem;
   font-weight: 500;
   letter-spacing: 0.1em;
@@ -762,7 +762,7 @@
 
 .gallery-menu-label {
   display: block;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 0.7rem;
   letter-spacing: 0.25em;
   text-transform: uppercase;
@@ -771,7 +771,7 @@
 }
 
 .gallery-menu-title {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Jost', sans-serif;
   font-size: 2.2rem;
   font-weight: 400;
   font-style: italic;

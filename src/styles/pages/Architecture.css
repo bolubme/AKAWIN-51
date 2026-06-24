@@ -41,7 +41,7 @@
 }
 
 .arch-hero .hero-title {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Jost', sans-serif;
   font-size: clamp(3rem, 7vw, 5.5rem);
   font-weight: 500;
   color: #fff;
@@ -71,13 +71,13 @@
 }
 
 .arch-hero .hero-prompt strong {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 0.85rem;
   font-weight: 600;
 }
 
 .arch-hero .hero-prompt span {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 0.75rem;
   font-weight: 400;
   opacity: 0.6;
@@ -102,7 +102,7 @@
 }
 
 .project-info-title {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Jost', sans-serif;
   font-size: 1.5rem;
   font-weight: 400;
   color: #1a1a1a;
@@ -118,7 +118,7 @@
 }
 
 .info-label {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 0.65rem;
   font-weight: 600;
   letter-spacing: 0.15em;
@@ -127,7 +127,7 @@
 }
 
 .info-value {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 0.9rem;
   color: rgba(26, 26, 26, 0.8);
 }
@@ -139,7 +139,7 @@
 }
 
 .info-content p {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Jost', sans-serif;
   font-size: 1.15rem;
   line-height: 1.8;
   color: rgba(26, 26, 26, 0.85);
@@ -159,7 +159,7 @@
 }
 
 .image-caption {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 0.8rem;
   line-height: 1.6;
   color: rgba(26, 26, 26, 0.6);
@@ -167,55 +167,87 @@
   border-bottom: 1px solid rgba(26, 26, 26, 0.1);
 }
 
-/* Gallery Section - big full-bleed */
-.arch-gallery-large {
-  display: flex;
-  flex-direction: column;
+/* Composition galleries — even 60px side padding to match the video */
+.arch-grid {
+  width: 100%;
+  max-width: none;
+  margin: 60px 0;
+  padding: 0 60px;
+  display: grid;
   gap: 14px;
-  padding: 40px 0;
   background: #f5f3f0;
   min-height: auto !important;
 }
 
-.gallery-full {
-  width: 100%;
-  overflow: hidden;
+/* Hero: one big image left (full height) + two stacked right */
+.arch-grid-hero {
+  grid-template-columns: 1.5fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  height: 82vh;
+  min-height: 560px;
+  grid-template-areas:
+    "a b"
+    "a c";
 }
 
-.gallery-full img {
+/* Staggered masonry: tall columns + offset tiles that cross the row line */
+.arch-grid-masonry {
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 11vh;
+  grid-template-areas:
+    "a b c"
+    "a b c"
+    "a d c"
+    "a d c"
+    "e d f"
+    "e d f"
+    "e g f"
+    "e g f";
+}
+
+.ag-cell {
+  position: relative;
+  overflow: hidden;
+  min-height: 0;
+  min-width: 0;
+}
+
+.ag-cell img {
   width: 100%;
-  height: 90vh;
-  min-height: 600px;
+  height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.8s ease;
+  will-change: transform;
+  transition: filter 0.6s ease;
+  /* gentle, slow Ken Burns drift so every image stays alive */
+  animation: mosaic-kenburns 22s ease-in-out infinite alternate;
 }
 
-.gallery-full:hover img {
-  transform: scale(1.02);
+/* desync the motion across cells for an organic feel */
+.ag-cell:nth-child(2n) img {
+  animation-duration: 28s;
+  animation-direction: alternate-reverse;
+  transform-origin: top right;
 }
 
-.gallery-pair {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
+.ag-cell:nth-child(3n) img {
+  animation-duration: 32s;
+  transform-origin: bottom left;
 }
 
-.gallery-pair > div {
-  overflow: hidden;
+.ag-cell:hover img {
+  filter: brightness(1.06) contrast(1.02);
 }
 
-.gallery-pair img {
-  width: 100%;
-  height: 70vh;
-  min-height: 480px;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.8s ease;
+@keyframes mosaic-kenburns {
+  from { transform: scale(1.01); }
+  to { transform: scale(1.08); }
 }
 
-.gallery-pair > div:hover img {
-  transform: scale(1.03);
+@media (prefers-reduced-motion: reduce) {
+  .ag-cell img {
+    animation: none;
+  }
 }
 
 /* Content Section */
@@ -258,7 +290,7 @@
 }
 
 .content-text p {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Jost', sans-serif;
   font-size: 1.1rem;
   line-height: 1.85;
   color: rgba(26, 26, 26, 0.85);
@@ -275,6 +307,8 @@
   height: 85vh;
   min-height: 600px;
   overflow: hidden;
+  padding: 0 60px;
+  margin: 60px 0;
 }
 
 .arch-fullwidth img,
@@ -293,7 +327,7 @@
 }
 
 .index-title {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 0.85rem;
   font-weight: 500;
   letter-spacing: 0.3em;
@@ -338,7 +372,7 @@
   display: block;
   text-align: center;
   margin-top: 12px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 0.7rem;
   color: rgba(26, 26, 26, 0.5);
 }
@@ -364,7 +398,7 @@
 }
 
 .next-label {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 0.15em;
@@ -373,7 +407,7 @@
 }
 
 .next-title {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Jost', sans-serif;
   font-size: 1.5rem;
   font-weight: 400;
   color: var(--primary-dark);
@@ -425,22 +459,15 @@
     height: 420px;
   }
 
-  .arch-gallery-large {
-    padding: 24px 0;
+  .arch-grid {
+    padding: 0 40px;
+    margin: 40px 0;
+    gap: 12px;
   }
 
-  .gallery-full img {
-    height: 60vh;
-    min-height: 360px;
-  }
-
-  .gallery-pair {
-    grid-template-columns: 1fr;
-  }
-
-  .gallery-pair img {
-    height: 55vh;
-    min-height: 340px;
+  .arch-fullwidth {
+    padding: 0 40px;
+    margin: 40px 0;
   }
 
   .thumbnail-grid {
@@ -493,14 +520,8 @@
     padding: 40px 30px !important;
   }
 
-  .gallery-full img {
-    height: 50vh;
-    min-height: 300px;
-  }
-
-  .gallery-pair img {
-    height: 48vh;
-    min-height: 300px;
+  .arch-grid {
+    gap: 10px;
   }
 
   .arch-thumbnails {
@@ -520,16 +541,38 @@
   .arch-info {
     padding: 40px 20px 60px !important;
   }
-  
-  .arch-gallery {
-    padding: 20px 20px !important;
+
+  /* Galleries stack into a single column on phones */
+  .arch-grid {
+    padding: 0 24px;
+    margin: 28px 0;
+    gap: 10px;
   }
-  
+
+  .arch-fullwidth {
+    padding: 0 24px;
+    margin: 28px 0;
+  }
+
+  .arch-grid-hero,
+  .arch-grid-masonry {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    grid-auto-rows: 62vw;
+    grid-template-areas: none;
+    height: auto;
+    min-height: 0;
+  }
+
+  .ag-cell {
+    grid-area: auto !important;
+  }
+
   .arch-content,
   .arch-content.reverse {
     padding: 40px 20px 60px !important;
   }
-  
+
   .arch-thumbnails {
     padding: 32px 20px !important;
   }

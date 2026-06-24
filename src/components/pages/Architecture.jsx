@@ -1,5 +1,4 @@
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { useLanguage } from '../../i18n/LanguageContext'
 import '../../styles/pages/Architecture.css'
@@ -39,43 +38,30 @@ function Architecture() {
     },
   }
 
-  const galleryImages = [
-    { src: image1, alt: 'Exterior view' },
-    { src: image2, alt: 'Interior detail' },
-    { src: image3, alt: 'Living space' },
+  // Hero composition: one big image left + two stacked right
+  const heroCells = [
+    { src: image1, area: 'a', alt: 'Pool villa' },
+    { src: image2, area: 'b', alt: 'Terrace view' },
+    { src: image3, area: 'c', alt: 'Living space' },
   ]
 
-  const galleryImages2 = [
-    { src: image4, alt: 'Natural light' },
-    { src: image5, alt: 'Modern design' },
-    { src: image6, alt: 'Architectural detail' },
+  // Staggered masonry: tall columns + shorter tiles that cross the row line
+  const masonryCells = [
+    { src: image4, area: 'a', alt: 'Facade study' },
+    { src: image2, area: 'b', alt: 'Interior detail' },
+    { src: image5, area: 'c', alt: 'Garden view' },
+    { src: image6, area: 'd', alt: 'Timber screen' },
+    { src: image1, area: 'e', alt: 'Pool deck' },
+    { src: image3, area: 'f', alt: 'Living space' },
+    { src: image4, area: 'g', alt: 'Surface texture' },
   ]
 
-  // All index images combined
-  const allIndexImages = [...galleryImages, ...galleryImages2, ...galleryImages, ...galleryImages2]
-
-  // Lightbox state
-  const [lightboxOpen, setLightboxOpen] = useState(false)
-  const [lightboxIndex, setLightboxIndex] = useState(0)
-
-  const openLightbox = (index) => {
-    setLightboxIndex(index)
-    setLightboxOpen(true)
-    document.body.style.overflow = 'hidden'
-  }
-
-  const closeLightbox = () => {
-    setLightboxOpen(false)
-    document.body.style.overflow = 'auto'
-  }
-
-  const prevImage = () => {
-    setLightboxIndex((prev) => (prev === 0 ? allIndexImages.length - 1 : prev - 1))
-  }
-
-  const nextImage = () => {
-    setLightboxIndex((prev) => (prev === allIndexImages.length - 1 ? 0 : prev + 1))
-  }
+  const cellTransition = (i) => ({
+    initial: { opacity: 0, y: 30 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, margin: '-50px' },
+    transition: { duration: 0.7, delay: i * 0.08 },
+  })
 
   return (
     <div className="page architecture-page" style={{ padding: 0 }}>
@@ -165,62 +151,19 @@ function Architecture() {
         </motion.div>
       </motion.section>
 
-      {/* First Gallery - big full-bleed */}
-      <motion.section
-        className="arch-gallery-large"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-      >
-        <motion.div
-          className="gallery-full"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          <img src={image1} alt="Exterior view" />
-        </motion.div>
-        <div className="gallery-pair">
+      {/* First Gallery - hero block: big image left + two stacked right */}
+      <section className="arch-grid arch-grid-hero">
+        {heroCells.map((c, i) => (
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.1 }}
+            key={i}
+            className="ag-cell"
+            style={{ gridArea: c.area }}
+            {...cellTransition(i)}
           >
-            <img src={image2} alt="Interior detail" />
+            <img src={c.src} alt={c.alt} loading="lazy" />
           </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-          >
-            <img src={image3} alt="Living space" />
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Content Section 1 */}
-      <motion.section 
-        className="arch-content"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-      >
-        <motion.div className="content-image" variants={itemVariants}>
-          <img src={image5} alt="Design detail" />
-          <p className="image-caption">{t.architecture.imageCaption2 || "To complement the urban environment, we introduced tactile warmth and softness through the use of natural materials and carefully selected colors."}</p>
-        </motion.div>
-
-        <motion.div className="content-text" variants={itemVariants}>
-          <p>{t.architecture.contentParagraph1 || "Drawing inspiration from the grandeur of the surrounding landscape — marked by the nearby Olympic complex and urban forest — a tactile warmth was introduced to the raw and spacious environment through carefully selected materials, creating an inviting atmosphere."}</p>
-          <p>{t.architecture.contentParagraph2 || "Still, the clean surfaces of the space, inspired by the city's modern architecture, serve as a neutral backdrop that lets each home tell its own story, inspiring personal dreams, and aspirations."}</p>
-          <p className="indent">{t.architecture.contentParagraph3 || "More than a building, this curated space not only showcases quality craftsmanship but also accommodates the evolving needs of modern living, making it a dynamic platform for residents' future growth."}</p>
-        </motion.div>
-      </motion.section>
+        ))}
+      </section>
 
       {/* Full Width Video Strip */}
       <motion.section 
@@ -239,135 +182,19 @@ function Architecture() {
         />
       </motion.section>
 
-      {/* Content Section 2 */}
-      <motion.section 
-        className="arch-content reverse"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-      >
-        <motion.div className="content-text" variants={itemVariants}>
-          <p>{t.architecture.contentParagraph4 || "With a focus on symmetry and clean, bold expressions, the space presents a thoughtful reinterpretation of contemporary residential design, transforming the traditional notion of high-rise living into a dynamic and innovative element."}</p>
-          <p>{t.architecture.contentParagraph5 || "By reworking form and function, the design adds a new layer of accessibility and engagement, blending powerful presence with a more contemporary and approachable aesthetic that caters to the needs of both residents and visitors."}</p>
-          <p className="indent">{t.architecture.contentParagraph6 || "The overall layout encourages exploration, with the integrated amenities revealing themselves progressively as one moves through the building. A central courtyard doubles as a gathering space, enhancing the flow and creating a sense of openness."}</p>
-        </motion.div>
-
-        <motion.div className="content-image" variants={itemVariants}>
-          <img src={image6} alt="Interior view" />
-          <p className="image-caption">{t.architecture.imageCaption3 || "Vast vertical surfaces and natural light dominate the environment, creating a striking yet harmonious atmosphere."}</p>
-        </motion.div>
-      </motion.section>
-
-      {/* Second Gallery - big full-bleed */}
-      <motion.section
-        className="arch-gallery-large"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-      >
-        <div className="gallery-pair">
+      {/* Second Gallery - staggered masonry grid */}
+      <section className="arch-grid arch-grid-masonry">
+        {masonryCells.map((c, i) => (
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.1 }}
+            key={i}
+            className="ag-cell"
+            style={{ gridArea: c.area }}
+            {...cellTransition(i)}
           >
-            <img src={image4} alt="Natural light" />
+            <img src={c.src} alt={c.alt} loading="lazy" />
           </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-          >
-            <img src={image5} alt="Modern design" />
-          </motion.div>
-        </div>
-        <motion.div
-          className="gallery-full"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          <img src={image6} alt="Architectural detail" />
-        </motion.div>
-      </motion.section>
-
-      {/* Thumbnail Grid - INDEX */}
-      <motion.section 
-        className="arch-thumbnails"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-      >
-        <h2 className="index-title">INDEX</h2>
-        <div className="thumbnail-grid">
-          {allIndexImages.map((img, index) => (
-            <motion.div 
-              key={index}
-              className="thumbnail-item"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.02 }}
-              whileHover={{ scale: 1.02 }}
-              onClick={() => openLightbox(index)}
-            >
-              <div className="thumb-image">
-                <img src={img.src} alt={img.alt} />
-              </div>
-              <span className="thumbnail-number">{String(index + 1).padStart(2, '0')}</span>
-            </motion.div>
-          ))}
-        </div>
-      </motion.section>
-
-      {/* Lightbox Modal */}
-      <AnimatePresence>
-        {lightboxOpen && (
-          <motion.div 
-            className="lightbox-overlay"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            onClick={closeLightbox}
-          >
-            <button className="lightbox-close" onClick={closeLightbox}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M18 6L6 18M6 6l12 12"/>
-              </svg>
-            </button>
-            
-            <button className="lightbox-nav lightbox-prev" onClick={(e) => { e.stopPropagation(); prevImage(); }}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M15 18l-6-6 6-6"/>
-              </svg>
-            </button>
-            
-            <motion.div 
-              className="lightbox-content"
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <img src={allIndexImages[lightboxIndex].src} alt={allIndexImages[lightboxIndex].alt} />
-            </motion.div>
-            
-            <button className="lightbox-nav lightbox-next" onClick={(e) => { e.stopPropagation(); nextImage(); }}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M9 18l6-6-6-6"/>
-              </svg>
-            </button>
-          </motion.div>
-        )}
-      </AnimatePresence>
+        ))}
+      </section>
 
       {/* CTA */}
       <motion.div 

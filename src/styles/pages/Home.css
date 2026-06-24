@@ -25,7 +25,7 @@
 }
 
 .brand-text-fixed {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Jost', sans-serif;
   line-height: 0.8;
   margin: 0;
   display: flex;
@@ -114,7 +114,7 @@
 
 .hero-by-label {
   display: block;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 0.35em;
@@ -133,7 +133,7 @@
 }
 
 .hero-title-large .title-main {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Jost', sans-serif;
   font-size: clamp(3.5rem, 8vw, 6rem);
   font-weight: 300;
   letter-spacing: 0.15em;
@@ -141,7 +141,7 @@
 }
 
 .hero-title-large .title-number {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Jost', sans-serif;
   font-size: clamp(2.8rem, 6vw, 4.5rem);
   font-weight: 300;
   letter-spacing: 0.1em;
@@ -157,7 +157,7 @@
 }
 
 .hero-description {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: clamp(0.9rem, 1.2vw, 1.05rem);
   font-weight: 400;
   line-height: 1.7;
@@ -179,7 +179,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 0.85rem;
   font-weight: 400;
   color: white;
@@ -217,7 +217,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 0.2em;
@@ -241,7 +241,7 @@
 }
 
 .slide-counter {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 0.85rem;
   font-weight: 500;
   color: white;
@@ -257,7 +257,7 @@
 }
 
 .slide-title {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 0.9rem;
   font-weight: 500;
   color: white;
@@ -275,7 +275,7 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 0.85rem;
   font-weight: 500;
   color: white;
@@ -415,7 +415,7 @@
 /* Shared Label */
 .editorial-label {
   display: block;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.2em;
@@ -429,7 +429,7 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 0.85rem;
   font-weight: 500;
   letter-spacing: 0.05em;
@@ -460,7 +460,7 @@
 }
 
 .editorial-headline {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Jost', sans-serif;
   font-size: clamp(2.4rem, 5vw, 4.5rem);
   font-weight: 300;
   font-style: italic;
@@ -470,7 +470,7 @@
 }
 
 .editorial-subtext {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: clamp(0.95rem, 1.4vw, 1.2rem);
   font-weight: 500;
   line-height: 1.7;
@@ -512,7 +512,7 @@
 }
 
 .caption-number {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Jost', sans-serif;
   font-size: 1.4rem;
   font-weight: 300;
   color: var(--accent);
@@ -521,7 +521,7 @@
 }
 
 .caption-text h3 {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 0.85rem;
   font-weight: 600;
   letter-spacing: 0.12em;
@@ -530,7 +530,7 @@
 }
 
 .caption-text p {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 0.78rem;
   font-weight: 400;
   color: rgba(26, 26, 26, 0.5);
@@ -549,7 +549,7 @@
 }
 
 .explore-label {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.25em;
@@ -560,7 +560,7 @@
 }
 
 .explore-title {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Jost', sans-serif;
   font-size: clamp(2.5rem, 5vw, 3.5rem);
   font-weight: 400;
   color: var(--primary-dark);
@@ -569,7 +569,7 @@
 }
 
 .explore-subtitle {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 0.9rem;
   font-weight: 400;
   color: rgba(26, 26, 26, 0.6);
@@ -614,13 +614,13 @@
 }
 
 .explore-card-number {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Jost', sans-serif;
   font-size: 1rem;
   color: var(--accent);
 }
 
 .explore-card-title {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 0.85rem;
   font-weight: 600;
   letter-spacing: 0.12em;
@@ -629,7 +629,7 @@
 }
 
 .explore-card-desc {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 0.82rem;
   font-weight: 400;
   line-height: 1.7;
@@ -644,7 +644,7 @@
 }
 
 .explore-tag {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 0.65rem;
   font-weight: 500;
   letter-spacing: 0.1em;
@@ -676,7 +676,7 @@
 }
 
 .showcase-caption {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 0.2em;
@@ -693,7 +693,7 @@
 }
 
 .featured-title {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 0.85rem;
   font-weight: 500;
   letter-spacing: 0.35em;
@@ -722,7 +722,7 @@
   left: -40px;
   top: 50%;
   transform: translateY(-50%) rotate(-90deg);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 0.65rem;
   font-weight: 600;
   letter-spacing: 0.3em;
@@ -771,7 +771,7 @@
 }
 
 .featured-view {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 0.25em;
@@ -786,7 +786,7 @@
 }
 
 .featured-card-title {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 0.9rem;
   font-weight: 600;
   letter-spacing: 0.2em;
@@ -796,7 +796,7 @@
 }
 
 .featured-card-desc {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 0.85rem;
   font-weight: 400;
   line-height: 1.8;
@@ -812,7 +812,7 @@
 }
 
 .featured-card-meta span {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 0.1em;
@@ -847,7 +847,7 @@
 }
 
 .split-headline {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Jost', sans-serif;
   font-size: clamp(1.8rem, 3.2vw, 3rem);
   font-weight: 400;
   line-height: 1.15;
@@ -856,7 +856,7 @@
 }
 
 .split-body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.8;
@@ -935,7 +935,7 @@
 }
 
 .duo-caption p {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 0.78rem;
   font-weight: 500;
   color: rgba(26, 26, 26, 0.5);
@@ -952,7 +952,7 @@
 }
 
 .editorial-quote blockquote {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Jost', sans-serif;
   font-size: clamp(1.6rem, 3vw, 2.8rem);
   font-weight: 300;
   font-style: italic;
@@ -962,7 +962,7 @@
 }
 
 .quote-attribution {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.15em;
@@ -1010,7 +1010,7 @@
 }
 
 .closing-small {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.2em;
@@ -1020,7 +1020,7 @@
 }
 
 .closing-headline {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Jost', sans-serif;
   font-size: clamp(2.2rem, 4.5vw, 4rem);
   font-weight: 300;
   color: var(--primary-dark);
@@ -1038,7 +1038,7 @@
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 0.85rem;
   font-weight: 500;
   letter-spacing: 0.05em;
@@ -1064,7 +1064,7 @@
 .cta-secondary {
   display: inline-flex;
   align-items: center;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 0.85rem;
   font-weight: 500;
   letter-spacing: 0.05em;

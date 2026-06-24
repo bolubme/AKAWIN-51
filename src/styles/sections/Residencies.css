@@ -25,7 +25,7 @@
 }
 
 .unit-card h4 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Jost', sans-serif;
   font-size: 1.5rem;
   font-weight: 500;
   margin-bottom: 0.5rem;
@@ -47,7 +47,7 @@
 
 /* Amenities */
 .amenities-heading {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Jost', sans-serif;
   font-size: 1.8rem;
   font-weight: 400;
   color: var(--primary-dark);
@@ -89,7 +89,7 @@
 }
 
 .amenity-card h4 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Jost', sans-serif;
   font-size: 1.3rem;
   font-weight: 500;
   margin-bottom: 0.5rem;
