@@ -26,14 +26,12 @@
 }
 
 .arch-item {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding-top: 2rem;
   position: relative;
   transition: var(--transition);
 }
 
 .arch-item:hover {
-  border-color: var(--accent);
 }
 
 .arch-icon {
@@ -43,7 +41,7 @@
 }
 
 .arch-item h4 {
-  font-family: 'Jost', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 1.6rem;
   font-weight: 400;
   margin-bottom: 1rem;

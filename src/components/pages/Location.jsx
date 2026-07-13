@@ -3,9 +3,6 @@ import { Link } from 'react-router-dom'
 import { useLanguage } from '../../i18n/LanguageContext'
 import '../../styles/pages/Location.css'
 
-// Import background image
-import heroImage from '../../media/optimized/shapes_(10).jpg'
-
 function Location() {
   const { t } = useLanguage()
   const locationDetails = t.location.details
@@ -36,41 +33,15 @@ function Location() {
 
   return (
     <div className="page location-page" style={{ padding: 0 }}>
-      {/* Hero Section */}
-      <section className="location-hero">
-        <div className="hero-background">
-          <img src={heroImage} alt="AKAKIWN 50 Location" />
-          <div className="hero-overlay"></div>
-        </div>
-        <motion.div 
-          className="hero-content"
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-        >
-          <h1 className="hero-title">{t.location.pageHeroTitle || 'Prime\nLocation.'}</h1>
-        </motion.div>
-        
-        {/* Hero Bottom Prompts */}
-        <motion.div 
-          className="hero-prompts"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-        >
-          <div className="hero-prompt">
-            <span className="prompt-title">{t.location.heroPrompt1 || 'Explore below'}</span>
-            <span className="prompt-sub">{t.location.heroPrompt1Sub || 'Scroll down to learn more'}</span>
-          </div>
-          <Link to="/contact" className="hero-prompt">
-            <span className="prompt-title">{t.location.heroPrompt2 || 'Got a question?'}</span>
-            <span className="prompt-sub">{t.location.heroPrompt2Sub || 'To the contact page'}</span>
-          </Link>
-        </motion.div>
-      </section>
+      {/* Page heading (intro image removed) */}
+      <div className="location-heading">
+        <span className="location-heading-label">{t.location.label || 'Location'}</span>
+        <h1 className="location-heading-title">{(t.location.pageHeroTitle || 'Prime Location.').replace(/\n/g, ' ')}</h1>
+        <p className="location-intro">{t.location.description}</p>
+      </div>
 
       {/* Main Content */}
-      <motion.div 
+      <motion.div
         className="location-container"
         variants={containerVariants}
         initial="hidden"
@@ -106,6 +77,7 @@ function Location() {
         {/* Nearby Amenities - Below Map */}
         <motion.div className="amenities-section" variants={itemVariants}>
           <h4 className="amenities-title">{t.location.amenitiesTitle}</h4>
+          <p className="amenities-note">{t.location.description2}</p>
           <div className="amenities-grid">
             {nearbyAmenities.map((amenity, index) => (
               <motion.div 

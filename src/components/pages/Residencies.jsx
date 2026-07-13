@@ -12,21 +12,17 @@ import img4 from '../../media/optimized/shapes_(8).jpg'
 import img5 from '../../media/optimized/shapes_(9).jpg'
 import img6 from '../../media/optimized/shapes_(10).jpg'
 import img7 from '../../media/optimized/shapes_(11).jpg'
-import img8 from '../../media/optimized/V1.jpg'
 
-// Hero image
-import heroImage from '../../media/optimized/shapes_(9).jpg'
+// Hero image — zoomed-in balcony view
+import heroImage from '../../media/optimized/shapes_(6).jpg'
 
-// Unit gallery images - each unit has multiple images to flip through
+// Unit gallery images — max 4 per unit, one row
 const unitGalleries = {
   'one-bed-gf': [img1, img2, img3],
   'three-bed': [img4, img5, img6],
   'three-bed-mez': [img2, img4, img7],
   'penthouse': [img5, img3, img1, img6],
 }
-
-// Combined gallery — all unit images together as one menu (Plan, Living/Kitchen, View)
-const allGalleryImages = [img1, img2, img3, img4, img5, img6, img7, img8]
 
 // Pictogram icons for unit characteristics
 const BedIcon = () => (
@@ -45,15 +41,32 @@ const AreaIcon = () => (
   </svg>
 )
 
+const LevelIcon = () => (
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4">
+    <path d="M4 20V4h16v16H4z" />
+    <path d="M7 8h10M7 12h10M7 16h10" />
+  </svg>
+)
+
+// Small amenity icons shown within each unit (3 per unit)
+const amenityIcons = [
+  <svg key="0" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4"><path d="M3 21V9l9-6 9 6v12M9 21v-6h6v6" /></svg>,
+  <svg key="1" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4"><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></svg>,
+  <svg key="2" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4"><path d="M4 20V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14M4 20h16M9 20v-6h6v6" /></svg>,
+]
+
 function Residencies() {
   const { t } = useLanguage()
   const unitTypes = t.residencies.units
   const [selectedUnit, setSelectedUnit] = useState(unitTypes[0])
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
-  // Combined-gallery lightbox state
+  // Lightbox state (operates on the current unit's images)
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [lightboxIndex, setLightboxIndex] = useState(0)
+
+  // Get images for the currently selected unit
+  const currentImages = unitGalleries[selectedUnit.id] || [img1]
 
   const openLightbox = (index) => {
     setLightboxIndex(index)
@@ -64,19 +77,11 @@ function Residencies() {
     setLightboxOpen(false)
     document.body.style.overflow = 'auto'
   }
-  const lightboxPrev = () => setLightboxIndex((p) => (p - 1 + allGalleryImages.length) % allGalleryImages.length)
-  const lightboxNext = () => setLightboxIndex((p) => (p + 1) % allGalleryImages.length)
+  const lightboxPrev = () => setLightboxIndex((p) => (p - 1 + currentImages.length) % currentImages.length)
+  const lightboxNext = () => setLightboxIndex((p) => (p + 1) % currentImages.length)
 
-  // Get images for the currently selected unit
-  const currentImages = unitGalleries[selectedUnit.id] || [img1]
-
-  const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % currentImages.length)
-  }
-
-  const prevImage = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + currentImages.length) % currentImages.length)
-  }
+  const nextImage = () => setCurrentImageIndex((prev) => (prev + 1) % currentImages.length)
+  const prevImage = () => setCurrentImageIndex((prev) => (prev - 1 + currentImages.length) % currentImages.length)
 
   // Reset image index when unit changes
   const handleUnitChange = (unit) => {
@@ -86,50 +91,21 @@ function Residencies() {
 
   return (
     <div className="page residencies-page">
-      {/* Hero Section */}
+      {/* Hero Section — zoomed-in balcony view */}
       <section className="residencies-hero">
         <div className="hero-background">
           <img src={heroImage} alt="AKAKIWN 50 Residencies" />
           <div className="hero-overlay"></div>
         </div>
-        <motion.div 
+        <motion.div
           className="hero-content"
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
         >
           <h1 className="hero-title">{t.residencies.pageHeroTitle || 'The\nResidencies.'}</h1>
         </motion.div>
-        
-        <motion.div 
-          className="hero-prompts"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-        >
-          <div className="hero-prompt">
-            <span className="prompt-title">{t.residencies.heroPrompt1 || 'Explore below'}</span>
-            <span className="prompt-sub">{t.residencies.heroPrompt1Sub || 'Scroll down to learn more'}</span>
-          </div>
-          <Link to="/contact" className="hero-prompt">
-            <span className="prompt-title">{t.residencies.heroPrompt2 || 'Got a question?'}</span>
-            <span className="prompt-sub">{t.residencies.heroPrompt2Sub || 'To the contact page'}</span>
-          </Link>
-        </motion.div>
       </section>
-
-      {/* Intro Section */}
-      <motion.section 
-        className="residencies-intro"
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-      >
-        <span className="intro-label">{t.residencies.label}</span>
-        <h2 className="intro-headline">{t.residencies.title}</h2>
-        <p className="intro-text">{t.residencies.description}</p>
-      </motion.section>
 
       {/* Unit Selector Tabs */}
       <div className="residencies-unit-tabs">
@@ -139,7 +115,7 @@ function Residencies() {
             className={`residencies-tab ${selectedUnit.id === unit.id ? 'active' : ''}`}
             onClick={() => handleUnitChange(unit)}
           >
-            {unit.type}
+            {unit.tab || unit.type}
           </button>
         ))}
       </div>
@@ -147,7 +123,7 @@ function Residencies() {
       {/* Main Split Layout */}
       <div className="residencies-split">
         {/* Left Side - Text Content */}
-        <motion.div 
+        <motion.div
           className="residencies-text"
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
@@ -161,8 +137,8 @@ function Residencies() {
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.4 }}
             >
-              <h1 className="residencies-title">{selectedUnit.type}</h1>
-              
+              <h2 className="residencies-title">{selectedUnit.type}</h2>
+
               <div className="residencies-pictograms">
                 <div className="pictogram">
                   <BedIcon />
@@ -179,23 +155,28 @@ function Residencies() {
                   <span className="pictogram-value">{selectedUnit.size}</span>
                   <span className="pictogram-label">{t.residencies.sizeLabel}</span>
                 </div>
+                <div className="pictogram">
+                  <LevelIcon />
+                  <span className="pictogram-value">{selectedUnit.level}</span>
+                  <span className="pictogram-label">{t.residencies.levelLabel}</span>
+                </div>
               </div>
 
               <div className="residencies-description">
-                <p>{t.residencies.description}</p>
-                
-                <p className="residencies-features-intro">
-                  {t.residencies.featuresIntro || 'Each residence is designed with attention to every detail, offering the highest standard of modern living with premium finishes throughout.'}
-                </p>
+                <p>{selectedUnit.description}</p>
 
-                <div className="residencies-features-list">
-                  {selectedUnit.features.map((feature) => (
-                    <p key={feature}>• {feature}</p>
+                {/* Amenities moved into each unit — 3 with icons */}
+                <div className="residencies-amenities-inline">
+                  {selectedUnit.features.slice(0, 3).map((feature, i) => (
+                    <div key={feature} className="unit-amenity">
+                      <span className="unit-amenity-icon">{amenityIcons[i]}</span>
+                      <span className="unit-amenity-label">{feature}</span>
+                    </div>
                   ))}
                 </div>
 
                 <p className="residencies-closing">
-                  {t.residencies.closingText || 'Our residences reflect a commitment to quality craftsmanship, sustainable materials, and timeless design — creating spaces that inspire connection with both the environment and community.'}
+                  {t.residencies.finishesNote}
                 </p>
               </div>
 
@@ -217,33 +198,31 @@ function Residencies() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.4 }}
             >
-              <img 
-                src={currentImages[currentImageIndex]} 
+              <img
+                src={currentImages[currentImageIndex]}
                 alt={`${selectedUnit.type} view ${currentImageIndex + 1}`}
               />
             </motion.div>
           </AnimatePresence>
-          
-          {/* Navigation Arrows */}
+
           <button className="gallery-nav gallery-prev" onClick={prevImage}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <path d="M15 18l-6-6 6-6"/>
+              <path d="M15 18l-6-6 6-6" />
             </svg>
           </button>
           <button className="gallery-nav gallery-next" onClick={nextImage}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <path d="M9 18l6-6-6-6"/>
+              <path d="M9 18l6-6-6-6" />
             </svg>
           </button>
 
-          {/* Image Counter */}
           <div className="gallery-counter">
             {currentImageIndex + 1} / {currentImages.length}
           </div>
         </div>
       </div>
 
-      {/* Combined Photo Gallery — all units together, click to zoom */}
+      {/* Single-row photo gallery for the selected unit (max 4), click to zoom */}
       <motion.section
         className="residencies-gallery-menu"
         initial={{ opacity: 0 }}
@@ -251,23 +230,19 @@ function Residencies() {
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
-        <div className="gallery-menu-header">
-          <span className="gallery-menu-label">{t.residencies.galleryLabel || 'Gallery'}</span>
-          <h3 className="gallery-menu-title">{t.residencies.galleryTitle || 'Inside the Residences'}</h3>
-        </div>
         <div className="gallery-menu-grid">
-          {allGalleryImages.map((src, index) => (
+          {currentImages.map((src, index) => (
             <motion.button
-              key={index}
+              key={`${selectedUnit.id}-${index}`}
               className="gallery-menu-item"
               onClick={() => openLightbox(index)}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: (index % 4) * 0.08 }}
+              transition={{ duration: 0.5, delay: index * 0.08 }}
               aria-label={`Open image ${index + 1}`}
             >
-              <img src={src} alt={`Residence detail ${index + 1}`} loading="lazy" />
+              <img src={src} alt={`${selectedUnit.type} detail ${index + 1}`} loading="lazy" />
               <span className="gallery-menu-zoom">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <circle cx="11" cy="11" r="7" /><path d="M21 21l-4.3-4.3M11 8v6M8 11h6" />
@@ -307,7 +282,7 @@ function Residencies() {
               transition={{ duration: 0.3 }}
               onClick={(e) => e.stopPropagation()}
             >
-              <img src={allGalleryImages[lightboxIndex]} alt={`Residence detail ${lightboxIndex + 1}`} />
+              <img src={currentImages[lightboxIndex]} alt={`${selectedUnit.type} detail ${lightboxIndex + 1}`} />
             </motion.div>
             <button className="lightbox-nav lightbox-next" onClick={(e) => { e.stopPropagation(); lightboxNext() }} aria-label="Next">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -318,37 +293,8 @@ function Residencies() {
         )}
       </AnimatePresence>
 
-      {/* Amenities Section */}
+      {/* CTA Section — sits outside the footer */}
       <motion.section
-        className="residencies-amenities"
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-      >
-        <h3 className="amenities-title">{t.residencies.amenitiesTitle}</h3>
-        <div className="amenities-grid">
-          {t.residencies.amenities.map((amenity, index) => (
-            <motion.div 
-              key={amenity.title}
-              className="amenity-item"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-            >
-              <span className="amenity-icon">{amenity.icon}</span>
-              <div className="amenity-content">
-                <h4>{amenity.title}</h4>
-                <p>{amenity.desc}</p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </motion.section>
-
-      {/* CTA Section */}
-      <motion.section 
         className="residencies-cta"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -360,7 +306,7 @@ function Residencies() {
           <Link to="/contact" className="cta-button">
             {t.residencies.ctaButton || 'Schedule a Viewing'}
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
+              <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
           </Link>
         </div>

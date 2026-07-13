@@ -22,7 +22,7 @@ function Navbar() {
   const navigate = useNavigate()
 
   // Pages with dark hero backgrounds where navbar should stay white initially
-  const darkHeroPages = ['/', '/about', '/architecture', '/location', '/residencies', '/contact']
+  const darkHeroPages = ['/', '/architecture', '/residencies']
   const isLightPage = !darkHeroPages.includes(location.pathname)
 
   useEffect(() => {

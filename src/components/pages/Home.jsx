@@ -171,30 +171,9 @@ function Home() {
 
             {/* Bottom Controls */}
             <div className="hero-bottom-controls">
-              {/* Slide Counter - Left */}
-              <motion.div 
-                className="slide-counter-new"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.8 }}
-              >
-                <span className="counter-current">{String(currentSlide + 1).padStart(2, '0')}</span>
-                <span className="counter-divider">——</span>
-                <span className="counter-total">{String(slides.length).padStart(2, '0')}</span>
-              </motion.div>
+              {/* Slide Counter removed */}
 
-              {/* Progress Bar - Center */}
-              <motion.div 
-                className="slide-progress-bar"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.8 }}
-              >
-                <div 
-                  className="progress-fill" 
-                  style={{ width: `${slideProgress}%` }}
-                ></div>
-              </motion.div>
+              {/* Progress bar removed */}
 
               {/* Scroll Indicator - Right */}
             </div>

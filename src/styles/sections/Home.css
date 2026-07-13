@@ -9,7 +9,7 @@
 }
 
 .hero-title {
-  font-family: 'Jost', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: clamp(4rem, 12vw, 10rem);
   font-weight: 300;
   line-height: 0.9;
@@ -36,7 +36,7 @@
 }
 
 .hero-tagline {
-  font-family: 'Jost', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: clamp(1.2rem, 2.5vw, 1.6rem);
   font-weight: 300;
   font-style: italic;

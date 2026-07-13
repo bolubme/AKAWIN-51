@@ -4,9 +4,6 @@ import { Link } from 'react-router-dom'
 import { useLanguage } from '../../i18n/LanguageContext'
 import '../../styles/pages/Contact.css'
 
-// Import background image
-import heroImage from '../../media/optimized/shapes_(11).jpg'
-
 function Contact() {
   const { t } = useLanguage()
   const [formData, setFormData] = useState({
@@ -55,40 +52,14 @@ function Contact() {
 
   return (
     <div className="page contact-page" style={{ padding: 0 }}>
-      {/* Hero Section */}
-      <section className="contact-hero">
-        <div className="hero-background">
-          <img src={heroImage} alt="AKAKIWN 50 Contact" />
-          <div className="hero-overlay"></div>
-        </div>
-        <motion.div 
-          className="hero-content"
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-        >
-          <h1 className="hero-title">{t.contact.pageHeroTitle || 'Get in\nTouch.'}</h1>
-        </motion.div>
-        
-        <motion.div 
-          className="hero-prompts"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-        >
-          <div className="hero-prompt">
-            <span className="prompt-title">{t.contact.heroPrompt1 || 'Contact us below'}</span>
-            <span className="prompt-sub">{t.contact.heroPrompt1Sub || 'Fill in the form'}</span>
-          </div>
-          <Link to="/residencies" className="hero-prompt">
-            <span className="prompt-title">{t.contact.heroPrompt2 || 'View residencies'}</span>
-            <span className="prompt-sub">{t.contact.heroPrompt2Sub || 'Explore our homes'}</span>
-          </Link>
-        </motion.div>
-      </section>
+      {/* Page heading (intro image removed) */}
+      <div className="contact-heading">
+        <span className="contact-heading-label">{t.contact.label || 'Get In Touch'}</span>
+        <h1 className="contact-heading-title">{(t.contact.pageHeroTitle || 'Get in Touch.').replace(/\n/g, ' ')}</h1>
+      </div>
 
       {/* Main Content */}
-      <motion.div 
+      <motion.div
         className="contact-container"
         variants={containerVariants}
         initial="hidden"

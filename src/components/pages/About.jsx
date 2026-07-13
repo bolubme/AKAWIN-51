@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom'
 import { useLanguage } from '../../i18n/LanguageContext'
 import '../../styles/pages/About.css'
 
-const heroImage = '/media/shapes_3.png'
-
 // Slider images only
 const sliderImages = [
   '/media/shapes_6.png',
@@ -31,46 +29,12 @@ function About() {
 
   return (
     <div className="about-page">
-      {/* Hero Section */}
-      <section className="about-hero">
-        <img src={heroImage} alt="About Domisense" className="about-hero-img" />
-        <div className="about-hero-overlay"></div>
-        <motion.div 
-          className="about-hero-content"
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          <h1 className="about-hero-title">
-            {t.about.heroTitle.split('\n').map((line, i) => (
-              <span key={i}>{line}<br /></span>
-            ))}
-          </h1>
-        </motion.div>
-        <motion.div 
-          className="about-hero-prompts"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-        >
-          <div className="about-hero-prompt">
-            <strong>{t.about.heroPrompt1}</strong>
-            <span>{t.about.heroPrompt1Sub}</span>
-          </div>
-          <Link to="/contact" className="about-hero-prompt">
-            <strong>{t.about.heroPrompt2}</strong>
-            <span>{t.about.heroPrompt2Sub}</span>
-          </Link>
-        </motion.div>
-      </section>
-
-      {/* Image Slider Section - Text Left, Image Right */}
+      {/* Image Slider Section - Text Left, Image Right (starts straight at the About) */}
       <section className="about-slider-section">
         <motion.div
           className="about-story-logo"
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
           <img src="/media/domisense-logo.png" alt="Domisense — Residential Constructions" />
@@ -135,32 +99,6 @@ function About() {
         </div>
       </section>
 
-      {/* Full Width Image Section */}
-      <section className="about-fullwidth-image">
-        <img src="/media/optimized/V1.jpg" alt="Our Vision" loading="lazy" />
-      </section>
-
-      {/* Philosophy Section */}
-      <section className="about-philosophy-section">
-        <motion.div 
-          className="about-philosophy-inner"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="about-philosophy-title">
-            <h2>{t.about.philosophyTitle}</h2>
-          </div>
-          <div className="about-philosophy-content">
-            <p>{t.about.philosophyPara1}</p>
-            <p>{t.about.philosophyPara2}</p>
-            <p>{t.about.philosophyPara3}</p>
-            <p>{t.about.philosophyPara4}</p>
-          </div>
-        </motion.div>
-      </section>
-
       {/* Disciplines — Architecture · Construction · Development */}
       <section className="about-disciplines-section">
         <motion.div
@@ -170,10 +108,6 @@ function About() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
         >
-          <div className="about-disciplines-header">
-            <span className="about-disciplines-intro">{t.about.disciplinesIntro}</span>
-            <h2 className="about-disciplines-title">{t.about.disciplinesTitle}</h2>
-          </div>
           <div className="about-disciplines-grid">
             {t.about.disciplines.map((d, index) => (
               <motion.div

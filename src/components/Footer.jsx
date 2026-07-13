@@ -1,15 +1,6 @@
-import { Link, useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import { useLanguage } from '../i18n/LanguageContext'
 import '../styles/Footer.css'
-
-const footerLinks = [
-  { key: 'home', path: '/' },
-  { key: 'architecture', path: '/architecture' },
-  { key: 'location', path: '/location' },
-  { key: 'residencies', path: '/residencies' },
-  { key: 'about', path: '/about' },
-  { key: 'contact', path: '/contact' },
-]
 
 function Footer() {
   const { t } = useLanguage()
@@ -22,19 +13,18 @@ function Footer() {
     <footer className="footer">
       <div className="footer-row">
         <div className="footer-brand">
-          <div className="footer-logo">
-            AKAKIWN <span>50</span>
+          <img
+            className="footer-mark"
+            src="/media/domisense-mark.png"
+            alt="Domisense"
+          />
+          <div className="footer-brand-text">
+            <div className="footer-logo">
+              AKAKIWN <span>50</span>
+            </div>
+            <p className="footer-subtitle">{t.footer.subtitle}</p>
           </div>
-          <p className="footer-subtitle">{t.footer.subtitle}</p>
         </div>
-
-        <nav className="footer-nav">
-          {footerLinks.map((link) => (
-            <Link key={link.key} to={link.path}>
-              {t.nav[link.key]}
-            </Link>
-          ))}
-        </nav>
 
         <div className="footer-reach">
           <a href={`mailto:${t.nav.email}`}>{t.nav.email}</a>
@@ -62,15 +52,19 @@ function Footer() {
           {Array.from({ length: 4 }).map((_, i) => (
             <span className="footer-marquee-item" key={i} aria-hidden={i > 0}>
               {t.footer.statement}
-              <span className="footer-marquee-dot">✦</span>
+              <span className="footer-marquee-gap">&nbsp;&nbsp;&nbsp;</span>
             </span>
           ))}
         </div>
       </div>
 
+      {t.footer.disclaimer && (
+        <p className="footer-disclaimer">{t.footer.disclaimer}</p>
+      )}
+
       <div className="footer-baseline">
         <p className="copyright">{t.footer.copyright}</p>
-        <p className="footer-credit">Marousi · Athens</p>
+        <p className="footer-credit">Polydroso · Athens</p>
       </div>
     </footer>
   )

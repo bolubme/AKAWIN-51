@@ -36,7 +36,7 @@
 }
 
 .about-hero-title {
-  font-family: 'Jost', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: clamp(3rem, 7vw, 5.5rem);
   font-weight: 500;
   color: #fff;
@@ -52,7 +52,6 @@
   display: flex;
   gap: 60px;
   z-index: 2;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
   padding-top: 24px;
 }
 
@@ -65,13 +64,13 @@
 }
 
 .about-hero-prompt strong {
-  font-family: 'Jost', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 0.85rem;
   font-weight: 600;
 }
 
 .about-hero-prompt span {
-  font-family: 'Jost', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 0.75rem;
   font-weight: 400;
   opacity: 0.6;
@@ -86,12 +85,12 @@
 }
 
 .about-story-logo {
-  margin-bottom: 60px;
+  margin-bottom: 52px;
   padding-right: 60px;
 }
 
 .about-story-logo img {
-  height: 130px;
+  height: 210px;
   width: auto;
   display: block;
 }
@@ -165,7 +164,7 @@
 }
 
 .about-slider-label {
-  font-family: 'Jost', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 0.2em;
@@ -175,17 +174,17 @@
 }
 
 .about-slider-headline {
-  font-family: 'Jost', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: clamp(1.8rem, 2.5vw, 2.4rem);
-  font-weight: 400;
-  font-style: italic;
+  font-weight: 700;
+  font-style: normal;
   line-height: 1.35;
   color: #2a3a4a;
   margin-bottom: 10px;
 }
 
 .about-slider-paragraph {
-  font-family: 'Jost', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 0.9rem;
   line-height: 1.8;
   color: rgba(26, 26, 26, 0.65);
@@ -267,7 +266,7 @@
 }
 
 .about-philosophy-title h2 {
-  font-family: 'Jost', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: clamp(1.6rem, 2.2vw, 2rem);
   font-weight: 400;
   letter-spacing: 0.18em;
@@ -284,7 +283,7 @@
 }
 
 .about-philosophy-content p {
-  font-family: 'Jost', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 0.95rem;
   line-height: 1.85;
   color: rgba(70, 70, 70, 0.85);
@@ -310,7 +309,7 @@
 }
 
 .about-team-title {
-  font-family: 'Jost', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 2.5rem;
   font-weight: 400;
   font-style: italic;
@@ -362,7 +361,7 @@
 }
 
 .team-card-name {
-  font-family: 'Jost', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 1.1rem;
   font-weight: 600;
   color: var(--primary-dark);
@@ -370,7 +369,7 @@
 }
 
 .team-card-role {
-  font-family: 'Jost', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 0.85rem;
   font-style: italic;
   color: rgba(26, 26, 26, 0.6);
@@ -378,7 +377,7 @@
 }
 
 .team-card-email {
-  font-family: 'Jost', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 0.85rem;
   font-weight: 400;
   color: var(--accent);
@@ -392,7 +391,7 @@
 }
 
 .team-card-bio {
-  font-family: 'Jost', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 0.9rem;
   line-height: 1.7;
   color: rgba(26, 26, 26, 0.65);
@@ -417,7 +416,7 @@
 
 .about-disciplines-intro {
   display: block;
-  font-family: 'Jost', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 0.7rem;
   letter-spacing: 0.25em;
   text-transform: uppercase;
@@ -426,7 +425,7 @@
 }
 
 .about-disciplines-title {
-  font-family: 'Jost', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 2.5rem;
   font-weight: 400;
   font-style: italic;
@@ -440,18 +439,17 @@
 }
 
 .discipline-card {
-  border-top: 1px solid rgba(26, 26, 26, 0.15);
   padding-top: 24px;
 }
 
 .discipline-number {
-  font-family: 'Jost', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 1.1rem;
   color: var(--accent);
 }
 
 .discipline-title {
-  font-family: 'Jost', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 1.8rem;
   font-weight: 400;
   color: var(--primary-dark);
@@ -459,7 +457,7 @@
 }
 
 .discipline-desc {
-  font-family: 'Jost', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 0.92rem;
   line-height: 1.7;
   color: rgba(26, 26, 26, 0.65);
@@ -473,7 +471,7 @@
 }
 
 .team-discipline-name {
-  font-family: 'Jost', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.2em;
@@ -498,7 +496,7 @@
 }
 
 .team-role-label {
-  font-family: 'Jost', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--primary-dark);
@@ -511,7 +509,7 @@
 }
 
 .team-role-name {
-  font-family: 'Jost', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 0.95rem;
   color: rgba(26, 26, 26, 0.7);
 }
@@ -624,7 +622,7 @@
   }
 
   .about-story-logo img {
-    height: 90px;
+    height: 130px;
   }
 
   .about-slider-inner {
