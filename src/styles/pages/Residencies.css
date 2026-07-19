@@ -33,31 +33,30 @@
 .residencies-hero .hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(20, 36, 51, 0.45);
 }
 
 .residencies-hero .hero-content {
   position: absolute;
-  bottom: 56px;
+  bottom: 40px;
   left: 44px;
   z-index: 2;
 }
 
 .residencies-hero .hero-title {
-  font-family: 'Inter', sans-serif;
-  font-size: clamp(2rem, 4.6vw, 3.6rem);
+  font-family: var(--font-sans);
+  font-size: clamp(2.1rem, 2.8vw, 2.7rem);
   font-weight: 300;
-  color: #fff;
+  color: #f8f7f5;
   line-height: 1.05;
   letter-spacing: -0.01em;
-  white-space: pre-line;
 }
 
 .residencies-hero .hero-prompts {
   position: absolute;
   bottom: 40px;
-  left: 60px;
-  right: 60px;
+  left: 4rem;
+  right: 4rem;
   display: flex;
   gap: 60px;
   z-index: 2;
@@ -69,17 +68,17 @@
   flex-direction: column;
   gap: 4px;
   text-decoration: none;
-  color: #fff;
+  color: #f8f7f5;
 }
 
 .residencies-hero .prompt-title {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.85rem;
   font-weight: 600;
 }
 
 .residencies-hero .prompt-sub {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.75rem;
   font-weight: 400;
   opacity: 0.6;
@@ -87,7 +86,7 @@
 
 /* Intro Section */
 .residencies-intro {
-  padding: 200px 60px 120px !important;
+  padding: 200px 4rem 120px !important;
   text-align: center;
   max-width: 900px;
   margin: 0 auto;
@@ -97,7 +96,7 @@
 
 .intro-label {
   display: block;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 0.2em;
@@ -107,7 +106,7 @@
 }
 
 .intro-headline {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: clamp(3rem, 6vw, 4.5rem);
   font-weight: 400;
   color: var(--primary-dark);
@@ -116,85 +115,124 @@
 }
 
 .intro-text {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 1rem;
   line-height: 1.8;
-  color: rgba(26, 26, 26, 0.65);
+  color: rgba(20, 36, 51, 0.65);
   max-width: 700px;
   margin: 0 auto !important;
 }
 
-/* Unit Selector Tabs - Top Bar */
+/* Unit Selector — matches Architecture .arch-info strip */
 .residencies-unit-tabs {
+  display: block;
+  padding: 72px 4rem 40px !important;
+  background: #f8f7f5;
+  border-bottom: none;
+}
+
+.residencies-unit-tabs-grid {
   display: flex;
   justify-content: center;
-  gap: 40px;
-  padding: 20px 60px !important;
-  background: var(--primary-light);
-  border-bottom: 1px solid rgba(26, 26, 26, 0.08);
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 28px 128px;
+  width: 100%;
 }
 
 .residencies-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
   background: none;
   border: none;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: rgba(26, 26, 26, 0.4);
   cursor: pointer;
-  padding: 8px 0;
-  position: relative;
-  transition: color 0.3s ease;
+  padding: 0;
+  text-align: left;
+  color: #142433;
+  transition: opacity 0.3s ease;
 }
 
-.residencies-tab::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: var(--accent);
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
+.residencies-tab-label {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #142433;
+  white-space: nowrap;
+  line-height: 1.3;
+}
+
+.residencies-tab-value {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: normal;
+  color: #142433;
+  white-space: nowrap;
+  line-height: 1.3;
+}
+
+.residencies-tab:not(.active) {
+  opacity: 0.4;
 }
 
 .residencies-tab:hover,
 .residencies-tab.active {
-  color: var(--primary-dark);
+  opacity: 1;
 }
 
-.residencies-tab.active::after {
-  transform: scaleX(1);
-}
-
-/* Main Split Layout */
+/* Main Split Layout — matches Architecture .arch-editorial-row--flip */
 .residencies-split {
   display: grid;
-  grid-template-columns: 48% 52%;
-  min-height: 80vh;
+  grid-template-columns: 1fr 2.4fr;
+  gap: 80px;
+  align-items: start;
+  padding: 30px 4rem 0;
+  box-sizing: border-box;
+  width: 100%;
 }
 
-/* Left Side - Text Content */
+/* Left Side - Text Content — title top-aligns with image */
 .residencies-text {
-  padding: 80px 80px 80px 100px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+  gap: 14px;
+  padding: 0;
   background: var(--primary-light);
+  min-width: 0;
+  width: 100%;
+  container-type: inline-size;
+  container-name: residency-text;
+}
+
+.residencies-text > div {
+  width: 100%;
+  min-width: 0;
 }
 
 .residencies-title {
-  font-family: 'Inter', sans-serif;
-  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  font-family: var(--font-serif);
+  font-size: clamp(1.25rem, 7.2cqi, 1.65rem);
   font-weight: 400;
   color: var(--primary-dark);
-  letter-spacing: 0.12em;
+  letter-spacing: 0.01em;
   text-transform: uppercase;
-  margin-bottom: 24px;
-  line-height: 1.15;
+  margin: 0 0 2.5rem;
+  line-height: 1.1;
+  white-space: nowrap;
+  max-width: 100%;
+  width: fit-content;
+}
+
+.residencies-pictograms,
+.residencies-description {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .residencies-meta {
@@ -203,77 +241,87 @@
   gap: 12px;
   margin-bottom: 40px;
   padding-bottom: 24px;
-  border-bottom: 1px solid rgba(26, 26, 26, 0.1);
+  border-bottom: 1px solid rgba(20, 36, 51, 0.1);
 }
 
 .residencies-meta span {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(26, 26, 26, 0.5);
+  color: rgba(20, 36, 51, 0.5);
 }
 
 .meta-divider {
-  color: rgba(26, 26, 26, 0.2) !important;
+  color: rgba(20, 36, 51, 0.2) !important;
 }
 
-/* Pictograms with characteristics */
+/* Specs row — same design as Architecture .arch-info items (not full-bleed) */
 .residencies-pictograms {
   display: flex;
-  align-items: stretch;
-  gap: 28px;
+  justify-content: space-between;
+  align-items: flex-start;
   flex-wrap: wrap;
-  margin-bottom: 40px;
-  padding-bottom: 28px;
-  border-bottom: 1px solid rgba(26, 26, 26, 0.1);
+  gap: 28px 20px;
+  margin: 28px 0 2.5rem;
+  padding: 0;
+  border-bottom: none;
+  width: 100%;
 }
 
 .pictogram {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 6px;
-  flex: 1;
+  gap: 2px;
+  min-width: 0;
 }
 
 .pictogram svg {
-  color: var(--accent);
+  color: #142433;
   margin-bottom: 6px;
-}
-
-.pictogram-value {
-  font-family: 'Inter', sans-serif;
-  font-size: 1.25rem;
-  font-weight: 500;
-  color: var(--primary-dark);
+  flex-shrink: 0;
 }
 
 .pictogram-label {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.62rem;
+  font-family: var(--font-sans);
+  font-size: 14px;
   font-weight: 600;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: rgba(26, 26, 26, 0.45);
+  color: #142433;
+  white-space: nowrap;
+}
+
+.pictogram-value {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: normal;
+  line-height: 1.3;
+  color: #142433;
+  white-space: nowrap;
 }
 
 .residencies-description {
-  margin-bottom: 40px;
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
 .residencies-description p {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.95rem;
-  line-height: 1.8;
-  color: rgba(26, 26, 26, 0.75);
-  margin-bottom: 24px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.7;
+  color: #142433;
+  margin: 0;
 }
 
 .residencies-features-intro {
   font-style: italic;
-  color: rgba(26, 26, 26, 0.65) !important;
+  color: rgba(20, 36, 51, 0.65) !important;
 }
 
 .residencies-features-list {
@@ -291,9 +339,9 @@
   display: flex;
   flex-wrap: wrap;
   gap: 14px 28px;
-  margin: 24px 0;
-  padding: 20px 0;
-  border-bottom: 1px solid rgba(26, 26, 26, 0.1);
+  margin: 0;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(20, 36, 51, 0.1);
 }
 
 .unit-amenity {
@@ -310,19 +358,19 @@
 }
 
 .unit-amenity-label {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.82rem;
   font-weight: 500;
   color: var(--primary-dark);
 }
 
 .residencies-closing {
-  margin-top: 24px;
+  margin-top: 0;
 }
 
 .residencies-inquiry {
   display: inline-block;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.1em;
@@ -338,11 +386,17 @@
   color: var(--accent);
 }
 
-/* Right Side - Image Gallery */
+/* Right Side - Image Gallery — matches .arch-editorial-image */
 .residencies-gallery {
   position: relative;
   overflow: hidden;
-  background: #1a1a1a;
+  background: #142433;
+  border-radius: 10px;
+  min-width: 0;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  height: auto;
+  align-self: stretch;
 }
 
 .gallery-image-wrapper {
@@ -355,7 +409,9 @@
 .gallery-image-wrapper img {
   width: 100%;
   height: 100%;
+  aspect-ratio: 16 / 10;
   object-fit: cover;
+  display: block;
 }
 
 /* Navigation Arrows */
@@ -363,7 +419,7 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(248, 247, 245, 0.1);
   border: none;
   width: 50px;
   height: 50px;
@@ -376,11 +432,11 @@
 }
 
 .gallery-nav:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(248, 247, 245, 0.2);
 }
 
 .gallery-nav svg {
-  stroke: rgba(255, 255, 255, 0.8);
+  stroke: rgba(248, 247, 245, 0.8);
 }
 
 .gallery-prev {
@@ -396,23 +452,23 @@
   position: absolute;
   bottom: 30px;
   right: 30px;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.75rem;
   font-weight: 400;
   letter-spacing: 0.1em;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(248, 247, 245, 0.6);
 }
 
 /* Amenities Section */
 .residencies-amenities {
-  padding: 60px 60px !important;
+  padding: 60px 4rem !important;
   background: #f8f7f5;
   min-height: auto !important;
   display: block !important;
 }
 
 .residencies-amenities .amenities-title {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: clamp(1.5rem, 2.5vw, 2rem);
   font-weight: 400;
   color: var(--primary-dark);
@@ -442,7 +498,7 @@
 }
 
 .amenity-content h4 {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--primary-dark);
@@ -451,15 +507,15 @@
 }
 
 .amenity-content p {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.8rem;
-  color: rgba(26, 26, 26, 0.5);
+  color: rgba(20, 36, 51, 0.5);
   line-height: 1.5;
 }
 
 /* CTA Section */
 .residencies-cta {
-  padding: 60px 60px !important;
+  padding: 60px 4rem !important;
   background: var(--primary-dark);
   min-height: auto !important;
   display: block !important;
@@ -472,7 +528,7 @@
 }
 
 .cta-text {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: clamp(1.5rem, 2.5vw, 2rem);
   font-weight: 400;
   color: var(--primary-light);
@@ -484,7 +540,7 @@
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.8rem;
   font-weight: 500;
   letter-spacing: 0.1em;
@@ -492,13 +548,14 @@
   color: var(--primary-light);
   text-decoration: none;
   padding: 18px 36px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(248, 247, 245, 0.3);
   transition: all 0.3s ease;
 }
 
 .cta-button:hover {
-  background: var(--accent);
-  border-color: var(--accent);
+  background: var(--warm-grey);
+  border-color: var(--warm-grey);
+  color: var(--primary-dark);
 }
 
 .cta-button svg {
@@ -512,48 +569,44 @@
 
 /* Responsive */
 @media (max-width: 1200px) {
-  .residencies-hero .hero-content {
-    bottom: 140px;
-    left: 50px;
-  }
-  
   .residencies-hero .hero-prompts {
-    left: 50px;
-    right: 50px;
+    left: 2rem;
+    right: 2rem;
   }
 
   .residencies-text {
-    padding: 60px 50px 60px 60px;
+    padding: 0;
   }
-  
+
   .residencies-title {
-    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-size: clamp(1.2rem, 6.8cqi, 1.55rem);
   }
 }
 
 @media (max-width: 1024px) {
   .residencies-hero .hero-content {
-    bottom: 140px;
     left: 40px;
   }
   
   .residencies-hero .hero-prompts {
-    left: 40px;
-    right: 40px;
+    left: 2rem;
+    right: 2rem;
     gap: 40px;
   }
 
   .residencies-intro {
-    padding: 40px 40px 20px !important;
+    padding: 40px 2rem 20px !important;
   }
 
   .residencies-split {
     grid-template-columns: 1fr;
+    gap: 48px;
     min-height: auto;
+    padding: 20px 2rem 0;
   }
   
   .residencies-text {
-    padding: 60px 40px;
+    padding: 0;
     order: 2;
   }
   
@@ -561,17 +614,15 @@
     order: 1;
     height: 60vh;
     min-height: 400px;
+    aspect-ratio: auto;
   }
   
   .residencies-unit-tabs {
-    padding: 20px 30px;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: flex-start;
+    padding: 60px 2rem 30px !important;
   }
-  
-  .residencies-tab {
-    font-size: 0.7rem;
+
+  .residencies-unit-tabs-grid {
+    gap: 28px 40px;
   }
   
   .residencies-amenities .amenities-grid {
@@ -580,11 +631,15 @@
   }
   
   .residencies-amenities {
-    padding: 50px 40px;
+    padding: 50px 2rem !important;
   }
   
   .residencies-cta {
-    padding: 50px 40px;
+    padding: 50px 2rem !important;
+  }
+
+  .residencies-gallery-menu {
+    padding: 70px 2rem;
   }
 }
 
@@ -595,12 +650,8 @@
   }
   
   .residencies-hero .hero-content {
-    bottom: 140px;
+    bottom: 44px;
     left: 24px;
-  }
-  
-  .residencies-hero .hero-title {
-    font-size: clamp(2.5rem, 10vw, 4rem);
   }
   
   .residencies-hero .hero-prompts {
@@ -619,13 +670,19 @@
     font-size: 0.7rem;
   }
 
+  .residencies-split {
+    padding: 10px 24px 0;
+    gap: 24px;
+  }
+
   .residencies-text {
-    padding: 40px 24px;
+    padding: 0;
   }
   
   .residencies-title {
-    font-size: 1.8rem;
-    letter-spacing: 0.1em;
+    font-size: clamp(1.25rem, 6.5vw, 1.5rem);
+    letter-spacing: 0.01em;
+    white-space: nowrap;
   }
   
   .residencies-meta {
@@ -640,6 +697,7 @@
   .residencies-gallery {
     height: 50vh;
     min-height: 350px;
+    aspect-ratio: auto;
   }
   
   .gallery-nav {
@@ -661,16 +719,11 @@
   }
   
   .residencies-unit-tabs {
-    padding: 16px 24px;
-    gap: 16px;
-    overflow-x: auto;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
+    padding: 44px 24px !important;
   }
-  
-  .residencies-tab {
-    white-space: nowrap;
-    flex-shrink: 0;
+
+  .residencies-unit-tabs-grid {
+    gap: 22px 28px;
   }
   
   .residencies-intro {
@@ -686,7 +739,7 @@
   }
   
   .residencies-amenities {
-    padding: 56px 24px 48px;
+    padding: 56px 24px 48px !important;
   }
   
   .residencies-amenities .amenities-title {
@@ -697,7 +750,7 @@
     text-align: left;
     margin-bottom: 32px;
     padding-bottom: 16px;
-    border-bottom: 1px solid rgba(26, 26, 26, 0.08);
+    border-bottom: 1px solid rgba(20, 36, 51, 0.08);
   }
   
   .residencies-amenities .amenities-grid {
@@ -710,14 +763,14 @@
     align-items: center;
     gap: 20px;
     padding: 20px 24px;
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(248, 247, 245, 0.7);
     border-radius: 12px;
-    border: 1px solid rgba(26, 26, 26, 0.06);
+    border: 1px solid rgba(20, 36, 51, 0.06);
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
   }
   
   .residencies-amenities .amenity-item:active {
-    border-color: rgba(26, 26, 26, 0.1);
+    border-color: rgba(20, 36, 51, 0.1);
   }
   
   .residencies-amenities .amenity-icon {
@@ -728,7 +781,7 @@
     justify-content: center;
     font-size: 1.1rem;
     line-height: 1;
-    background: rgba(201, 169, 98, 0.12);
+    background: rgba(210, 209, 207, 0.12);
     color: var(--accent);
     border-radius: 50%;
     flex-shrink: 0;
@@ -747,12 +800,12 @@
   
   .residencies-amenities .amenity-content p {
     font-size: 0.78rem;
-    color: rgba(26, 26, 26, 0.5);
+    color: rgba(20, 36, 51, 0.5);
     line-height: 1.45;
   }
   
   .residencies-cta {
-    padding: 40px 24px;
+    padding: 40px 24px !important;
   }
   
   .cta-text {
@@ -767,7 +820,7 @@
   .gallery-menu-grid {
     grid-auto-flow: row !important;
     grid-template-columns: repeat(2, 1fr) !important;
-    gap: 0 !important;
+    gap: 10px !important;
   }
 
   .residencies-pictograms {
@@ -777,39 +830,22 @@
 
 /* ========== Combined Photo Gallery ========== */
 .residencies-gallery-menu {
-  padding: 90px 0;
+  padding: 90px 4rem;
   max-width: none;
   margin: 0;
+  box-sizing: border-box;
 }
 
 .gallery-menu-header {
   margin-bottom: 40px;
-  padding: 0 60px;
-}
-
-.gallery-menu-label {
-  display: block;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.7rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 14px;
-}
-
-.gallery-menu-title {
-  font-family: 'Inter', sans-serif;
-  font-size: 2.2rem;
-  font-weight: 400;
-  font-style: italic;
-  color: var(--primary-dark);
+  padding: 0;
 }
 
 .gallery-menu-grid {
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: 1fr;
-  gap: 0;
+  gap: 16px;
 }
 
 .gallery-menu-item {
@@ -820,7 +856,8 @@
   cursor: pointer;
   overflow: hidden;
   aspect-ratio: 1 / 1;
-  background: #e9e6e1;
+  background: #d2d1cf;
+  border-radius: 10px;
 }
 
 .gallery-menu-item img {
@@ -842,8 +879,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
-  background: rgba(26, 26, 26, 0.35);
+  color: #f8f7f5;
+  background: rgba(20, 36, 51, 0.35);
   opacity: 0;
   transition: opacity 0.35s ease;
 }
@@ -860,7 +897,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(15, 18, 22, 0.92);
+  background: rgba(20, 36, 51, 0.92);
   padding: 4vw;
 }
 
@@ -881,7 +918,7 @@
   right: 32px;
   background: none;
   border: none;
-  color: #fff;
+  color: #f8f7f5;
   cursor: pointer;
   opacity: 0.8;
   transition: opacity 0.3s ease;
@@ -900,16 +937,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #fff;
+  background: rgba(248, 247, 245, 0.08);
+  border: 1px solid rgba(248, 247, 245, 0.2);
+  color: #f8f7f5;
   cursor: pointer;
   border-radius: 50%;
   transition: background 0.3s ease;
 }
 
 .residencies-lightbox .lightbox-nav:hover {
-  background: rgba(255, 255, 255, 0.18);
+  background: rgba(248, 247, 245, 0.18);
 }
 
 .residencies-lightbox .lightbox-prev {
@@ -923,6 +960,10 @@
 @media (max-width: 768px) {
   .residencies-gallery-menu {
     padding: 60px 24px;
+  }
+
+  .gallery-menu-header {
+    padding: 0;
   }
 
   .gallery-menu-title {

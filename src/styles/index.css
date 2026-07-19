@@ -5,14 +5,19 @@
 }
 
 :root {
-  --primary-dark: #1a2a3a;
+  --primary-dark: #142433;
   --primary-light: #f8f7f5;
-  --accent: #c9a962;
-  --accent-hover: #b8963f;
-  --text-dark: #1e2d3d;
-  --text-light: #7a8a9a;
+  --accent: #142433;
+  --accent-hover: #d2d1cf;
+  --warm-grey: #d2d1cf;
+  --text-dark: #142433;
+  --text-light: rgba(20, 36, 51, 0.5);
   --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Typography system */
+  --font-sans: 'IBM Plex Sans', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Bodoni Moda', 'Playfair Display', Georgia, 'Times New Roman', serif;
 }
 
 html {
@@ -20,7 +25,7 @@ html {
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   background-color: var(--primary-light);
   color: var(--text-dark);
   line-height: 1.8;
@@ -30,7 +35,7 @@ body {
 
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-weight: 400;
 }
 
@@ -41,7 +46,7 @@ a {
 }
 
 button {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   cursor: pointer;
 }
 
@@ -65,7 +70,7 @@ section {
 }
 
 .section-title {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: clamp(2.5rem, 6vw, 4.5rem);
   font-weight: 300;
   line-height: 1.2;
@@ -98,7 +103,7 @@ section {
 }
 
 .btn-primary:hover {
-  background: var(--accent);
+  background: var(--warm-grey);
   color: var(--primary-dark);
 }
 
@@ -139,7 +144,7 @@ section {
 
 /* Selection */
 ::selection {
-  background: var(--accent);
+  background: var(--warm-grey);
   color: var(--primary-dark);
 }
 
@@ -191,4 +196,39 @@ html[data-lang="GR"] .amenities-title,
 html[data-lang="GR"] .contact-label {
   font-size: 0.8rem;
   letter-spacing: 0.16em;
+}
+
+/* ============================================================
+   Display titles & statements — Bodoni Moda (serif)
+   Everything else stays IBM Plex Sans (--font-sans).
+   !important keeps these winning over per-component font rules
+   regardless of stylesheet load order.
+   ============================================================ */
+.logo,
+.footer-logo,
+.home-preloader-brand,
+.brand-text-fixed,
+.brand-main,
+.brand-accent,
+.hero-title,
+.hero-title-large,
+.title-main,
+.title-number,
+.title-line,
+.title-accent,
+.section-title,
+.page-title,
+.intro-headline,
+.cta-text,
+.gallery-menu-title,
+.about-slider-headline,
+.discipline-title,
+.about-team-title,
+.location-heading-title,
+.contact-heading-title,
+.info-card h3,
+.footer-marquee-item,
+.residencies-title {
+  font-family: var(--font-serif) !important;
+  text-transform: uppercase;
 }

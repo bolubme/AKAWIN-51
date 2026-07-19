@@ -1,6 +1,5 @@
-import { useState } from 'react'
+import { Fragment, useState } from 'react'
 import { motion } from 'framer-motion'
-import { Link } from 'react-router-dom'
 import { useLanguage } from '../../i18n/LanguageContext'
 import '../../styles/pages/Architecture.css'
 
@@ -43,14 +42,23 @@ function Architecture() {
     { label: t.architecture.officeLabel || 'Architectural Office', value: t.architecture.officeValue || 'Domisense Studio' },
     { label: t.architecture.locationLabel || 'Location', value: t.architecture.locationValue || 'Marousi, Athens' },
     { label: t.architecture.areaLabel || 'Area', value: t.architecture.areaValue || '3,200 m²' },
-    { label: t.architecture.structuralLabel || 'Structural Engineer', value: t.architecture.structuralValue || 'Domisense Engineering' },
-    { label: t.architecture.mechanicalLabel || 'Mechanical Engineer', value: t.architecture.mechanicalValue || 'Domisense Engineering' },
     { label: t.architecture.developerLabel || 'Developer', value: t.architecture.developerValue || 'Domisense' },
     { label: t.architecture.completionLabel || 'Year of Completion', value: t.architecture.completionValue || '2026' },
     { label: t.architecture.typeLabel || 'Type', value: t.architecture.typeValue || 'Residential' },
   ]
 
   const heroTitle = (t.architecture.pageHeroTitle || 'Architecture & Design.').replace(/\n/g, ' ')
+
+  // Editorial: image + text row, then a full-bleed image pair, then image + text again
+  const infoParagraphs = t.architecture.infoParagraphs || []
+  const editorialRows = [
+    { image: viewCorner, alt: 'Corner view of AKAKIWN 50', paragraphs: infoParagraphs.slice(0, 3) },
+    { image: viewBalcony, alt: 'Balcony view', paragraphs: infoParagraphs.slice(3, 6) },
+  ].filter((row) => row.paragraphs.length > 0)
+  const editorialDuo = [
+    { image: viewVilla, alt: 'Garden and pool residence' },
+    { image: viewRooftop, alt: 'Rooftop terrace' },
+  ]
 
   return (
     <div className="page architecture-page" style={{ padding: 0 }}>
@@ -77,31 +85,28 @@ function Architecture() {
           <h1 className="hero-title">{heroTitle}</h1>
         </motion.div>
 
-        {/* Hover arrows to move through the other views */}
-        <button className="hero-view-nav hero-view-prev" onClick={prevView} aria-label="Previous view">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-            <path d="M15 18l-6-6 6-6" />
-          </svg>
-        </button>
-        <button className="hero-view-nav hero-view-next" onClick={nextView} aria-label="Next view">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-            <path d="M9 18l6-6-6-6" />
-          </svg>
-        </button>
+        {/* Prev / next arrows — centred on the title line, always visible */}
+        <div className="hero-view-controls">
+          <button className="hero-view-nav hero-view-prev" onClick={prevView} aria-label="Previous view">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <path d="M15 18l-6-6 6-6" />
+            </svg>
+          </button>
+          <button className="hero-view-nav hero-view-next" onClick={nextView} aria-label="Next view">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <path d="M9 18l6-6-6-6" />
+            </svg>
+          </button>
+        </div>
 
-        <div className="hero-view-dots">
-          {heroViews.map((_, i) => (
-            <button
-              key={i}
-              className={`hero-view-dot ${i === heroIndex ? 'active' : ''}`}
-              onClick={() => setHeroIndex(i)}
-              aria-label={`View ${i + 1}`}
-            />
-          ))}
+        <div className="hero-view-counter" aria-label={`View ${heroIndex + 1} of ${heroViews.length}`}>
+          <span className="current">{String(heroIndex + 1).padStart(4, '0')}</span>
+          <span className="sep">/</span>
+          <span className="total">{String(heroViews.length).padStart(4, '0')}</span>
         </div>
       </section>
 
-      {/* Info Section — horizontal project info + text, no image */}
+      {/* Info Section — horizontal project info strip */}
       <motion.section
         className="arch-info"
         variants={containerVariants}
@@ -117,47 +122,48 @@ function Architecture() {
             </div>
           ))}
         </motion.div>
-
-        <motion.div className="arch-info-text" variants={itemVariants}>
-          {(t.architecture.infoParagraphs || []).map((para, i) => (
-            <p key={i}>{para}</p>
-          ))}
-        </motion.div>
       </motion.section>
 
-      {/* Single borderless gallery — external views only, video integrated */}
-      <section className="arch-gallery">
-        <motion.div className="ag-cell area-a" style={{ gridArea: 'a' }} {...cellIn(0)}>
-          <img src={viewFront} alt="Front elevation" loading="lazy" />
-        </motion.div>
-        <motion.div className="ag-cell area-v" style={{ gridArea: 'v' }} {...cellIn(1)}>
-          <video autoPlay muted loop playsInline src="/media/Video3_002.mp4" />
-        </motion.div>
-        <motion.div className="ag-cell area-b" style={{ gridArea: 'b' }} {...cellIn(2)}>
-          <img src={viewCorner} alt="Corner view" loading="lazy" />
-        </motion.div>
-        <motion.div className="ag-cell area-c" style={{ gridArea: 'c' }} {...cellIn(3)}>
-          <img src={viewVilla} alt="Garden and pool" loading="lazy" />
-        </motion.div>
-        <motion.div className="ag-cell area-d" style={{ gridArea: 'd' }} {...cellIn(4)}>
-          <img src={viewRooftop} alt="Rooftop terrace" loading="lazy" />
-        </motion.div>
-        <motion.div className="ag-cell area-e" style={{ gridArea: 'e' }} {...cellIn(5)}>
-          <img src={viewBalcony} alt="Balcony view" loading="lazy" />
-        </motion.div>
-      </section>
+      {/* Editorial rows — large image left, narrow text column right,
+          with a full-bleed image pair between them */}
+      <section className="arch-editorial">
+        {editorialRows.map((row, i) => (
+          <Fragment key={i}>
+            <motion.div
+              className={`arch-editorial-row${i === 1 ? ' arch-editorial-row--flip' : ''}`}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.7, ease: [0.4, 0, 0.2, 1] }}
+            >
+              <div className="arch-editorial-image">
+                <img src={row.image} alt={row.alt} loading="lazy" />
+              </div>
+              <div className="arch-editorial-text">
+                {row.paragraphs.map((para, j) => (
+                  <p key={j}>{para}</p>
+                ))}
+              </div>
+            </motion.div>
 
-      {/* CTA removed */}
+            {i === 0 && (
+              <motion.div
+                className="arch-editorial-duo"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true, margin: '-80px' }}
+                transition={{ duration: 0.8 }}
+              >
+                {editorialDuo.map((img, j) => (
+                  <img key={j} src={img.image} alt={img.alt} loading="lazy" />
+                ))}
+              </motion.div>
+            )}
+          </Fragment>
+        ))}
+      </section>
     </div>
   )
 }
-
-// Shared scroll-in animation for gallery cells
-const cellIn = (i) => ({
-  initial: { opacity: 0 },
-  whileInView: { opacity: 1 },
-  viewport: { once: true, margin: '-40px' },
-  transition: { duration: 0.7, delay: (i % 3) * 0.08 },
-})
 
 export default Architecture

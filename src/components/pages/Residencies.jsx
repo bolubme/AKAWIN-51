@@ -24,25 +24,23 @@ const unitGalleries = {
   'penthouse': [img5, img3, img1, img6],
 }
 
-// Pictogram icons for unit characteristics
 const BedIcon = () => (
-  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true">
     <path d="M2 17v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5M2 17h20M2 17v3M22 17v3M6 10V8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2" />
   </svg>
 )
 const BathIcon = () => (
-  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true">
     <path d="M4 12V6a2 2 0 0 1 2-2 2 2 0 0 1 2 2M3 12h18v3a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4v-3zM6 19l-1 2M19 19l1 2M8 6h.01" />
   </svg>
 )
 const AreaIcon = () => (
-  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true">
     <path d="M4 4h16v16H4zM4 9h3M17 4v3M20 15h-3M7 20v-3" />
   </svg>
 )
-
 const LevelIcon = () => (
-  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true">
     <path d="M4 20V4h16v16H4z" />
     <path d="M7 8h10M7 12h10M7 16h10" />
   </svg>
@@ -103,21 +101,25 @@ function Residencies() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
         >
-          <h1 className="hero-title">{t.residencies.pageHeroTitle || 'The\nResidencies.'}</h1>
+          <h1 className="hero-title">{(t.residencies.pageHeroTitle || 'The Residencies.').replace(/\n/g, ' ')}</h1>
         </motion.div>
       </section>
 
-      {/* Unit Selector Tabs */}
+      {/* Unit Selector — matches Architecture info strip */}
       <div className="residencies-unit-tabs">
-        {unitTypes.map((unit) => (
-          <button
-            key={unit.id}
-            className={`residencies-tab ${selectedUnit.id === unit.id ? 'active' : ''}`}
-            onClick={() => handleUnitChange(unit)}
-          >
-            {unit.tab || unit.type}
-          </button>
-        ))}
+        <div className="residencies-unit-tabs-grid">
+          {unitTypes.map((unit) => (
+            <button
+              key={unit.id}
+              type="button"
+              className={`residencies-tab ${selectedUnit.id === unit.id ? 'active' : ''}`}
+              onClick={() => handleUnitChange(unit)}
+            >
+              <span className="residencies-tab-label">{unit.tab || unit.type}</span>
+              <span className="residencies-tab-value">{unit.size}</span>
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* Main Split Layout */}
@@ -142,23 +144,23 @@ function Residencies() {
               <div className="residencies-pictograms">
                 <div className="pictogram">
                   <BedIcon />
-                  <span className="pictogram-value">{selectedUnit.bedrooms}</span>
                   <span className="pictogram-label">{t.residencies.bedroomsLabel}</span>
+                  <span className="pictogram-value">{selectedUnit.bedrooms}</span>
                 </div>
                 <div className="pictogram">
                   <BathIcon />
-                  <span className="pictogram-value">{selectedUnit.bathrooms}</span>
                   <span className="pictogram-label">{t.residencies.bathroomsLabel}</span>
+                  <span className="pictogram-value">{selectedUnit.bathrooms}</span>
                 </div>
                 <div className="pictogram">
                   <AreaIcon />
-                  <span className="pictogram-value">{selectedUnit.size}</span>
                   <span className="pictogram-label">{t.residencies.sizeLabel}</span>
+                  <span className="pictogram-value">{selectedUnit.size}</span>
                 </div>
                 <div className="pictogram">
                   <LevelIcon />
-                  <span className="pictogram-value">{selectedUnit.level}</span>
                   <span className="pictogram-label">{t.residencies.levelLabel}</span>
+                  <span className="pictogram-value">{selectedUnit.level}</span>
                 </div>
               </div>
 

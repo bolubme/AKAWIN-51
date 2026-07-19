@@ -1,17 +1,62 @@
 .footer {
   position: relative;
-  background: var(--accent);
-  color: var(--primary-dark);
-  padding: 6rem 4rem 2.5rem;
-  margin-top: 1.5rem;
+  background: var(--primary-light);
+  color: #142433;
+  /* Equal space above the logo and below it (to the contact row) */
+  --footer-logo-gap: 3.5rem;
+  padding: calc(var(--footer-logo-gap) + 2.5rem) 4rem 3rem;
+  margin-top: 0;
   overflow: hidden;
 }
 
-/* Large statement scrolling across the top */
+/* Centered logo mark */
+.footer-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #142433;
+  text-decoration: none;
+  width: 100%;
+  margin: 0;
+}
+
+.footer-logo-mark {
+  display: block;
+  width: auto;
+  height: 50px;
+  overflow: visible;
+}
+
+/* Contact row — compact, centered */
+.footer-reach {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 0.75rem 17.5rem;
+  flex-wrap: wrap;
+  margin-top: var(--footer-logo-gap);
+}
+
+.footer-reach a {
+  font-family: var(--font-sans);
+  color: #142433;
+  font-size: 0.95rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+}
+
+.footer-reach a:hover {
+  opacity: 0.55;
+}
+
+/* Large statement — scrolling marquee */
 .footer-marquee {
   overflow: hidden;
   white-space: nowrap;
-  margin: 5rem 0 2.5rem;
+  margin: 5.5rem 0 0;
   /* bleed to the full viewport width, ignoring footer side padding */
   margin-left: -4rem;
   margin-right: -4rem;
@@ -28,163 +73,85 @@
 .footer-marquee-item {
   display: inline-flex;
   align-items: center;
-  font-family: 'Inter', sans-serif;
-  font-weight: 200;
-  font-size: clamp(1.6rem, 4.4vw, 3.6rem);
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: clamp(1.25rem, 2.8vw, 2rem);
   line-height: 1;
-  letter-spacing: -0.01em;
-  color: var(--primary-dark);
+  letter-spacing: 0.01em;
+  color: rgba(20, 36, 51, 0.28);
+  text-transform: uppercase !important;
 }
 
 @keyframes footer-marquee {
-  from { transform: translateX(-50%); }
-  to { transform: translateX(0); }
-}
-
-/* Two-column minimal row */
-.footer-row {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 4rem;
-  align-items: start;
-  padding-top: 2.5rem;
-}
-
-.footer-logo {
-  font-family: 'Inter', sans-serif;
-  font-size: 1.6rem;
-  font-weight: 300;
-  letter-spacing: 5px;
-}
-
-.footer-logo span {
-  color: #fff;
-}
-
-.footer-subtitle {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.7rem;
-  color: rgba(26, 42, 58, 0.55);
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-top: 0.5rem;
-}
-
-/* Brand lockup: Domisense monogram beside the AKAKIWN 50 wordmark */
-.footer-brand {
-  display: flex;
-  align-items: center;
-  gap: 1.1rem;
-}
-
-.footer-mark {
-  height: 80px;
-  width: auto;
-  display: block;
-  flex-shrink: 0;
-}
-
-.footer-brand-text {
-  display: flex;
-  flex-direction: column;
-}
-
-.footer-reach {
-  display: flex;
-  flex-direction: column;
-  gap: 0.7rem;
-}
-
-.footer-reach a {
-  font-family: 'Inter', sans-serif;
-  color: rgba(26, 42, 58, 0.65);
-  font-size: 0.8rem;
-  letter-spacing: 0.5px;
-  text-decoration: none;
-  transition: color 0.3s ease;
-  width: fit-content;
-}
-
-.footer-reach a:hover {
-  color: var(--primary-dark);
-}
-
-.footer-ig {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 0.3rem;
-}
-
-.footer-ig svg {
-  width: 16px;
-  height: 16px;
-}
-
-/* Baseline */
-.footer-baseline {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 2.25rem;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 
 .footer-disclaimer {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.66rem;
-  line-height: 1.6;
-  color: rgba(26, 42, 58, 0.4);
-  max-width: 900px;
-  margin-top: 3.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(20, 36, 51, 0.38);
+  max-width: 720px;
+  margin: 2.75rem auto 0;
+  text-align: center;
 }
 
-.copyright,
-.footer-credit {
-  font-family: 'Inter', sans-serif;
+.copyright {
+  font-family: var(--font-sans);
   font-size: 0.68rem;
-  color: rgba(26, 42, 58, 0.4);
-  letter-spacing: 1px;
+  font-weight: 300;
+  color: rgba(20, 36, 51, 0.38);
+  letter-spacing: 0.04em;
+  text-align: center;
+  margin-top: 1.25rem;
 }
 
 /* Responsive */
 @media (max-width: 900px) {
-  .footer-row {
-    grid-template-columns: 1fr 1fr;
-    gap: 2.5rem;
+  .footer-reach {
+    display: flex;
+    gap: 0.75rem 1.5rem;
   }
 
-  .footer-brand {
-    grid-column: 1 / -1;
+  .footer-marquee {
+    margin-top: 4rem;
   }
 }
 
 @media (max-width: 768px) {
   .footer {
-    padding: 5rem 2rem 2rem;
-    margin-top: 1rem;
+    --footer-logo-gap: 2.75rem;
+    padding: calc(var(--footer-logo-gap) + 1.5rem) 2rem 2.5rem;
   }
 
   .footer-marquee {
-    margin: 3.5rem 0 2rem;
     margin-left: -2rem;
     margin-right: -2rem;
     width: calc(100% + 4rem);
   }
-
-  .footer-marquee-track {
-    animation-duration: 22s;
-  }
 }
 
 @media (max-width: 560px) {
-  .footer-row {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+  .footer-reach {
+    gap: 0.65rem 1.25rem;
   }
 
-  .footer-baseline {
-    margin-top: 3rem;
+  .footer-marquee {
+    margin-top: 3.25rem;
+  }
+
+  .footer-marquee-item {
+    font-size: 1.1rem;
+  }
+
+  .footer-disclaimer {
+    text-align: left;
+    margin-top: 2.25rem;
   }
 }

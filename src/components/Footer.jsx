@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useLanguage } from '../i18n/LanguageContext'
 import '../styles/Footer.css'
 
@@ -11,42 +11,33 @@ function Footer() {
 
   return (
     <footer className="footer">
-      <div className="footer-row">
-        <div className="footer-brand">
-          <img
-            className="footer-mark"
-            src="/media/domisense-mark.png"
-            alt="Domisense"
-          />
-          <div className="footer-brand-text">
-            <div className="footer-logo">
-              AKAKIWN <span>50</span>
-            </div>
-            <p className="footer-subtitle">{t.footer.subtitle}</p>
-          </div>
-        </div>
+      <Link to="/" className="footer-logo" aria-label="AKAKIWN 50 by Domisense">
+        <svg
+          className="footer-logo-mark"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="210 246 175 194"
+          fill="#152433"
+          aria-hidden="true"
+        >
+          <path d="M267.41,439.46v-30.1c36.89,0,66.9-30.01,66.9-66.9s-30.01-66.9-66.9-66.9v-30.1c53.48,0,97,43.51,97,97s-43.51,97-97,97Z" />
+          <rect x="210.3" y="246.8" width="30.1" height="191.32" />
+          <rect x="355.41" y="409.8" width="29.21" height="29.21" />
+        </svg>
+      </Link>
 
-        <div className="footer-reach">
-          <a href={`mailto:${t.nav.email}`}>{t.nav.email}</a>
-          <a href={`tel:${t.nav.phone.replace(/\s/g, '')}`}>{t.nav.phone}</a>
-          <a
-            className="footer-ig"
-            href="https://www.instagram.com/akakiwn50"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Instagram"
-          >
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-            </svg>
-            <span>Instagram</span>
-          </a>
-        </div>
+      <div className="footer-reach">
+        <a href={`mailto:${t.nav.email}`}>{t.nav.email}</a>
+        <a
+          href="https://www.instagram.com/akakiwn50"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Instagram
+        </a>
+        <a href={`tel:${t.nav.phone.replace(/\s/g, '')}`}>{t.nav.phone}</a>
+        <a href={`tel:${t.nav.phone2.replace(/\s/g, '')}`}>{t.nav.phone2}</a>
       </div>
 
-      {/* Large statement scrolling across the bottom */}
       <div className="footer-marquee" aria-label={t.footer.statement}>
         <div className="footer-marquee-track">
           {Array.from({ length: 4 }).map((_, i) => (
@@ -62,10 +53,7 @@ function Footer() {
         <p className="footer-disclaimer">{t.footer.disclaimer}</p>
       )}
 
-      <div className="footer-baseline">
-        <p className="copyright">{t.footer.copyright}</p>
-        <p className="footer-credit">Polydroso · Athens</p>
-      </div>
+      <p className="copyright">{t.footer.copyright}</p>
     </footer>
   )
 }
