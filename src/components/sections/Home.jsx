@@ -1,12 +1,12 @@
-import { motion } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
-import '../../styles/sections/Home.css'
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import "../../styles/sections/Home.css";
 
 function Home() {
   const [ref, inView] = useInView({
     threshold: 0.3,
     triggerOnce: true,
-  })
+  });
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -17,7 +17,7 @@ function Home() {
         delayChildren: 0.3,
       },
     },
-  }
+  };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -29,11 +29,11 @@ function Home() {
         ease: [0.4, 0, 0.2, 1],
       },
     },
-  }
+  };
 
   return (
     <section id="home" className="home-section">
-      <motion.div 
+      <motion.div
         ref={ref}
         className="hero-content"
         variants={containerVariants}
@@ -43,25 +43,22 @@ function Home() {
         <motion.p className="section-label" variants={itemVariants}>
           Premium Living Experience
         </motion.p>
-        
+
         <motion.h1 className="hero-title" variants={itemVariants}>
           <span className="title-line">AKAKIWN</span>
           <span className="title-accent">50</span>
         </motion.h1>
-        
+
         <motion.p className="hero-subtitle" variants={itemVariants}>
           by Domisense
         </motion.p>
-        
+
         <motion.p className="hero-tagline" variants={itemVariants}>
-          "Where architectural excellence meets refined living — a sanctuary 
+          "Where architectural excellence meets refined living — a sanctuary
           designed for those who appreciate the extraordinary."
         </motion.p>
 
-        <motion.div 
-          className="hero-cta"
-          variants={itemVariants}
-        >
+        <motion.div className="hero-cta" variants={itemVariants}>
           <a href="#contact" className="btn-primary">
             Schedule a Visit
           </a>
@@ -71,7 +68,7 @@ function Home() {
         </motion.div>
       </motion.div>
 
-      <motion.div 
+      <motion.div
         className="scroll-indicator"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -83,13 +80,13 @@ function Home() {
 
       {/* Decorative elements */}
       <div className="hero-decoration">
-        <motion.div 
+        <motion.div
           className="decoration-circle"
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 0.03 }}
           transition={{ duration: 1, delay: 0.5 }}
         />
-        <motion.div 
+        <motion.div
           className="decoration-line"
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
@@ -97,7 +94,7 @@ function Home() {
         />
       </div>
     </section>
-  )
+  );
 }
 
-export default Home
+export default Home;

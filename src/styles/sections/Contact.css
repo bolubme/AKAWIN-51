@@ -17,7 +17,7 @@
 
 /* Contact Info */
 .contact-info h3 {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 2rem;
   font-weight: 400;
   margin-bottom: 2.5rem;
@@ -50,7 +50,7 @@
   text-transform: uppercase;
   color: var(--text-light);
   margin-bottom: 0.4rem;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-weight: 400;
 }
 
@@ -76,9 +76,9 @@
   width: 100%;
   padding: 1.2rem 0;
   border: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(20, 36, 51, 0.1);
   background: transparent;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.95rem;
   font-weight: 300;
   color: var(--primary-dark);
@@ -146,7 +146,7 @@
 }
 
 .submit-btn.submitted {
-  background: #4caf50;
+  background: #142433;
 }
 
 /* Loading dots */

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { useLanguage } from '../../i18n/LanguageContext'
 import '../../styles/pages/Contact.css'
@@ -13,14 +13,16 @@ function Contact() {
     interest: '',
     message: '',
   })
+  const [submitted, setSubmitted] = useState(false)
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log('Form submitted:', formData)
-    // Handle form submission
+    setSubmitted(true)
+    setFormData({ name: '', email: '', phone: '', interest: '', message: '' })
   }
 
   const handleChange = (e) => {
+    if (submitted) setSubmitted(false)
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -152,6 +154,21 @@ function Contact() {
                 <path d="M5 12h14M12 5l7 7-7 7"/>
               </svg>
             </motion.button>
+
+            <AnimatePresence>
+              {submitted && (
+                <motion.p
+                  className="form-success"
+                  role="status"
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 8 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {t.contact.successMessage || 'Thank you — your message has been sent. We will be in touch shortly.'}
+                </motion.p>
+              )}
+            </AnimatePresence>
           </motion.form>
 
           {/* Contact Info */}

@@ -14,7 +14,7 @@
 
 .contact-heading-label {
   display: block;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.2em;
@@ -24,7 +24,7 @@
 }
 
 .contact-heading-title {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: clamp(2.4rem, 5vw, 3.8rem);
   font-weight: 300;
   color: var(--primary-dark);
@@ -57,7 +57,7 @@
 .contact-hero .hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(20, 36, 51, 0.45);
 }
 
 .contact-hero .hero-content {
@@ -68,10 +68,10 @@
 }
 
 .contact-hero .hero-title {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: clamp(3rem, 7vw, 5.5rem);
   font-weight: 500;
-  color: #fff;
+  color: #f8f7f5;
   line-height: 1.05;
   letter-spacing: -0.02em;
   white-space: pre-line;
@@ -93,17 +93,17 @@
   flex-direction: column;
   gap: 4px;
   text-decoration: none;
-  color: #fff;
+  color: #f8f7f5;
 }
 
 .contact-hero .prompt-title {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.85rem;
   font-weight: 600;
 }
 
 .contact-hero .prompt-sub {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.75rem;
   font-weight: 400;
   opacity: 0.6;
@@ -148,7 +148,7 @@
 }
 
 .form-group label {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.1em;
@@ -159,11 +159,11 @@
 .form-group input,
 .form-group select,
 .form-group textarea {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.95rem;
   padding: 16px 0;
   border: none;
-  border-bottom: 1px solid rgba(26, 26, 26, 0.15);
+  border-bottom: 1px solid rgba(20, 36, 51, 0.15);
   background: transparent;
   color: var(--primary-dark);
   outline: none;
@@ -172,7 +172,7 @@
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-  color: rgba(26, 26, 26, 0.35);
+  color: rgba(20, 36, 51, 0.35);
 }
 
 .form-group input:focus,
@@ -184,7 +184,7 @@
 .form-group select {
   cursor: pointer;
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%231a1a1a' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23142433' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 0 center;
   background-color: transparent;
@@ -204,7 +204,7 @@
   background: var(--primary-dark);
   color: var(--primary-light);
   border: none;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.9rem;
   font-weight: 500;
   letter-spacing: 0.05em;
@@ -214,7 +214,8 @@
 }
 
 .submit-btn:hover {
-  background: var(--accent);
+  background: var(--warm-grey);
+  color: var(--primary-dark);
 }
 
 .submit-btn svg {
@@ -223,6 +224,17 @@
 
 .submit-btn:hover svg {
   transform: translateX(5px);
+}
+
+.form-success {
+  margin-top: 20px;
+  padding: 14px 18px;
+  background: rgba(210, 209, 207, 0.12);
+  border-left: 2px solid var(--accent);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--primary-dark);
 }
 
 /* Contact Info */
@@ -238,20 +250,20 @@
 }
 
 .info-card h3 {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: clamp(1.8rem, 2.5vw, 2.2rem);
   font-weight: 400;
   margin-bottom: 16px;
 }
 
 .info-card > p {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.9rem;
   line-height: 1.7;
-  color: rgba(26, 26, 26, 0.6);
+  color: rgba(20, 36, 51, 0.6);
   margin-bottom: 40px;
   padding-bottom: 30px;
-  border-bottom: 1px solid rgba(26, 26, 26, 0.1);
+  border-bottom: 1px solid rgba(20, 36, 51, 0.1);
 }
 
 .info-details {
@@ -268,17 +280,17 @@
 }
 
 .info-item strong {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(26, 26, 26, 0.5);
+  color: rgba(20, 36, 51, 0.5);
 }
 
 .info-item span,
 .info-item a {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.95rem;
   line-height: 1.6;
   color: var(--primary-dark);
@@ -295,7 +307,7 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.85rem;
   color: var(--primary-dark);
   text-decoration: none;

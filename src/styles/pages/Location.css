@@ -14,7 +14,7 @@
 
 .location-heading-label {
   display: block;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.2em;
@@ -24,7 +24,7 @@
 }
 
 .location-heading-title {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: clamp(2.4rem, 5vw, 3.8rem);
   font-weight: 300;
   color: var(--primary-dark);
@@ -33,10 +33,10 @@
 }
 
 .location-intro {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 1rem;
   line-height: 1.7;
-  color: rgba(26, 26, 26, 0.7);
+  color: rgba(20, 36, 51, 0.7);
   max-width: 820px;
   margin-top: 28px;
 }
@@ -66,7 +66,7 @@
 .location-hero .hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(20, 36, 51, 0.45);
 }
 
 .location-hero .hero-content {
@@ -77,10 +77,10 @@
 }
 
 .location-hero .hero-title {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: clamp(3rem, 7vw, 5.5rem);
   font-weight: 500;
-  color: #fff;
+  color: #f8f7f5;
   line-height: 1.05;
   letter-spacing: -0.02em;
   white-space: pre-line;
@@ -103,7 +103,7 @@
   flex-direction: column;
   gap: 4px;
   text-decoration: none;
-  color: #fff;
+  color: #f8f7f5;
   transition: opacity 0.3s ease;
 }
 
@@ -112,14 +112,14 @@
 }
 
 .location-hero .prompt-title {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.85rem;
   font-weight: 600;
-  color: #fff;
+  color: #f8f7f5;
 }
 
 .location-hero .prompt-sub {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.75rem;
   font-weight: 400;
   opacity: 0.6;
@@ -144,7 +144,7 @@
   position: relative;
   height: 550px;
   overflow: hidden;
-  background: #e8e6e1;
+  background: #d2d1cf;
 }
 
 .map-visual iframe {
@@ -159,7 +159,7 @@
   display: flex;
   flex-direction: column;
   gap: 0;
-  background: white;
+  background: var(--primary-light);
   padding: 0;
 }
 
@@ -168,7 +168,7 @@
   flex-direction: column;
   gap: 6px;
   padding: 28px 24px;
-  border-bottom: 1px solid rgba(26, 26, 26, 0.06);
+  border-bottom: 1px solid rgba(20, 36, 51, 0.06);
   transition: background 0.3s ease;
 }
 
@@ -177,11 +177,11 @@
 }
 
 .stat-item:hover {
-  background: rgba(201, 169, 98, 0.03);
+  background: rgba(210, 209, 207, 0.03);
 }
 
 .stat-value {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 1.6rem;
   font-weight: 600;
   color: var(--accent);
@@ -189,12 +189,12 @@
 }
 
 .stat-label {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.7rem;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: rgba(26, 26, 26, 0.55);
+  color: rgba(20, 36, 51, 0.55);
 }
 
 /* Amenities Section - Below Map */
@@ -203,20 +203,20 @@
 }
 
 .amenities-title {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(26, 26, 26, 0.5);
+  color: rgba(20, 36, 51, 0.5);
   margin-bottom: 12px;
 }
 
 .amenities-note {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.85rem;
   line-height: 1.6;
-  color: rgba(26, 26, 26, 0.55);
+  color: rgba(20, 36, 51, 0.55);
   max-width: 720px;
   margin-bottom: 28px;
 }
@@ -232,13 +232,13 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px 24px;
-  background: white;
+  background: var(--primary-light);
   transition: all 0.3s ease;
 }
 
 .amenity-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 20px rgba(20, 36, 51, 0.04);
 }
 
 .amenity-info {
@@ -248,22 +248,22 @@
 }
 
 .amenity-name {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.95rem;
   font-weight: 500;
   color: var(--primary-dark);
 }
 
 .amenity-type {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.7rem;
-  color: rgba(26, 26, 26, 0.5);
+  color: rgba(20, 36, 51, 0.5);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 .amenity-distance {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 1.1rem;
   font-weight: 600;
   color: var(--accent);
@@ -274,7 +274,7 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.85rem;
   color: var(--primary-dark);
   text-decoration: none;
@@ -341,7 +341,7 @@
     min-width: 120px;
     padding: 20px 16px;
     border-bottom: none;
-    border-right: 1px solid rgba(26, 26, 26, 0.06);
+    border-right: 1px solid rgba(20, 36, 51, 0.06);
   }
 
   .stat-item:last-child {

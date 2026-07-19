@@ -25,7 +25,7 @@
 .about-hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(20, 36, 51, 0.45);
 }
 
 .about-hero-content {
@@ -36,10 +36,10 @@
 }
 
 .about-hero-title {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: clamp(3rem, 7vw, 5.5rem);
   font-weight: 500;
-  color: #fff;
+  color: #f8f7f5;
   line-height: 1.05;
   letter-spacing: -0.02em;
 }
@@ -60,17 +60,17 @@
   flex-direction: column;
   gap: 4px;
   text-decoration: none;
-  color: #fff;
+  color: #f8f7f5;
 }
 
 .about-hero-prompt strong {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.85rem;
   font-weight: 600;
 }
 
 .about-hero-prompt span {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.75rem;
   font-weight: 400;
   opacity: 0.6;
@@ -127,7 +127,7 @@
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(248, 247, 245, 0.85);
   border: none;
   cursor: pointer;
   display: flex;
@@ -135,12 +135,12 @@
   justify-content: center;
   transition: all 0.3s ease;
   z-index: 2;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 10px rgba(20, 36, 51, 0.1);
 }
 
 .slider-nav-btn:hover {
-  background: #fff;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  background: #f8f7f5;
+  box-shadow: 0 4px 16px rgba(20, 36, 51, 0.15);
 }
 
 .slider-nav-btn svg {
@@ -164,30 +164,30 @@
 }
 
 .about-slider-label {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(26, 26, 26, 0.5);
+  color: rgba(20, 36, 51, 0.5);
   margin-bottom: 10px;
 }
 
 .about-slider-headline {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: clamp(1.8rem, 2.5vw, 2.4rem);
   font-weight: 700;
   font-style: normal;
   line-height: 1.35;
-  color: #2a3a4a;
+  color: #142433;
   margin-bottom: 10px;
 }
 
 .about-slider-paragraph {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.9rem;
   line-height: 1.8;
-  color: rgba(26, 26, 26, 0.65);
+  color: rgba(20, 36, 51, 0.65);
 }
 
 .about-slider-dots {
@@ -205,18 +205,18 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(248, 247, 245, 0.5);
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .slider-dot:hover {
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(248, 247, 245, 0.8);
 }
 
 .slider-dot.active {
-  background: #fff;
+  background: #f8f7f5;
 }
 
 /* ========== Full Width Image Section ========== */
@@ -266,7 +266,7 @@
 }
 
 .about-philosophy-title h2 {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: clamp(1.6rem, 2.2vw, 2rem);
   font-weight: 400;
   letter-spacing: 0.18em;
@@ -283,10 +283,10 @@
 }
 
 .about-philosophy-content p {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.95rem;
   line-height: 1.85;
-  color: rgba(70, 70, 70, 0.85);
+  color: rgba(20, 36, 51, 0.85);
   margin: 0;
 }
 
@@ -309,7 +309,7 @@
 }
 
 .about-team-title {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 2.5rem;
   font-weight: 400;
   font-style: italic;
@@ -361,7 +361,7 @@
 }
 
 .team-card-name {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 1.1rem;
   font-weight: 600;
   color: var(--primary-dark);
@@ -369,15 +369,15 @@
 }
 
 .team-card-role {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.85rem;
   font-style: italic;
-  color: rgba(26, 26, 26, 0.6);
+  color: rgba(20, 36, 51, 0.6);
   margin-bottom: 16px;
 }
 
 .team-card-email {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.85rem;
   font-weight: 400;
   color: var(--accent);
@@ -391,17 +391,17 @@
 }
 
 .team-card-bio {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.9rem;
   line-height: 1.7;
-  color: rgba(26, 26, 26, 0.65);
+  color: rgba(20, 36, 51, 0.65);
 }
 
 /* ========== Disciplines (Architecture · Construction · Development) ========== */
 .about-disciplines-section {
   min-height: auto !important;
   padding: 90px 60px !important;
-  background: #f5f3f0;
+  background: #f8f7f5;
   display: block !important;
 }
 
@@ -416,7 +416,7 @@
 
 .about-disciplines-intro {
   display: block;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.7rem;
   letter-spacing: 0.25em;
   text-transform: uppercase;
@@ -425,7 +425,7 @@
 }
 
 .about-disciplines-title {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 2.5rem;
   font-weight: 400;
   font-style: italic;
@@ -443,13 +443,13 @@
 }
 
 .discipline-number {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 1.1rem;
   color: var(--accent);
 }
 
 .discipline-title {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 1.8rem;
   font-weight: 400;
   color: var(--primary-dark);
@@ -457,10 +457,10 @@
 }
 
 .discipline-desc {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.92rem;
   line-height: 1.7;
-  color: rgba(26, 26, 26, 0.65);
+  color: rgba(20, 36, 51, 0.65);
 }
 
 /* ========== Team by discipline ========== */
@@ -471,7 +471,7 @@
 }
 
 .team-discipline-name {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.2em;
@@ -479,7 +479,7 @@
   color: var(--primary-dark);
   padding-bottom: 18px;
   margin-bottom: 28px;
-  border-bottom: 1px solid rgba(26, 26, 26, 0.12);
+  border-bottom: 1px solid rgba(20, 36, 51, 0.12);
 }
 
 .team-discipline-roles {
@@ -496,7 +496,7 @@
 }
 
 .team-role-label {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--primary-dark);
@@ -509,9 +509,9 @@
 }
 
 .team-role-name {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.95rem;
-  color: rgba(26, 26, 26, 0.7);
+  color: rgba(20, 36, 51, 0.7);
 }
 
 @media (max-width: 768px) {

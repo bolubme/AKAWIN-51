@@ -22,7 +22,7 @@
 }
 
 .map-container {
-  background: linear-gradient(135deg, #e8e6e1 0%, #d4d2cd 100%);
+  background: linear-gradient(135deg, #d2d1cf 0%, #d2d1cf 100%);
   min-height: 450px;
   display: flex;
   align-items: center;
@@ -48,7 +48,7 @@
 }
 
 .map-label {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 1.3rem;
   color: var(--text-dark);
   letter-spacing: 2px;
@@ -98,7 +98,7 @@
   align-items: flex-start;
   gap: 1.5rem;
   padding: 2rem 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(20, 36, 51, 0.05);
   transition: var(--transition);
 }
 
@@ -127,12 +127,12 @@
   text-transform: uppercase;
   color: var(--text-light);
   margin-bottom: 0.5rem;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-weight: 400;
 }
 
 .location-info p {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 1.8rem;
   font-weight: 400;
   color: var(--primary-dark);

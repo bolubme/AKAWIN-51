@@ -135,8 +135,8 @@ function Navbar() {
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
       >
-        <Link to="/" className="logo">
-          AKAKIWN <span>50</span>
+        <Link to="/" className="logo" aria-label="AKAKIWN 50 by Domisense">
+          <span className="logo-mark" role="img" aria-label="AKAKIWN 50 by Domisense"></span>
         </Link>
 
         <div className="lang-toggle">
@@ -225,11 +225,6 @@ function Navbar() {
                         <rect x="2" y="2" width="20" height="20" rx="5"/>
                         <circle cx="12" cy="12" r="4"/>
                         <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
-                      </svg>
-                    </a>
-                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M14 8.5h2V5.5h-2.3c-2 0-3.2 1.2-3.2 3.4v1.6H8.5v3h2v7h3v-7h2.3l.4-3H13.5V9.2c0-.5.2-.7.7-.7H14z"/>
                       </svg>
                     </a>
                   </div>

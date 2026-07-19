@@ -15,6 +15,27 @@ const Residencies = lazy(() => import('./components/pages/Residencies'))
 const About = lazy(() => import('./components/pages/About'))
 const Contact = lazy(() => import('./components/pages/Contact'))
 
+function PageLoadingOverlay({ isHome }) {
+  return (
+    <div className="page-loading-overlay">
+      {isHome ? (
+        <div className="home-preloader">
+          <div className="home-preloader-brand">
+            <span>AKAKIWN</span>
+            <span>50</span>
+          </div>
+          <div className="home-preloader-copy">Architecture. Living. Place.</div>
+          <div className="home-preloader-lines">
+            <span className="line line--left"></span>
+            <span className="line line--center"></span>
+            <span className="line line--right"></span>
+          </div>
+        </div>
+      ) : null}
+    </div>
+  )
+}
+
 function AnimatedRoutes() {
   const location = useLocation()
 
@@ -23,42 +44,42 @@ function AnimatedRoutes() {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={
           <PageTransition>
-            <Suspense fallback={<div className="page-loading">Loading...</div>}>
+            <Suspense fallback={<PageLoadingOverlay isHome={location.pathname === '/'} />}>
               <Home />
             </Suspense>
           </PageTransition>
         } />
         <Route path="/architecture" element={
           <PageTransition>
-            <Suspense fallback={<div className="page-loading">Loading...</div>}>
+            <Suspense fallback={<PageLoadingOverlay isHome={location.pathname === '/'} />}>
               <Architecture />
             </Suspense>
           </PageTransition>
         } />
         <Route path="/location" element={
           <PageTransition>
-            <Suspense fallback={<div className="page-loading">Loading...</div>}>
+            <Suspense fallback={<PageLoadingOverlay isHome={location.pathname === '/'} />}>
               <Location />
             </Suspense>
           </PageTransition>
         } />
         <Route path="/residencies" element={
           <PageTransition>
-            <Suspense fallback={<div className="page-loading">Loading...</div>}>
+            <Suspense fallback={<PageLoadingOverlay isHome={location.pathname === '/'} />}>
               <Residencies />
             </Suspense>
           </PageTransition>
         } />
         <Route path="/about" element={
           <PageTransition>
-            <Suspense fallback={<div className="page-loading">Loading...</div>}>
+            <Suspense fallback={<PageLoadingOverlay isHome={location.pathname === '/'} />}>
               <About />
             </Suspense>
           </PageTransition>
         } />
         <Route path="/contact" element={
           <PageTransition>
-            <Suspense fallback={<div className="page-loading">Loading...</div>}>
+            <Suspense fallback={<PageLoadingOverlay isHome={location.pathname === '/'} />}>
               <Contact />
             </Suspense>
           </PageTransition>
@@ -69,48 +90,18 @@ function AnimatedRoutes() {
 }
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true)
-  const [isFading, setIsFading] = useState(false)
-
-  useEffect(() => {
-    // Start fade-out after the progress bar animation completes (1.5s)
-    const fadeTimer = setTimeout(() => {
-      setIsFading(true)
-    }, 1500)
-    // Remove loader after fade-out transition (0.5s)
-    const removeTimer = setTimeout(() => {
-      setIsLoading(false)
-    }, 2000)
-    return () => {
-      clearTimeout(fadeTimer)
-      clearTimeout(removeTimer)
-    }
-  }, [])
-
   return (
-    <>
-      {isLoading && (
-        <div className={`loader${isFading ? ' loader-fade-out' : ''}`}>
-          <div className="loader-content">
-            <h1 className="loader-title">AKAKIWN <span>50</span></h1>
-            <div className="loader-bar">
-              <div className="loader-progress"></div>
-            </div>
-          </div>
+    <LanguageProvider>
+      <Router>
+        <div className="app">
+          <Navbar />
+          <main>
+            <AnimatedRoutes />
+          </main>
+          <Footer />
         </div>
-      )}
-      <LanguageProvider>
-        <Router>
-          <div className="app">
-            <Navbar />
-            <main>
-              <AnimatedRoutes />
-            </main>
-            <Footer />
-          </div>
-        </Router>
-      </LanguageProvider>
-    </>
+      </Router>
+    </LanguageProvider>
   )
 }
 

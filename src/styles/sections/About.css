@@ -28,7 +28,7 @@
 }
 
 .about-description p {
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(248, 247, 245, 0.6);
   font-size: 1.05rem;
   line-height: 2;
   margin-bottom: 1.5rem;
@@ -46,13 +46,13 @@
   align-items: flex-start;
   gap: 1.5rem;
   padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(248, 247, 245, 0.02);
   border-left: 2px solid transparent;
   transition: var(--transition);
 }
 
 .value-item:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(248, 247, 245, 0.05);
   border-color: var(--accent);
 }
 
@@ -62,7 +62,7 @@
 }
 
 .value-item h4 {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 1.3rem;
   color: var(--primary-light);
   margin-bottom: 0.3rem;
@@ -70,7 +70,7 @@
 
 .value-item p {
   font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(248, 247, 245, 0.5);
 }
 
 /* Stats */
@@ -83,12 +83,12 @@
 .stat-item {
   text-align: center;
   padding: 2.5rem 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(248, 247, 245, 0.1);
   transition: var(--transition);
 }
 
 .stat-number {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 4rem;
   font-weight: 300;
   color: var(--accent);
@@ -100,7 +100,7 @@
   font-size: 0.7rem;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(248, 247, 245, 0.5);
   margin-top: 1rem;
   display: block;
 }
@@ -117,8 +117,8 @@
   inset: 0;
   background-image: repeating-linear-gradient(
     90deg,
-    rgba(255, 255, 255, 0.03),
-    rgba(255, 255, 255, 0.03) 1px,
+    rgba(248, 247, 245, 0.03),
+    rgba(248, 247, 245, 0.03) 1px,
     transparent 1px,
     transparent 100px
   );

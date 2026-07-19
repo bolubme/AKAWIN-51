@@ -1,5 +1,5 @@
 .residencies-section {
-  background: linear-gradient(180deg, #f8f7f5 0%, #f0efeb 100%);
+  background: linear-gradient(180deg, #f8f7f5 0%, #f8f7f5 100%);
 }
 
 .residencies-content {
@@ -17,15 +17,15 @@
 }
 
 .unit-card {
-  background: white;
+  background: var(--primary-light);
   padding: 2.5rem 2rem;
   text-align: center;
-  border: 1px solid rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(20, 36, 51, 0.03);
   transition: var(--transition);
 }
 
 .unit-card h4 {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 1.5rem;
   font-weight: 500;
   margin-bottom: 0.5rem;
@@ -47,7 +47,7 @@
 
 /* Amenities */
 .amenities-heading {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 1.8rem;
   font-weight: 400;
   color: var(--primary-dark);
@@ -62,10 +62,10 @@
 }
 
 .amenity-card {
-  background: white;
+  background: var(--primary-light);
   padding: 2.5rem 2rem;
   text-align: center;
-  border: 1px solid rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(20, 36, 51, 0.03);
   transition: var(--transition);
 }
 
@@ -85,11 +85,11 @@
 
 .amenity-card:hover .amenity-icon {
   background: var(--accent);
-  color: white;
+  color: var(--primary-light);
 }
 
 .amenity-card h4 {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 1.3rem;
   font-weight: 500;
   margin-bottom: 0.5rem;

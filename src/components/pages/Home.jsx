@@ -158,11 +158,7 @@ function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              <span className="hero-by-label">BY DOMISENSE</span>
-              <h1 className="hero-title-large">
-                <span className="title-main">AKAKIWN</span>
-                <span className="title-number">50</span>
-              </h1>
+              <h1 className="hero-logo-mark" role="img" aria-label="AKAKIWN 50 by Domisense"></h1>
               <div className="hero-divider"></div>
               <p className="hero-description">
                 {t.home.heroDescription || 'A landmark residential project in the heart of Marousi, where modern architecture meets the warmth of Mediterranean living.'}

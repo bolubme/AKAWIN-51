@@ -1,5 +1,5 @@
 .home-section {
-  background: linear-gradient(135deg, #f8f7f5 0%, #ebe9e4 100%);
+  background: linear-gradient(135deg, #f8f7f5 0%, #f8f7f5 100%);
   position: relative;
 }
 
@@ -9,7 +9,7 @@
 }
 
 .hero-title {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: clamp(4rem, 12vw, 10rem);
   font-weight: 300;
   line-height: 0.9;
@@ -36,7 +36,7 @@
 }
 
 .hero-tagline {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: clamp(1.2rem, 2.5vw, 1.6rem);
   font-weight: 300;
   font-style: italic;
