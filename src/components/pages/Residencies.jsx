@@ -1,27 +1,44 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { useLanguage } from '../../i18n/LanguageContext'
 import '../../styles/pages/Residencies.css'
 
-// Import images for each unit type (multiple images per unit for the slider)
-import img1 from '../../media/optimized/shapes_(3).jpg'
-import img2 from '../../media/optimized/shapes_(6).jpg'
-import img3 from '../../media/optimized/shapes_(7).jpg'
-import img4 from '../../media/optimized/shapes_(8).jpg'
-import img5 from '../../media/optimized/shapes_(9).jpg'
-import img6 from '../../media/optimized/shapes_(10).jpg'
-import img7 from '../../media/optimized/shapes_(11).jpg'
+// Full-quality source images served straight from /public (no optimization).
+// Paths contain spaces/parentheses, so encode them for use as URLs.
+const VIEWS = '/media/NewImg/260719_views'
+const asset = (p) => encodeURI(p)
+const isVideo = (src) => /\.mp4($|\?)/i.test(src)
 
-// Hero image — zoomed-in balcony view
-import heroImage from '../../media/optimized/shapes_(6).jpg'
+// Hero cycles through the external building views
+const heroViews = [
+  asset(`${VIEWS}/EXTERNAL/V1.png`),
+  asset(`${VIEWS}/EXTERNAL/V2.png`),
+  asset(`${VIEWS}/EXTERNAL/V3B.png`),
+  asset(`${VIEWS}/EXTERNAL/V4.png`),
+]
 
-// Unit gallery images — max 4 per unit, one row
+// Unit gallery images — one folder per unit type
 const unitGalleries = {
-  'one-bed-gf': [img1, img2, img3],
-  'three-bed': [img4, img5, img6],
-  'three-bed-mez': [img2, img4, img7],
-  'penthouse': [img5, img3, img1, img6],
+  'one-bed-gf': [
+    asset(`${VIEWS}/1 BED/shapes (7).png`),
+  ],
+  'three-bed': [
+    asset(`${VIEWS}/3 BED/shapes (3).png`),
+    asset(`${VIEWS}/3 BED/shapes (5).png`),
+    asset(`${VIEWS}/3 BED/shapes (6).png`),
+    asset(`${VIEWS}/3 BED/shapes (11).png`),
+  ],
+  'three-bed-mez': [
+    asset(`${VIEWS}/2 BED DUPLEX/mez 3.png`),
+    asset(`${VIEWS}/2 BED DUPLEX/mez 4.png`),
+  ],
+  'penthouse': [
+    asset(`${VIEWS}/3 BED PENTHOUSE/v1vid.mp4`),
+    asset(`${VIEWS}/3 BED PENTHOUSE/v1.png`),
+    asset(`${VIEWS}/3 BED PENTHOUSE/lv 05 solid .png`),
+    asset(`${VIEWS}/3 BED PENTHOUSE/PLAN LV 5 SOLID.png`),
+  ],
 }
 
 const BedIcon = () => (
@@ -59,12 +76,23 @@ function Residencies() {
   const [selectedUnit, setSelectedUnit] = useState(unitTypes[0])
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
+  // Hero view carousel
+  const [heroIndex, setHeroIndex] = useState(0)
+  const nextView = () => setHeroIndex((p) => (p + 1) % heroViews.length)
+  const prevView = () => setHeroIndex((p) => (p - 1 + heroViews.length) % heroViews.length)
+
+  // Auto-advance the hero; timer resets whenever the slide changes (incl. manual nav)
+  useEffect(() => {
+    const id = setTimeout(() => setHeroIndex((p) => (p + 1) % heroViews.length), 5000)
+    return () => clearTimeout(id)
+  }, [heroIndex])
+
   // Lightbox state (operates on the current unit's images)
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [lightboxIndex, setLightboxIndex] = useState(0)
 
   // Get images for the currently selected unit
-  const currentImages = unitGalleries[selectedUnit.id] || [img1]
+  const currentImages = unitGalleries[selectedUnit.id] || heroViews
 
   const openLightbox = (index) => {
     setLightboxIndex(index)
@@ -89,12 +117,20 @@ function Residencies() {
 
   return (
     <div className="page residencies-page">
-      {/* Hero Section — zoomed-in balcony view */}
+      {/* Hero Section — views with hover navigation */}
       <section className="residencies-hero">
         <div className="hero-background">
-          <img src={heroImage} alt="AKAKIWN 50 Residencies" />
-          <div className="hero-overlay"></div>
+          {heroViews.map((src, i) => (
+            <img
+              key={i}
+              src={src}
+              alt={`AKAKIWN 50 Residencies view ${i + 1}`}
+              className={i === heroIndex ? 'is-active' : ''}
+            />
+          ))}
         </div>
+        <div className="hero-overlay"></div>
+
         <motion.div
           className="hero-content"
           initial={{ opacity: 0, y: 30 }}
@@ -103,6 +139,26 @@ function Residencies() {
         >
           <h1 className="hero-title">{(t.residencies.pageHeroTitle || 'The Residencies.').replace(/\n/g, ' ')}</h1>
         </motion.div>
+
+        {/* Prev / next arrows — centred on the title line, always visible */}
+        <div className="hero-view-controls">
+          <button className="hero-view-nav hero-view-prev" onClick={prevView} aria-label="Previous view">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <path d="M15 18l-6-6 6-6" />
+            </svg>
+          </button>
+          <button className="hero-view-nav hero-view-next" onClick={nextView} aria-label="Next view">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <path d="M9 18l6-6-6-6" />
+            </svg>
+          </button>
+        </div>
+
+        <div className="hero-view-counter" aria-label={`View ${heroIndex + 1} of ${heroViews.length}`}>
+          <span className="current">{String(heroIndex + 1).padStart(4, '0')}</span>
+          <span className="sep">/</span>
+          <span className="total">{String(heroViews.length).padStart(4, '0')}</span>
+        </div>
       </section>
 
       {/* Unit Selector — matches Architecture info strip */}
@@ -200,10 +256,20 @@ function Residencies() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.4 }}
             >
-              <img
-                src={currentImages[currentImageIndex]}
-                alt={`${selectedUnit.type} view ${currentImageIndex + 1}`}
-              />
+              {isVideo(currentImages[currentImageIndex]) ? (
+                <video
+                  src={currentImages[currentImageIndex]}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                />
+              ) : (
+                <img
+                  src={currentImages[currentImageIndex]}
+                  alt={`${selectedUnit.type} view ${currentImageIndex + 1}`}
+                />
+              )}
             </motion.div>
           </AnimatePresence>
 
@@ -244,7 +310,11 @@ function Residencies() {
               transition={{ duration: 0.5, delay: index * 0.08 }}
               aria-label={`Open image ${index + 1}`}
             >
-              <img src={src} alt={`${selectedUnit.type} detail ${index + 1}`} loading="lazy" />
+              {isVideo(src) ? (
+                <video src={src} muted loop playsInline autoPlay />
+              ) : (
+                <img src={src} alt={`${selectedUnit.type} detail ${index + 1}`} loading="lazy" />
+              )}
               <span className="gallery-menu-zoom">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <circle cx="11" cy="11" r="7" /><path d="M21 21l-4.3-4.3M11 8v6M8 11h6" />
@@ -284,7 +354,11 @@ function Residencies() {
               transition={{ duration: 0.3 }}
               onClick={(e) => e.stopPropagation()}
             >
-              <img src={currentImages[lightboxIndex]} alt={`${selectedUnit.type} detail ${lightboxIndex + 1}`} />
+              {isVideo(currentImages[lightboxIndex]) ? (
+                <video src={currentImages[lightboxIndex]} controls autoPlay muted loop playsInline />
+              ) : (
+                <img src={currentImages[lightboxIndex]} alt={`${selectedUnit.type} detail ${lightboxIndex + 1}`} />
+              )}
             </motion.div>
             <button className="lightbox-nav lightbox-next" onClick={(e) => { e.stopPropagation(); lightboxNext() }} aria-label="Next">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -304,12 +378,9 @@ function Residencies() {
         transition={{ duration: 0.8 }}
       >
         <div className="cta-content">
-          <p className="cta-text">{t.residencies.ctaText || 'Ready to find your perfect residence?'}</p>
+          <h2 className="cta-text">{t.residencies.ctaText || 'Ready to find your perfect residence?'}</h2>
           <Link to="/contact" className="cta-button">
             {t.residencies.ctaButton || 'Schedule a Viewing'}
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
           </Link>
         </div>
       </motion.section>

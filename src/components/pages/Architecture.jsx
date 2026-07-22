@@ -1,17 +1,18 @@
-import { Fragment, useState } from 'react'
+import { Fragment, useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useLanguage } from '../../i18n/LanguageContext'
 import '../../styles/pages/Architecture.css'
 
-// External render views only (no interiors, no repeated views)
-import viewFront from '../../media/optimized/V1.jpg'
-import viewCorner from '../../media/optimized/shapes_(9).jpg'
-import viewVilla from '../../media/optimized/shapes_(7).jpg'
-import viewRooftop from '../../media/optimized/shapes_(8).jpg'
-import viewBalcony from '../../media/optimized/shapes_(6).jpg'
+// External render views served straight from /public (full quality, no optimization)
+const EXTERNAL = '/media/NewImg/260719_views/EXTERNAL'
+const viewFront = `${EXTERNAL}/V1.png`
+const viewCorner = `${EXTERNAL}/V2.png`
+const viewVilla = `${EXTERNAL}/V3B.png`
+const viewRooftop = `${EXTERNAL}/V4.png`
+const viewBalcony = `${EXTERNAL}/V1.png`
 
 // Hero cycles through the external render views
-const heroViews = [viewFront, viewCorner, viewVilla, viewRooftop, viewBalcony]
+const heroViews = [viewFront, viewCorner, viewVilla, viewRooftop]
 
 function Architecture() {
   const { t } = useLanguage()
@@ -19,6 +20,12 @@ function Architecture() {
 
   const nextView = () => setHeroIndex((p) => (p + 1) % heroViews.length)
   const prevView = () => setHeroIndex((p) => (p - 1 + heroViews.length) % heroViews.length)
+
+  // Auto-advance the hero; timer resets whenever the slide changes (incl. manual nav)
+  useEffect(() => {
+    const id = setTimeout(() => setHeroIndex((p) => (p + 1) % heroViews.length), 5000)
+    return () => clearTimeout(id)
+  }, [heroIndex])
 
   const containerVariants = {
     hidden: { opacity: 0 },

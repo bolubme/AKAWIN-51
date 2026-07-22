@@ -7,25 +7,23 @@
 
 /* Page heading (replaces the deleted intro image) */
 .contact-heading {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 150px 40px 0;
+  padding: var(--nav-offset) var(--gutter) 0;
 }
 
 .contact-heading-label {
   display: block;
   font-family: var(--font-sans);
-  font-size: 0.72rem;
+  font-size: 14px;
   font-weight: 600;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: #142433;
   margin-bottom: 16px;
 }
 
 .contact-heading-title {
   font-family: var(--font-sans);
-  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  font-size: clamp(1.25rem, 3vw, 1.65rem);
   font-weight: 300;
   color: var(--primary-dark);
   letter-spacing: -0.01em;
@@ -111,15 +109,13 @@
 
 /* Main Container */
 .contact-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 40px 40px 100px;
+  padding: 40px var(--gutter) var(--section-y);
 }
 
 .contact-content {
   display: grid;
   grid-template-columns: 1.3fr 1fr;
-  gap: 60px;
+  gap: var(--grid-gap);
 }
 
 /* Form */
@@ -258,9 +254,9 @@
 
 .info-card > p {
   font-family: var(--font-sans);
-  font-size: 0.9rem;
+  font-size: 14px;
   line-height: 1.7;
-  color: rgba(20, 36, 51, 0.6);
+  color: #142433;
   margin-bottom: 40px;
   padding-bottom: 30px;
   border-bottom: 1px solid rgba(20, 36, 51, 0.1);
@@ -281,11 +277,11 @@
 
 .info-item strong {
   font-family: var(--font-sans);
-  font-size: 0.7rem;
+  font-size: 14px;
   font-weight: 600;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: rgba(20, 36, 51, 0.5);
+  color: #142433;
 }
 
 .info-item span,
@@ -332,7 +328,6 @@
 @media (max-width: 1024px) {
   .contact-content {
     grid-template-columns: 1fr;
-    gap: 50px;
   }
   
   .contact-info {
@@ -351,13 +346,6 @@
     gap: 40px;
   }
   
-  .contact-container {
-    padding: 30px 30px 80px;
-  }
-
-  .contact-heading {
-    padding: 120px 30px 0;
-  }
 }
 
 @media (max-width: 768px) {
@@ -395,14 +383,7 @@
   }
 }
 
-@media (max-width: 600px) {
-  .contact-container {
-    padding: 24px 20px 60px;
-  }
-
-  .contact-heading {
-    padding: 110px 20px 0;
-  }
+@media (max-width: 480px) {
 
   .submit-btn {
     width: 100%;

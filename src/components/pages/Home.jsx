@@ -13,6 +13,18 @@ const slides = [
     id: 2,
     video: '/media/generated-video.mp4',
   },
+  {
+    id: 3,
+    video: encodeURI('/media/NewImg/260719_views/EXTERNAL/V3B VID.mp4'),
+  },
+  {
+    id: 4,
+    video: encodeURI('/media/NewImg/260719_views/EXTERNAL/Video Project 12.mp4'),
+  },
+  {
+    id: 5,
+    video: encodeURI('/media/NewImg/260719_views/EXTERNAL/Video Project 13.mp4'),
+  },
 ]
 
 

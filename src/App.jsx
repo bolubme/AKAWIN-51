@@ -5,6 +5,7 @@ import { LanguageProvider } from './i18n/LanguageContext'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import PageTransition from './components/PageTransition'
+import Preloader from './components/Preloader'
 import './styles/App.css'
 
 // Lazy load components
@@ -90,9 +91,12 @@ function AnimatedRoutes() {
 }
 
 function App() {
+  const [loading, setLoading] = useState(true)
+
   return (
     <LanguageProvider>
       <Router>
+        {loading && <Preloader onDone={() => setLoading(false)} />}
         <div className="app">
           <Navbar />
           <main>

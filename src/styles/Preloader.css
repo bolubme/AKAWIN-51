@@ -1,0 +1,24 @@
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #142433;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform;
+}
+
+/* Same brand lockup as the navbar (AKAKIWN 50 / By Domisense),
+   rendered as a recolourable mask so it shows white on the dark panel. */
+.preloader-logo {
+  display: block;
+  width: clamp(230px, 42vw, 460px);
+  aspect-ratio: 172 / 44;
+  background-color: #f8f7f5;
+  -webkit-mask: url('/media/akakiwn-logo.svg') no-repeat center center;
+  -webkit-mask-size: contain;
+  mask: url('/media/akakiwn-logo.svg') no-repeat center center;
+  mask-size: contain;
+  will-change: clip-path, opacity;
+}

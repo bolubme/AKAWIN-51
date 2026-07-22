@@ -18,6 +18,42 @@
   /* Typography system */
   --font-sans: 'IBM Plex Sans', 'Inter', system-ui, -apple-system, sans-serif;
   --font-serif: 'Bodoni Moda', 'Playfair Display', Georgia, 'Times New Roman', serif;
+
+  /* ---------------------------------------------------------------
+     Responsive layout scale — single source of truth for every page.
+     Breakpoints: 1024 (tablet), 768 (phone), 480 (small phone).
+     --------------------------------------------------------------- */
+  --gutter: 4rem;      /* page left/right margin */
+  --section-y: 90px;   /* vertical padding between sections */
+  --grid-gap: 80px;    /* gap in the main text/image splits */
+  --nav-offset: 120px; /* top offset clearing the fixed navbar */
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --gutter: 2rem;
+    --section-y: 70px;
+    --grid-gap: 48px;
+    --nav-offset: 110px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --gutter: 24px;
+    --section-y: 56px;
+    --grid-gap: 32px;
+    --nav-offset: 96px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --gutter: 20px;
+    --section-y: 44px;
+    --grid-gap: 24px;
+    --nav-offset: 88px;
+  }
 }
 
 html {

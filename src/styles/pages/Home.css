@@ -14,7 +14,7 @@
   left: 0;
   right: 0;
   z-index: 1;
-  padding: 0 60px 60px;
+  padding: 0 var(--gutter) 60px;
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.5s ease;
@@ -100,7 +100,7 @@
   position: relative;
   z-index: 10;
   height: 100%;
-  padding: 120px 60px 60px;
+  padding: 120px var(--gutter) 60px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -434,7 +434,7 @@
 /* 01 — Intro */
 .editorial-intro {
   width: 100%;
-  padding: 140px 60px 100px;
+  padding: 140px var(--gutter) 100px;
 }
 
 .editorial-headline {
@@ -460,7 +460,7 @@
 /* 02 — Full-width Image */
 .editorial-full-image {
   width: 100%;
-  padding: 0 60px 40px;
+  padding: 0 var(--gutter) 40px;
 }
 
 .full-image-wrapper {
@@ -518,7 +518,7 @@
 /* Explore the Project Section */
 .explore-project {
   width: 100%;
-  padding: 120px 60px;
+  padding: 120px var(--gutter);
 }
 
 .explore-header {
@@ -636,7 +636,7 @@
 /* Building Showcase Section */
 .building-showcase {
   width: 100%;
-  padding: 80px 60px 60px;
+  padding: 80px var(--gutter) 60px;
 }
 
 .showcase-image {
@@ -667,7 +667,7 @@
 /* Featured Spaces Section */
 .featured-spaces {
   width: 100%;
-  padding: 120px 60px;
+  padding: 120px var(--gutter);
 }
 
 .featured-title {
@@ -805,7 +805,7 @@
 /* 03 / 06 — Split Layout */
 .editorial-split {
   width: 100%;
-  padding: 100px 60px;
+  padding: 100px var(--gutter);
   display: grid;
   grid-template-columns: 1fr 1.2fr;
   gap: 80px;
@@ -865,7 +865,7 @@
 /* 04 — Duo Images */
 .editorial-duo {
   width: 100%;
-  padding: 40px 60px 100px;
+  padding: 40px var(--gutter) 100px;
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
   gap: 24px;
@@ -925,7 +925,7 @@
   width: 100%;
   max-width: 1000px;
   margin: 0 auto;
-  padding: 100px 60px;
+  padding: 100px var(--gutter);
   text-align: center;
 }
 
@@ -951,7 +951,7 @@
 /* 07 — Trio Images */
 .editorial-trio {
   width: 100%;
-  padding: 40px 60px 100px;
+  padding: 40px var(--gutter) 100px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
@@ -983,7 +983,7 @@
 /* 08 — Closing CTA */
 .editorial-closing {
   width: 100%;
-  padding: 80px 60px 140px;
+  padding: 80px var(--gutter) 140px;
   text-align: center;
 }
 
@@ -1063,7 +1063,7 @@
    ======================================== */
 @media (max-width: 1200px) {
   .hero-content {
-    padding: 100px 40px 50px;
+    padding: 100px var(--gutter) 50px;
   }
   
   .hero-main-content {
@@ -1089,7 +1089,7 @@
   }
   
   .brand-fixed {
-    padding: 0 40px 40px;
+    padding: 0 var(--gutter) 40px;
   }
 
   .editorial-intro,
@@ -1108,7 +1108,7 @@
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
   .hero-info-left,
   .hero-info-right {
     display: none;
@@ -1177,7 +1177,7 @@
   }
 
   .editorial-quote {
-    padding: 60px 40px;
+    padding: 60px var(--gutter);
   }
 
   .editorial-closing {
@@ -1185,7 +1185,7 @@
   }
 
   .explore-project {
-    padding: 80px 40px;
+    padding: 80px var(--gutter);
   }
 
   .explore-grid {
@@ -1198,7 +1198,7 @@
   }
 
   .building-showcase {
-    padding: 60px 40px 40px;
+    padding: 60px var(--gutter) 40px;
   }
 
   .showcase-image {
@@ -1212,7 +1212,7 @@
   }
 
   .featured-spaces {
-    padding: 80px 40px;
+    padding: 80px var(--gutter);
   }
 
   .featured-title {
@@ -1233,9 +1233,9 @@
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 480px) {
   .hero-content {
-    padding: 80px 24px 40px;
+    padding: 80px var(--gutter) 40px;
   }
   
   .hero-main-content {
@@ -1298,7 +1298,7 @@
   }
   
   .brand-fixed {
-    padding: 0 24px 30px;
+    padding: 0 var(--gutter) 30px;
   }
 
   .editorial-intro,
@@ -1339,7 +1339,7 @@
   }
 
   .editorial-quote {
-    padding: 48px 24px;
+    padding: 48px var(--gutter);
   }
 
   .closing-ctas {

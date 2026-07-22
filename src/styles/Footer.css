@@ -4,7 +4,7 @@
   color: #142433;
   /* Equal space above the logo and below it (to the contact row) */
   --footer-logo-gap: 3.5rem;
-  padding: calc(var(--footer-logo-gap) + 2.5rem) 4rem 3rem;
+  padding: calc(var(--footer-logo-gap) + 2.5rem) var(--gutter) 3rem;
   margin-top: 0;
   overflow: hidden;
 }
@@ -113,7 +113,7 @@
 }
 
 /* Responsive */
-@media (max-width: 900px) {
+@media (max-width: 768px) {
   .footer-reach {
     display: flex;
     gap: 0.75rem 1.5rem;
@@ -127,7 +127,7 @@
 @media (max-width: 768px) {
   .footer {
     --footer-logo-gap: 2.75rem;
-    padding: calc(var(--footer-logo-gap) + 1.5rem) 2rem 2.5rem;
+    padding: calc(var(--footer-logo-gap) + 1.5rem) var(--gutter) 2.5rem;
   }
 
   .footer-marquee {
@@ -137,7 +137,7 @@
   }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 480px) {
   .footer-reach {
     gap: 0.65rem 1.25rem;
   }

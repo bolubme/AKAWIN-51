@@ -79,27 +79,16 @@
 /* ========== Content Slider Section ========== */
 .about-slider-section {
   min-height: auto !important;
-  padding: 100px 0 100px 60px !important;
+  padding: var(--section-y) var(--gutter) !important;
   background: var(--primary-light);
   display: block !important;
 }
 
-.about-story-logo {
-  margin-bottom: 52px;
-  padding-right: 60px;
-}
-
-.about-story-logo img {
-  height: 210px;
-  width: auto;
-  display: block;
-}
-
 .about-slider-inner {
   display: grid;
-  grid-template-columns: minmax(0, 0.45fr) minmax(0, 0.55fr);
-  gap: 60px;
-  align-items: stretch;
+  grid-template-columns: 1fr 2.4fr;
+  gap: var(--grid-gap);
+  align-items: start;
   width: 100%;
 }
 
@@ -107,7 +96,8 @@
   position: relative;
   width: 100%;
   min-width: 0;
-  min-height: 600px;
+  aspect-ratio: 16 / 10;
+  border-radius: 10px;
   overflow: hidden;
   background: var(--primary-dark);
 }
@@ -159,23 +149,24 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding-right: 60px;
-  justify-content: center;
+  justify-content: flex-start;
+  min-width: 0;
+  container-type: inline-size;
 }
 
 .about-slider-label {
   font-family: var(--font-sans);
-  font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 0.2em;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: rgba(20, 36, 51, 0.5);
+  color: #142433;
   margin-bottom: 10px;
 }
 
 .about-slider-headline {
   font-family: var(--font-sans);
-  font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+  font-size: clamp(1.25rem, 7.2cqi, 1.65rem);
   font-weight: 700;
   font-style: normal;
   line-height: 1.35;
@@ -185,9 +176,10 @@
 
 .about-slider-paragraph {
   font-family: var(--font-sans);
-  font-size: 0.9rem;
-  line-height: 1.8;
-  color: rgba(20, 36, 51, 0.65);
+  font-size: 14px;
+  line-height: 1.7;
+  color: #142433;
+  margin: 0;
 }
 
 .about-slider-dots {
@@ -236,22 +228,10 @@
   display: block;
 }
 
-@media (max-width: 900px) {
-  .about-fullwidth-image img {
-    height: 45vh;
-  }
-}
-
-@media (max-width: 600px) {
-  .about-fullwidth-image img {
-    height: 35vh;
-  }
-}
-
 /* ========== Philosophy Section ========== */
 .about-philosophy-section {
   min-height: auto !important;
-  padding: 80px 60px 80px !important;
+  padding: var(--section-y) var(--gutter) !important;
   background: var(--primary-light);
   display: block !important;
 }
@@ -293,7 +273,7 @@
 /* ========== Team Section ========== */
 .about-team-section {
   min-height: auto !important;
-  padding: 80px 60px 100px !important;
+  padding: var(--section-y) var(--gutter) !important;
   background: var(--primary-light);
   display: block !important;
 }
@@ -400,7 +380,7 @@
 /* ========== Disciplines (Architecture · Construction · Development) ========== */
 .about-disciplines-section {
   min-height: auto !important;
-  padding: 90px 60px !important;
+  padding: var(--section-y) var(--gutter) !important;
   background: #f8f7f5;
   display: block !important;
 }
@@ -458,9 +438,9 @@
 
 .discipline-desc {
   font-family: var(--font-sans);
-  font-size: 0.92rem;
+  font-size: 14px;
   line-height: 1.7;
-  color: rgba(20, 36, 51, 0.65);
+  color: #142433;
 }
 
 /* ========== Team by discipline ========== */
@@ -515,10 +495,6 @@
 }
 
 @media (max-width: 768px) {
-  .about-disciplines-section {
-    padding: 60px 24px !important;
-  }
-
   .about-disciplines-grid {
     grid-template-columns: 1fr;
     gap: 36px;
@@ -542,33 +518,13 @@
     right: 40px;
   }
 
-  .about-slider-section {
-    padding: 80px 0 80px 40px !important;
-  }
-
   .about-slider-inner {
-    gap: 40px;
-    grid-template-columns: minmax(0, 0.5fr) minmax(0, 0.5fr);
-  }
-
-  .about-slider-text {
-    padding-right: 40px;
-  }
-
-  .about-slider-image-container {
-    min-height: 500px;
+    gap: 48px;
+    grid-template-columns: 1fr 2fr;
   }
 
   .about-fullwidth-image {
     margin-top: 100px !important;
-  }
-
-  .about-philosophy-section {
-    padding: 80px 40px 50px !important;
-  }
-
-  .about-team-section {
-    padding: 60px 40px 80px !important;
   }
 
   .about-team-grid {
@@ -612,36 +568,17 @@
     font-size: 0.7rem;
   }
 
-  .about-slider-section {
-    padding: 60px 24px 50px !important;
-  }
-
-  .about-story-logo {
-    margin-bottom: 40px;
-    padding-right: 0;
-  }
-
-  .about-story-logo img {
-    height: 130px;
-  }
-
   .about-slider-inner {
     grid-template-columns: 1fr;
     gap: 40px;
   }
 
   .about-slider-text {
-    padding-right: 0;
     order: 1;
   }
 
   .about-slider-image-container {
     order: 2;
-    min-height: 400px;
-  }
-
-  .about-slider-headline {
-    font-size: clamp(1.5rem, 5vw, 1.8rem);
   }
 
   .slider-nav-btn {
@@ -661,10 +598,6 @@
     margin-top: 80px !important;
   }
 
-  .about-philosophy-section {
-    padding: 60px 24px 40px !important;
-  }
-
   .about-philosophy-inner {
     grid-template-columns: 1fr;
     gap: 24px;
@@ -674,17 +607,13 @@
     font-size: 1.8rem;
   }
 
-  .about-team-section {
-    padding: 50px 24px 60px !important;
-  }
-
   .about-team-grid {
     grid-template-columns: 1fr 1fr;
     gap: 30px;
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 480px) {
   .about-hero-content {
     bottom: 160px;
     left: 20px;
@@ -703,26 +632,13 @@
     padding-top: 16px;
   }
 
-  .about-slider-section {
-    padding: 40px 20px 40px !important;
-  }
-
-  .about-slider-image-container {
-    min-height: 300px;
-  }
-
   .about-slider-label {
     font-size: 0.65rem;
     margin-bottom: 5px;
   }
 
   .about-slider-headline {
-    font-size: 1.4rem;
     margin-bottom: 5px;
-  }
-
-  .about-slider-paragraph {
-    font-size: 0.85rem;
   }
 
   .about-slider-dots {
@@ -741,10 +657,6 @@
 
   .about-fullwidth-image img {
     height: 40vh;
-  }
-
-  .about-philosophy-section {
-    padding: 50px 20px 30px !important;
   }
 
   .about-philosophy-inner {
@@ -771,10 +683,6 @@
   .slider-nav-btn svg {
     width: 18px;
     height: 18px;
-  }
-
-  .about-team-section {
-    padding: 40px 20px 50px !important;
   }
 
   .about-team-grid {

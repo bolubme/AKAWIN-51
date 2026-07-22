@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion'
-import { Link } from 'react-router-dom'
 import { useLanguage } from '../../i18n/LanguageContext'
 import '../../styles/pages/Location.css'
 
@@ -47,7 +46,7 @@ function Location() {
         initial="hidden"
         animate="visible"
       >
-        {/* Map and Stats Row */}
+        {/* Map (left) + Stats & Amenities (right) */}
         <motion.div className="location-map-row" variants={itemVariants}>
           {/* Map */}
           <div className="map-visual">
@@ -63,49 +62,40 @@ function Location() {
             ></iframe>
           </div>
 
-          {/* Quick Stats - Right side */}
-          <div className="location-stats">
-            {locationDetails.map((item) => (
-              <div key={item.label} className="stat-item">
-                <span className="stat-value">{item.value}</span>
-                <span className="stat-label">{item.label}</span>
-              </div>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Nearby Amenities - Below Map */}
-        <motion.div className="amenities-section" variants={itemVariants}>
-          <h4 className="amenities-title">{t.location.amenitiesTitle}</h4>
-          <p className="amenities-note">{t.location.description2}</p>
-          <div className="amenities-grid">
-            {nearbyAmenities.map((amenity, index) => (
-              <motion.div 
-                key={amenity.name}
-                className="amenity-card"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 + index * 0.08 }}
-              >
-                <div className="amenity-info">
-                  <span className="amenity-name">{amenity.name}</span>
-                  <span className="amenity-type">{amenity.type}</span>
+          {/* Right column: quick stats, then nearby amenities */}
+          <div className="location-side">
+            <div className="location-stats">
+              {locationDetails.map((item) => (
+                <div key={item.label} className="stat-item">
+                  <span className="stat-value">{item.value}</span>
+                  <span className="stat-label">{item.label}</span>
                 </div>
-                <span className="amenity-distance">{amenity.distance}</span>
-              </motion.div>
-            ))}
+              ))}
+            </div>
+
+            <div className="amenities-section">
+              <h4 className="amenities-title">{t.location.amenitiesTitle}</h4>
+              <div className="amenities-grid">
+                {nearbyAmenities.map((amenity, index) => (
+                  <motion.div
+                    key={amenity.name}
+                    className="amenity-card"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 + index * 0.05 }}
+                  >
+                    <div className="amenity-info">
+                      <span className="amenity-name">{amenity.name}</span>
+                      <span className="amenity-type">{amenity.type}</span>
+                    </div>
+                    <span className="amenity-distance">{amenity.distance}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
           </div>
         </motion.div>
 
-        {/* Back to Home */}
-        <motion.div variants={itemVariants}>
-          <Link to="/" className="back-link">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M19 12H5M12 19l-7-7 7-7"/>
-            </svg>
-            <span>{t.location.backToHome || 'Back to Home'}</span>
-          </Link>
-        </motion.div>
       </motion.div>
     </div>
   )

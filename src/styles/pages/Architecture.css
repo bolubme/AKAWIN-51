@@ -113,7 +113,7 @@
 /* Info Section — horizontal band, no image */
 .arch-info {
   display: block;
-  padding: 72px 4rem 40px !important;
+  padding: var(--section-y) var(--gutter) 40px !important;
   background: #f8f7f5;
   min-height: auto !important;
 }
@@ -132,16 +132,16 @@
 /* Editorial rows — large landscape image left, narrow text column right.
    Horizontal padding matches the footer / navbar (4rem). */
 .arch-editorial {
-  padding: 30px 4rem 0;
+  padding: 30px var(--gutter) 0;
   display: flex;
   flex-direction: column;
-  gap: 110px;
+  gap: var(--section-y);
 }
 
 .arch-editorial-row {
   display: grid;
   grid-template-columns: 2.4fr 1fr;
-  gap: 80px;
+  gap: var(--grid-gap);
   align-items: center;
 }
 
@@ -340,25 +340,16 @@
     left: 40px;
   }
 
-  .arch-info {
-    padding: 60px 2rem 30px !important;
-  }
-
   .arch-info-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 
   .arch-editorial {
-    padding: 20px 2rem 0;
-    gap: 80px;
+    padding: 20px var(--gutter) 0;
   }
 
   .arch-editorial-duo {
-    margin-right: -2rem;
-  }
-
-  .arch-editorial-row {
-    gap: 48px;
+    margin-right: calc(-1 * var(--gutter));
   }
 
   .architecture-page .page-cta {
@@ -367,13 +358,12 @@
 }
 
 @media (max-width: 768px) {
+  /* Stack the hero: title on top, then a control row (arrows left, counter right)
+     so nothing overlaps on a narrow screen. */
   .arch-hero .hero-content {
-    bottom: 44px;
-    left: 24px;
-  }
-
-  .arch-info {
-    padding: 44px 24px !important;
+    bottom: 104px;
+    left: var(--gutter);
+    right: var(--gutter);
   }
 
   .arch-info-grid {
@@ -382,12 +372,10 @@
   }
 
   .arch-editorial {
-    padding: 10px 24px 0;
-    gap: 56px;
+    padding: 10px var(--gutter) 0;
   }
 
   .arch-editorial-duo {
-    margin-right: -24px;
     gap: 10px;
   }
 
@@ -401,13 +389,21 @@
     order: unset;
   }
 
+  /* stacked: text must align flush with the image edge, not inset further */
   .arch-editorial-text {
-    padding-top: 0;
+    padding: 0;
     gap: 12px;
   }
 
   .hero-view-controls {
     bottom: 40px;
+    left: var(--gutter);
+    transform: none;
+  }
+
+  .hero-view-counter {
+    bottom: 53px;
+    right: var(--gutter);
   }
 
   .hero-view-nav {
@@ -420,7 +416,7 @@
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 480px) {
   .arch-info-grid {
     grid-template-columns: 1fr 1fr;
   }
