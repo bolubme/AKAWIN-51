@@ -4,34 +4,47 @@ import { Link } from 'react-router-dom'
 import { useLanguage } from '../../i18n/LanguageContext'
 import '../../styles/pages/Home.css'
 
+const EXT = '/media/NewImg/260719_views/EXTERNAL'
+const asset = (p) => encodeURI(p)
+const isVideo = (src) => /\.mp4($|\?)/i.test(src)
+
+// Hero rotation — videos with exterior stills interleaved between them
 const slides = [
-  {
-    id: 1,
-    video: '/media/Video3_002.mp4',
-  },
-  {
-    id: 2,
-    video: '/media/generated-video.mp4',
-  },
-  {
-    id: 3,
-    video: encodeURI('/media/NewImg/260719_views/EXTERNAL/V3B VID.mp4'),
-  },
-  {
-    id: 4,
-    video: encodeURI('/media/NewImg/260719_views/EXTERNAL/Video Project 12.mp4'),
-  },
-  {
-    id: 5,
-    video: encodeURI('/media/NewImg/260719_views/EXTERNAL/Video Project 13.mp4'),
-  },
+  { id: 1, src: asset(`${EXT}/V3B VID.mp4`) },
+  { id: 2, src: `${EXT}/V1.png` },
+  { id: 3, src: '/media/Video3_002.mp4' },
+  { id: 4, src: `${EXT}/V2.png` },
+  { id: 5, src: asset(`${EXT}/Video Project 12.mp4`) },
+  { id: 6, src: `${EXT}/V4.png` },
+  { id: 7, src: asset(`${EXT}/Video Project 13.mp4`) },
 ]
+
+// Renders a slide's media and calls onReady once the first frame is available.
+function SlideMedia({ slide, onReady }) {
+  const fill = { width: '100%', height: '100%', objectFit: 'cover', display: 'block' }
+  return isVideo(slide.src) ? (
+    <video
+      src={slide.src}
+      autoPlay
+      muted
+      loop
+      playsInline
+      preload="auto"
+      onLoadedData={onReady}
+      onError={onReady}
+      style={fill}
+    />
+  ) : (
+    <img src={slide.src} alt="AKAKIWN 50" onLoad={onReady} onError={onReady} style={fill} />
+  )
+}
 
 
 function Home() {
   const { t } = useLanguage()
   const [currentSlide, setCurrentSlide] = useState(0)
-  const [slideDirection, setSlideDirection] = useState('right')
+  const [prevIndex, setPrevIndex] = useState(null) // kept visible underneath until the new slide loads
+  const [slideLoaded, setSlideLoaded] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const containerRef = useRef(null)
   const heroRef = useRef(null)
@@ -65,54 +78,39 @@ function Home() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Auto-advance slides with timer
-  const [slideProgress, setSlideProgress] = useState(0)
-  const slideIntervalRef = useRef(null)
-  const SLIDE_DURATION = 6000 // 6 seconds per slide
+  // Auto-advance — but the swap only happens once the current slide has actually
+  // loaded, so a still-downloading video/image is never shown blank.
+  const SLIDE_DURATION = 6000
 
+  const changeSlide = (index) => {
+    if (index === currentSlide) return
+    setPrevIndex(currentSlide)
+    setSlideLoaded(false)
+    setCurrentSlide(index)
+  }
+
+  const goNext = () => changeSlide((currentSlide + 1) % slides.length)
+  const goPrev = () => changeSlide((currentSlide - 1 + slides.length) % slides.length)
+  const handleSlideLoaded = () => setSlideLoaded(true)
+
+  // Start the countdown for the next slide only after this one is visible.
   useEffect(() => {
-    // Reset progress and start timer for current slide
-    setSlideProgress(0)
-    const startTime = Date.now()
-    
-    const progressInterval = setInterval(() => {
-      const elapsed = Date.now() - startTime
-      const progress = Math.min((elapsed / SLIDE_DURATION) * 100, 100)
-      setSlideProgress(progress)
-    }, 50)
-
-    slideIntervalRef.current = setTimeout(() => {
+    if (!slideLoaded) return
+    const t = setTimeout(() => {
+      setPrevIndex(currentSlide)
+      setSlideLoaded(false)
       setCurrentSlide((prev) => (prev + 1) % slides.length)
     }, SLIDE_DURATION)
+    return () => clearTimeout(t)
+  }, [slideLoaded, currentSlide])
 
-    return () => {
-      clearInterval(progressInterval)
-      clearTimeout(slideIntervalRef.current)
+  // Once the new slide has faded in on top, drop the previous one.
+  useEffect(() => {
+    if (slideLoaded && prevIndex !== null) {
+      const t = setTimeout(() => setPrevIndex(null), 1000)
+      return () => clearTimeout(t)
     }
-  }, [currentSlide])
-
-  const goToSlide = (index) => {
-    if (index !== currentSlide) {
-      setSlideDirection(index > currentSlide ? 'right' : 'left')
-      setCurrentSlide(index)
-    }
-  }
-
-  // Crossfade variants for smooth video transitions
-  const slideVariants = {
-    enter: {
-      opacity: 0,
-      scale: 1.05,
-    },
-    center: {
-      opacity: 1,
-      scale: 1,
-    },
-    exit: {
-      opacity: 0,
-      scale: 1,
-    },
-  }
+  }, [slideLoaded, prevIndex])
 
   return (
     <div className={`page home-page ${isScrolled ? 'scrolled' : ''}`} ref={containerRef}>
@@ -135,55 +133,55 @@ function Home() {
         }}
       >
         <div className="hero-container">
-          {/* Background Video Slider */}
-          <AnimatePresence initial={false} mode="sync">
-            <motion.div
-              key={currentSlide}
-              className="hero-background"
-              variants={slideVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{ 
-                duration: 1.2, 
-                ease: [0.4, 0, 0.2, 1]
-              }}
-            >
-              <video 
-                src={slides[currentSlide].video} 
-                autoPlay
-                muted
-                loop
-                playsInline
-                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-              />
-              <div className="hero-overlay"></div>
-            </motion.div>
-          </AnimatePresence>
+          {/* Background slider — previous slide stays fully opaque underneath
+              until the new one has loaded, so the background never shows. */}
+          {prevIndex !== null && (
+            <div className="hero-background hero-slide" style={{ zIndex: 1 }}>
+              <SlideMedia key={`prev-${prevIndex}`} slide={slides[prevIndex]} />
+            </div>
+          )}
+          <div
+            className="hero-background hero-slide"
+            style={{
+              zIndex: 2,
+              opacity: slideLoaded ? 1 : 0,
+              transition: 'opacity 1s ease',
+            }}
+          >
+            <SlideMedia key={`cur-${currentSlide}`} slide={slides[currentSlide]} onReady={handleSlideLoaded} />
+          </div>
+          <div className="hero-overlay"></div>
 
-          {/* Hero Content - New Layout */}
+          {/* Hero Content — text left, slide arrows right, balanced on one line */}
           <div className="hero-content">
-            {/* Main Content - Bottom Left */}
-            <motion.div 
-              className="hero-main-content"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-            >
-              <h1 className="hero-logo-mark" role="img" aria-label="AKAKIWN 50 by Domisense"></h1>
-              <div className="hero-divider"></div>
-              <p className="hero-description">
-                {t.home.heroDescription || 'A landmark residential project in the heart of Marousi, where modern architecture meets the warmth of Mediterranean living.'}
-              </p>
-            </motion.div>
+            <div className="hero-bottom-row">
+              {/* Main Content - Bottom Left */}
+              <motion.div
+                className="hero-main-content"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+              >
+                <h1 className="hero-logo-mark" role="img" aria-label="AKAKIWN 50 by Domisense"></h1>
+                <div className="hero-divider"></div>
+                <p className="hero-description">
+                  {t.home.heroDescription || 'A landmark residential project in the heart of Marousi, where modern architecture meets the warmth of Mediterranean living.'}
+                </p>
+              </motion.div>
 
-            {/* Bottom Controls */}
-            <div className="hero-bottom-controls">
-              {/* Slide Counter removed */}
-
-              {/* Progress bar removed */}
-
-              {/* Scroll Indicator - Right */}
+              {/* Prev / next slide arrows — bottom right, aligned with the text */}
+              <div className="hero-view-controls">
+                <button className="hero-view-nav hero-view-prev" onClick={goPrev} aria-label="Previous slide">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path d="M15 18l-6-6 6-6" />
+                  </svg>
+                </button>
+                <button className="hero-view-nav hero-view-next" onClick={goNext} aria-label="Next slide">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path d="M9 18l6-6-6-6" />
+                  </svg>
+                </button>
+              </div>
             </div>
           </div>
         </div>

@@ -10,12 +10,12 @@ const VIEWS = '/media/NewImg/260719_views'
 const asset = (p) => encodeURI(p)
 const isVideo = (src) => /\.mp4($|\?)/i.test(src)
 
-// Hero cycles through the external building views
+// Hero cycles through interior views + walkthrough video
 const heroViews = [
-  asset(`${VIEWS}/EXTERNAL/V1.png`),
-  asset(`${VIEWS}/EXTERNAL/V2.png`),
-  asset(`${VIEWS}/EXTERNAL/V3B.png`),
-  asset(`${VIEWS}/EXTERNAL/V4.png`),
+  asset(`${VIEWS}/3 BED PENTHOUSE/v1vid.mp4`),
+  asset(`${VIEWS}/3 BED/shapes (11).png`),
+  asset(`${VIEWS}/3 BED/shapes (5).png`),
+  asset(`${VIEWS}/2 BED DUPLEX/mez 4.png`),
 ]
 
 // Unit gallery images — one folder per unit type
@@ -34,10 +34,9 @@ const unitGalleries = {
     asset(`${VIEWS}/2 BED DUPLEX/mez 4.png`),
   ],
   'penthouse': [
-    asset(`${VIEWS}/3 BED PENTHOUSE/v1vid.mp4`),
-    asset(`${VIEWS}/3 BED PENTHOUSE/v1.png`),
-    asset(`${VIEWS}/3 BED PENTHOUSE/lv 05 solid .png`),
     asset(`${VIEWS}/3 BED PENTHOUSE/PLAN LV 5 SOLID.png`),
+    asset(`${VIEWS}/3 BED PENTHOUSE/lv 05 solid .png`),
+    asset(`${VIEWS}/3 BED PENTHOUSE/v1.png`),
   ],
 }
 
@@ -120,14 +119,26 @@ function Residencies() {
       {/* Hero Section — views with hover navigation */}
       <section className="residencies-hero">
         <div className="hero-background">
-          {heroViews.map((src, i) => (
-            <img
-              key={i}
-              src={src}
-              alt={`AKAKIWN 50 Residencies view ${i + 1}`}
-              className={i === heroIndex ? 'is-active' : ''}
-            />
-          ))}
+          {heroViews.map((src, i) =>
+            isVideo(src) ? (
+              <video
+                key={i}
+                src={src}
+                autoPlay
+                muted
+                loop
+                playsInline
+                className={i === heroIndex ? 'is-active' : ''}
+              />
+            ) : (
+              <img
+                key={i}
+                src={src}
+                alt={`AKAKIWN 50 Residencies view ${i + 1}`}
+                className={i === heroIndex ? 'is-active' : ''}
+              />
+            )
+          )}
         </div>
         <div className="hero-overlay"></div>
 
@@ -273,19 +284,24 @@ function Residencies() {
             </motion.div>
           </AnimatePresence>
 
-          <button className="gallery-nav gallery-prev" onClick={prevImage}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <path d="M15 18l-6-6 6-6" />
-            </svg>
-          </button>
-          <button className="gallery-nav gallery-next" onClick={nextImage}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <path d="M9 18l6-6-6-6" />
-            </svg>
-          </button>
+          {/* Prev / next — same design/placement as the hero slide controls */}
+          <div className="gallery-view-controls">
+            <button className="gallery-nav gallery-prev" onClick={prevImage} aria-label="Previous image">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <path d="M15 18l-6-6 6-6" />
+              </svg>
+            </button>
+            <button className="gallery-nav gallery-next" onClick={nextImage} aria-label="Next image">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <path d="M9 18l6-6-6-6" />
+              </svg>
+            </button>
+          </div>
 
-          <div className="gallery-counter">
-            {currentImageIndex + 1} / {currentImages.length}
+          <div className="gallery-counter" aria-label={`Image ${currentImageIndex + 1} of ${currentImages.length}`}>
+            <span className="current">{String(currentImageIndex + 1).padStart(4, '0')}</span>
+            <span className="sep">/</span>
+            <span className="total">{String(currentImages.length).padStart(4, '0')}</span>
           </div>
         </div>
       </div>

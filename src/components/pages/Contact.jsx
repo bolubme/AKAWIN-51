@@ -56,7 +56,6 @@ function Contact() {
     <div className="page contact-page" style={{ padding: 0 }}>
       {/* Page heading (intro image removed) */}
       <div className="contact-heading">
-        <span className="contact-heading-label">{t.contact.label || 'Get In Touch'}</span>
         <h1 className="contact-heading-title">{(t.contact.pageHeroTitle || 'Get in Touch.').replace(/\n/g, ' ')}</h1>
       </div>
 
@@ -178,6 +177,7 @@ function Contact() {
                 <div className="info-item">
                   <strong>{t.contact.phoneTitle}</strong>
                   <a href={`tel:${t.nav.phone.replace(/\s/g, '')}`}>{t.nav.phone}</a>
+                  <a href={`tel:${t.nav.phone2.replace(/\s/g, '')}`}>{t.nav.phone2}</a>
                 </div>
 
                 <div className="info-item">

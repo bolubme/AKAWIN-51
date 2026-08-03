@@ -24,7 +24,7 @@ const translations = {
     // Footer
     footer: {
       subtitle: 'by Domisense',
-      statement: 'We shape spaces where modern living finds its form.',
+      statement: 'Where Clean Design Meets Everyday Comfort.',
       disclaimer: 'All renders are intended to illustrate the architectural design intent and should not be considered a final representation of the completed development. Images, finishes, materials, fixtures, landscaping, furnishings, and other visual elements are indicative only and may be subject to change as part of the ongoing design and construction process.',
       copyright: `© ${new Date().getFullYear()} AKAKIWN 50 by Domisense. All rights reserved.`,
     },
@@ -114,7 +114,7 @@ const translations = {
       developerLabel: 'Developer',
       developerValue: 'Domisense',
       completionLabel: 'Year of Completion',
-      completionValue: '2026',
+      completionValue: '2028',
       typeLabel: 'Type',
       typeValue: 'Residential',
       infoParagraphs: [
@@ -188,10 +188,7 @@ const translations = {
         { name: 'Neratziotissa Station', type: 'Metro & Suburban Rail to Airport', distance: '1.4 km' },
         { name: 'The Mall Athens', type: 'Shopping & Entertainment', distance: '1.5 km' },
         { name: 'OAKA Olympic Stadium', type: '2004 Olympics Complex', distance: '2 km' },
-        { name: 'Alsos Syggrou (Syngrou Park)', type: 'Largest Urban Forest in Athens', distance: '1.8 km' },
         { name: 'Golden Hall', type: 'Premium Shopping & Dining', distance: '2.2 km' },
-        { name: 'Kifisias Avenue', type: 'Business & Corporate Hub', distance: '400 m' },
-        { name: 'German School of Athens', type: 'International Education', distance: '1.5 km' },
       ],
       backToHome: 'Back to Home',
       nextLabel: 'Next',
@@ -329,9 +326,9 @@ const translations = {
       disciplinesTitle: 'What We Do',
       disciplinesIntro: 'Architecture · Construction · Development',
       disciplines: [
-        { number: '01', title: 'Architecture', desc: 'From concept to detail, we design residential spaces where light, material and proportion work in harmony with the way people live.' },
-        { number: '02', title: 'Construction', desc: 'We deliver with uncompromising standards of craftsmanship, managing every stage of the build with precision and care.' },
-        { number: '03', title: 'Development', desc: 'We identify, plan and develop landmark residential projects that create lasting value for residents and communities alike.' },
+        { number: '01', title: 'Architecture', desc: 'An architectural approach shaped by international experience, spanning residential and mixed-use developments, major sports venues and complex urban schemes worldwide, combining global best practice with a deep understanding of local context to redefine urban living through timeless design and respect for the way people live.' },
+        { number: '02', title: 'Construction', desc: 'With more than 30 years of experience in the Greek construction industry, our engineering team has successfully delivered projects across every sector, from high-end residential developments to large-scale public infrastructure, working alongside some of Greece’s leading construction companies, with technical excellence and buildability at the core.' },
+        { number: '03', title: 'Development', desc: 'Brought together by a multidisciplinary team, the entire process is managed under one roof, designing, constructing and developing homes with a commitment to quality, precision and detail. Every residence is carefully tailored to the aspirations of its future owners, creating lasting value for residents and communities alike.' },
       ],
       teamTitle: 'Our Team',
       teamGroups: [
@@ -507,7 +504,7 @@ const translations = {
       developerLabel: 'Κατασκευαστής',
       developerValue: 'Domisense',
       completionLabel: 'Έτος Ολοκλήρωσης',
-      completionValue: '2026',
+      completionValue: '2028',
       typeLabel: 'Τύπος',
       typeValue: 'Κατοικίες',
       infoParagraphs: [
@@ -581,10 +578,7 @@ const translations = {
         { name: 'Σταθμός Νερατζιώτισσας', type: 'Μετρό & Προαστιακός προς Αεροδρόμιο', distance: '1,4 χλμ' },
         { name: 'The Mall Athens', type: 'Αγορές & Ψυχαγωγία', distance: '1,5 χλμ' },
         { name: 'ΟΑΚΑ Ολυμπιακό Στάδιο', type: 'Ολυμπιακό Συγκρότημα 2004', distance: '2 χλμ' },
-        { name: 'Άλσος Συγγρού', type: 'Μεγαλύτερο Αστικό Δάσος Αθήνας', distance: '1,8 χλμ' },
         { name: 'Golden Hall', type: 'Πολυτελείς Αγορές & Εστίαση', distance: '2,2 χλμ' },
-        { name: 'Λεωφόρος Κηφισίας', type: 'Επιχειρηματικό Κέντρο', distance: '400 μ' },
-        { name: 'Γερμανική Σχολή Αθηνών', type: 'Διεθνής Εκπαίδευση', distance: '1,5 χλμ' },
       ],
       backToHome: 'Πίσω στην Αρχική',
       nextLabel: 'Επόμενο',
@@ -722,9 +716,9 @@ const translations = {
       disciplinesTitle: 'Τι Κάνουμε',
       disciplinesIntro: 'Αρχιτεκτονική · Κατασκευή · Ανάπτυξη',
       disciplines: [
-        { number: '01', title: 'Αρχιτεκτονική', desc: 'Από την ιδέα έως τη λεπτομέρεια, σχεδιάζουμε κατοικίες όπου το φως, το υλικό και η αναλογία λειτουργούν αρμονικά με τον τρόπο ζωής των ανθρώπων.' },
-        { number: '02', title: 'Κατασκευή', desc: 'Παραδίδουμε με ασυμβίβαστα πρότυπα κατασκευής, διαχειριζόμενοι κάθε στάδιο με ακρίβεια και φροντίδα.' },
-        { number: '03', title: 'Ανάπτυξη', desc: 'Εντοπίζουμε, σχεδιάζουμε και αναπτύσσουμε ορόσημα οικιστικά έργα που δημιουργούν διαχρονική αξία για τους κατοίκους και τις κοινότητες.' },
+        { number: '01', title: 'Αρχιτεκτονική', desc: 'Μια αρχιτεκτονική προσέγγιση διαμορφωμένη μέσα από διεθνείς εμπειρίες, από πολυτελείς κατοικίες και έργα μικτής χρήσης έως γήπεδα και αρένες, που συνδυάζει διεθνή πρότυπα με βαθιά κατανόηση του τοπικού χαρακτήρα, επαναπροσδιορίζοντας την αστική διαβίωση μέσω διαχρονικού σχεδιασμού και σεβασμού στον τρόπο ζωής των ανθρώπων.' },
+        { number: '02', title: 'Κατασκευή', desc: 'Με περισσότερα από 30 χρόνια παρουσίας στον ελληνικό κατασκευαστικό κλάδο, η ομάδα των μηχανικών έχει υλοποιήσει έργα σε ένα ευρύ φάσμα τομέων, από υψηλών προδιαγραφών πολυκατοικίες έως μεγάλης κλίμακας δημόσιες υποδομές, σε συνεργασία με κορυφαίες κατασκευαστικές εταιρείες της Ελλάδας.' },
+        { number: '03', title: 'Ανάπτυξη', desc: 'Από τον αρχικό σχεδιασμό έως την ολοκλήρωση, όλη η διαδικασία πραγματοποιείται με ενιαία προσέγγιση: σχεδιασμός, κατασκευή και ανάπτυξη κατοικιών με έμφαση στην ποιότητα, την ακρίβεια και τη λεπτομέρεια. Κάθε κατοικία διαμορφώνεται με γνώμονα τις προσδοκίες των μελλοντικών ιδιοκτητών της, δημιουργώντας διαχρονική αξία.' },
       ],
       teamTitle: 'Η Ομάδα μας',
       teamGroups: [

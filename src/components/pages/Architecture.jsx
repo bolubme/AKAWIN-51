@@ -44,14 +44,15 @@ function Architecture() {
     },
   }
 
-  // Project info categories (kept as originals) rendered horizontally
+  // Project info categories — order per client markup:
+  // Type, Area, Location, Year of Completion, Architectural Office, Developer
   const projectInfo = [
-    { label: t.architecture.officeLabel || 'Architectural Office', value: t.architecture.officeValue || 'Domisense Studio' },
-    { label: t.architecture.locationLabel || 'Location', value: t.architecture.locationValue || 'Marousi, Athens' },
-    { label: t.architecture.areaLabel || 'Area', value: t.architecture.areaValue || '3,200 m²' },
-    { label: t.architecture.developerLabel || 'Developer', value: t.architecture.developerValue || 'Domisense' },
-    { label: t.architecture.completionLabel || 'Year of Completion', value: t.architecture.completionValue || '2026' },
     { label: t.architecture.typeLabel || 'Type', value: t.architecture.typeValue || 'Residential' },
+    { label: t.architecture.areaLabel || 'Area', value: t.architecture.areaValue || '3,200 m²' },
+    { label: t.architecture.locationLabel || 'Location', value: t.architecture.locationValue || 'Marousi, Athens' },
+    { label: t.architecture.completionLabel || 'Year of Completion', value: t.architecture.completionValue || '2028' },
+    { label: t.architecture.officeLabel || 'Architectural Office', value: t.architecture.officeValue || 'Domisense Studio' },
+    { label: t.architecture.developerLabel || 'Developer', value: t.architecture.developerValue || 'Domisense' },
   ]
 
   const heroTitle = (t.architecture.pageHeroTitle || 'Architecture & Design.').replace(/\n/g, ' ')

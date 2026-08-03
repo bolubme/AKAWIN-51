@@ -38,19 +38,28 @@
 .arch-hero .hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(20, 36, 51, 0.35);
+  /* only darken the bottom for title/control legibility — keep the render clear */
+  background: linear-gradient(
+    to bottom,
+    rgba(20, 36, 51, 0) 0%,
+    rgba(20, 36, 51, 0) 55%,
+    rgba(20, 36, 51, 0.55) 100%
+  );
 }
 
 .arch-hero .hero-content {
   position: absolute;
   bottom: 40px;
   left: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
   z-index: 2;
 }
 
 .arch-hero .hero-title {
   font-family: var(--font-sans);
-  font-size: clamp(2.1rem, 2.8vw, 2.7rem);
+  font-size: clamp(1.4rem, 2.2vw, 2.1rem);
   font-weight: 300;
   color: #f8f7f5;
   line-height: 1.05;
@@ -60,7 +69,7 @@
 /* Prev / next view navigation — centred on the title line, always visible */
 .hero-view-controls {
   position: absolute;
-  bottom: 52px;
+  bottom: 40px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 3;
@@ -94,9 +103,10 @@
   position: absolute;
   bottom: 40px;
   right: 44px;
+  height: 44px;
   z-index: 3;
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 7px;
   font-family: var(--font-sans);
   font-size: 0.9rem;

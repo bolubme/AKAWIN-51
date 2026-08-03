@@ -154,27 +154,35 @@
   container-type: inline-size;
 }
 
-.about-slider-label {
-  font-family: var(--font-sans);
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.15em;
+/* "Our Story" heading — matches the Location / Contact page titles */
+.about-story-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(1.25rem, 3vw, 1.65rem);
+  font-weight: 300;
   text-transform: uppercase;
-  color: #142433;
-  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+  color: var(--primary-dark);
+  margin: 0 0 12px;
 }
 
-.about-slider-headline {
-  font-family: var(--font-sans);
-  font-size: clamp(1.25rem, 7.2cqi, 1.65rem);
-  font-weight: 700;
-  font-style: normal;
-  line-height: 1.35;
-  color: #142433;
-  margin-bottom: 10px;
+.about-story-blocks {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
 }
 
-.about-slider-paragraph {
+.about-story-block-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: var(--primary-dark);
+  margin: 0 0 10px;
+}
+
+.about-story-block-desc {
   font-family: var(--font-sans);
   font-size: 14px;
   line-height: 1.7;

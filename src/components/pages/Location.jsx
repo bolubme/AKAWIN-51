@@ -4,7 +4,6 @@ import '../../styles/pages/Location.css'
 
 function Location() {
   const { t } = useLanguage()
-  const locationDetails = t.location.details
   const nearbyAmenities = t.location.amenities
 
   const containerVariants = {
@@ -32,11 +31,9 @@ function Location() {
 
   return (
     <div className="page location-page" style={{ padding: 0 }}>
-      {/* Page heading (intro image removed) */}
+      {/* Page heading */}
       <div className="location-heading">
-        <span className="location-heading-label">{t.location.label || 'Location'}</span>
         <h1 className="location-heading-title">{(t.location.pageHeroTitle || 'Prime Location.').replace(/\n/g, ' ')}</h1>
-        <p className="location-intro">{t.location.description}</p>
       </div>
 
       {/* Main Content */}
@@ -62,16 +59,9 @@ function Location() {
             ></iframe>
           </div>
 
-          {/* Right column: quick stats, then nearby amenities */}
+          {/* Right column: intro text, then nearby amenities */}
           <div className="location-side">
-            <div className="location-stats">
-              {locationDetails.map((item) => (
-                <div key={item.label} className="stat-item">
-                  <span className="stat-value">{item.value}</span>
-                  <span className="stat-label">{item.label}</span>
-                </div>
-              ))}
-            </div>
+            <p className="location-intro">{t.location.description}</p>
 
             <div className="amenities-section">
               <h4 className="amenities-title">{t.location.amenitiesTitle}</h4>

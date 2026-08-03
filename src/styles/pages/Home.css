@@ -66,6 +66,8 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
+  /* light base shown before the first slide paints */
+  background: var(--primary-light);
 }
 
 /* Background Video */
@@ -87,12 +89,42 @@
 .hero-overlay {
   position: absolute;
   inset: 0;
+  z-index: 3;
   background: linear-gradient(
     to bottom,
     rgba(20, 36, 51, 0.15) 0%,
     rgba(20, 36, 51, 0.05) 40%,
     rgba(20, 36, 51, 0.4) 100%
   );
+}
+
+/* Slide navigation — identical design/placement to Architecture & Residencies heroes */
+.home-page .hero-view-controls {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.home-page .hero-view-nav {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8f7f5;
+  color: #142433;
+  border: 1px solid rgba(20, 36, 51, 0.12);
+  border-radius: 50%;
+  cursor: pointer;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+.home-page .hero-view-nav:hover {
+  background: #142433;
+  color: #f8f7f5;
 }
 
 /* Hero Content */
@@ -107,9 +139,18 @@
 }
 
 /* Hero Main Content - Bottom Left */
+/* Bottom row — text left, slide arrows right, aligned on the same line */
+.hero-bottom-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 32px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
 .hero-main-content {
   max-width: 600px;
-  margin-bottom: 80px;
 }
 
 .hero-by-label {
@@ -1066,10 +1107,6 @@
     padding: 100px var(--gutter) 50px;
   }
   
-  .hero-main-content {
-    margin-bottom: 60px;
-  }
-  
   .hero-info-left {
     left: 40px;
   }
@@ -1109,15 +1146,16 @@
 }
 
 @media (max-width: 768px) {
+  .home-page .hero-view-nav {
+    width: 42px;
+    height: 42px;
+  }
+
   .hero-info-left,
   .hero-info-right {
     display: none;
   }
-  
-  .hero-main-content {
-    margin-bottom: 50px;
-  }
-  
+
   .hero-title-large {
     flex-direction: column;
     gap: 8px;
@@ -1236,10 +1274,6 @@
 @media (max-width: 480px) {
   .hero-content {
     padding: 80px var(--gutter) 40px;
-  }
-  
-  .hero-main-content {
-    margin-bottom: 40px;
   }
   
   .hero-by-label {
