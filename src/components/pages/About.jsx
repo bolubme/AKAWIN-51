@@ -12,6 +12,7 @@ function About() {
           {/* Left: Our Story heading + disciplines */}
           <div className="about-slider-text">
             <h2 className="about-story-heading">{t.about.storyTitle}</h2>
+            <p className="about-story-intro">{t.about.storyP1}</p>
 
             <div className="about-story-blocks">
               {t.about.disciplines.map((d) => (
@@ -29,6 +30,7 @@ function About() {
               src="/media/NewImg/ABOUT.jpg"
               alt="AKAKIWN 50 by Domisense"
               className="about-slider-image"
+              decoding="async"
             />
           </div>
         </div>

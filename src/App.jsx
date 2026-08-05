@@ -91,12 +91,24 @@ function AnimatedRoutes() {
 }
 
 function App() {
-  const [loading, setLoading] = useState(true)
+  // Show the intro preloader only once per browser session.
+  const [loading, setLoading] = useState(
+    () => typeof sessionStorage === 'undefined' || !sessionStorage.getItem('preloaderShown')
+  )
+
+  const handlePreloaderDone = () => {
+    try {
+      sessionStorage.setItem('preloaderShown', '1')
+    } catch {
+      /* ignore (private mode) */
+    }
+    setLoading(false)
+  }
 
   return (
     <LanguageProvider>
       <Router>
-        {loading && <Preloader onDone={() => setLoading(false)} />}
+        {loading && <Preloader onDone={handlePreloaderDone} />}
         <div className="app">
           <Navbar />
           <main>

@@ -5,38 +5,46 @@ import { useLanguage } from '../../i18n/LanguageContext'
 import '../../styles/pages/Residencies.css'
 
 // Full-quality source images served straight from /public (no optimization).
-// Paths contain spaces/parentheses, so encode them for use as URLs.
 const VIEWS = '/media/NewImg/260719_views'
 const asset = (p) => encodeURI(p)
 const isVideo = (src) => /\.mp4($|\?)/i.test(src)
 
 // Hero cycles through interior views + walkthrough video
 const heroViews = [
-  asset(`${VIEWS}/3 BED PENTHOUSE/v1vid.mp4`),
-  asset(`${VIEWS}/3 BED/shapes (11).png`),
-  asset(`${VIEWS}/3 BED/shapes (5).png`),
-  asset(`${VIEWS}/2 BED DUPLEX/mez 4.png`),
+  asset(`${VIEWS}/3-BED-PENTHOUSE/v1vid.mp4`),
+  asset(`${VIEWS}/3-BED/shapes-11.png`),
+  asset(`${VIEWS}/3-BED/shapes-5.png`),
+  asset(`${VIEWS}/2-BED-DUPLEX/mez-4.png`),
 ]
 
-// Unit gallery images — one folder per unit type
+// Unit gallery images — one folder per unit type. The floor plan (LV-*) leads.
 const unitGalleries = {
   'one-bed-gf': [
-    asset(`${VIEWS}/1 BED/shapes (7).png`),
+    asset(`${VIEWS}/1-BED/LV-0.jpg`),
+    asset(`${VIEWS}/1-BED/v1.png`),
+    asset(`${VIEWS}/1-BED/v2.png`),
   ],
   'three-bed': [
-    asset(`${VIEWS}/3 BED/shapes (3).png`),
-    asset(`${VIEWS}/3 BED/shapes (5).png`),
-    asset(`${VIEWS}/3 BED/shapes (6).png`),
-    asset(`${VIEWS}/3 BED/shapes (11).png`),
+    asset(`${VIEWS}/3-BED/LV-3.jpg`),
+    asset(`${VIEWS}/3-BED/shapes-3.png`),
+    asset(`${VIEWS}/3-BED/shapes-5.png`),
+    asset(`${VIEWS}/3-BED/shapes-6.png`),
+    asset(`${VIEWS}/3-BED/shapes-11.png`),
   ],
   'three-bed-mez': [
-    asset(`${VIEWS}/2 BED DUPLEX/mez 3.png`),
-    asset(`${VIEWS}/2 BED DUPLEX/mez 4.png`),
+    asset(`${VIEWS}/2-BED-DUPLEX/LV-4.jpg`),
+    asset(`${VIEWS}/2-BED-DUPLEX/LV-5.jpg`),
+    asset(`${VIEWS}/2-BED-DUPLEX/mez-3.png`),
+    asset(`${VIEWS}/2-BED-DUPLEX/mez-4.png`),
   ],
   'penthouse': [
-    asset(`${VIEWS}/3 BED PENTHOUSE/PLAN LV 5 SOLID.png`),
-    asset(`${VIEWS}/3 BED PENTHOUSE/lv 05 solid .png`),
-    asset(`${VIEWS}/3 BED PENTHOUSE/v1.png`),
+    asset(`${VIEWS}/3-BED-PENTHOUSE/LV-4.jpg`),
+    asset(`${VIEWS}/3-BED-PENTHOUSE/LV-5.jpg`),
+    asset(`${VIEWS}/3-BED-PENTHOUSE/PLAN-LV-5-SOLID.png`),
+    asset(`${VIEWS}/3-BED-PENTHOUSE/lv-05-solid.png`),
+    asset(`${VIEWS}/3-BED-PENTHOUSE/v1.png`),
+    asset(`${VIEWS}/3-BED-PENTHOUSE/v3.png`),
+    asset(`${VIEWS}/3-BED-PENTHOUSE/v4.png`),
   ],
 }
 
@@ -124,10 +132,12 @@ function Residencies() {
               <video
                 key={i}
                 src={src}
+                poster={asset(`${VIEWS}/3-BED-PENTHOUSE/v1.png`)}
                 autoPlay
                 muted
                 loop
                 playsInline
+                preload="auto"
                 className={i === heroIndex ? 'is-active' : ''}
               />
             ) : (
@@ -136,6 +146,8 @@ function Residencies() {
                 src={src}
                 alt={`AKAKIWN 50 Residencies view ${i + 1}`}
                 className={i === heroIndex ? 'is-active' : ''}
+                decoding="async"
+                fetchpriority={i === 0 ? 'high' : 'low'}
               />
             )
           )}
@@ -279,6 +291,7 @@ function Residencies() {
                 <img
                   src={currentImages[currentImageIndex]}
                   alt={`${selectedUnit.type} view ${currentImageIndex + 1}`}
+                  decoding="async"
                 />
               )}
             </motion.div>
@@ -329,7 +342,7 @@ function Residencies() {
               {isVideo(src) ? (
                 <video src={src} muted loop playsInline autoPlay />
               ) : (
-                <img src={src} alt={`${selectedUnit.type} detail ${index + 1}`} loading="lazy" />
+                <img src={src} alt={`${selectedUnit.type} detail ${index + 1}`} loading="lazy" decoding="async" />
               )}
               <span className="gallery-menu-zoom">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">

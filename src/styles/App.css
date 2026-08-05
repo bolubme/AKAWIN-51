@@ -3,24 +3,8 @@
 }
 
 /* Page Loading */
-.page-loading {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 200px;
-  color: var(--primary-dark);
-  font-family: var(--font-sans);
-  font-size: 1.1rem;
-}
 
 /* Project Image Placeholder */
-.project-image-placeholder {
-  width: 100%;
-  height: 300px;
-  background: linear-gradient(90deg, #f8f7f5 25%, #d2d1cf 50%, #f8f7f5 75%);
-  background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
-}
 
 @keyframes shimmer {
   0% {

@@ -10,9 +10,10 @@ const viewCorner = `${EXTERNAL}/V2.png`
 const viewVilla = `${EXTERNAL}/V3B.png`
 const viewRooftop = `${EXTERNAL}/V4.png`
 const viewBalcony = `${EXTERNAL}/V1.png`
+const viewDusk = `${EXTERNAL}/generated-image-1.png`
 
 // Hero cycles through the external render views
-const heroViews = [viewFront, viewCorner, viewVilla, viewRooftop]
+const heroViews = [viewFront, viewCorner, viewVilla, viewRooftop, viewDusk]
 
 function Architecture() {
   const { t } = useLanguage()
@@ -48,8 +49,8 @@ function Architecture() {
   // Type, Area, Location, Year of Completion, Architectural Office, Developer
   const projectInfo = [
     { label: t.architecture.typeLabel || 'Type', value: t.architecture.typeValue || 'Residential' },
-    { label: t.architecture.areaLabel || 'Area', value: t.architecture.areaValue || '3,200 m²' },
-    { label: t.architecture.locationLabel || 'Location', value: t.architecture.locationValue || 'Marousi, Athens' },
+    { label: t.architecture.areaLabel || 'Area', value: t.architecture.areaValue || '680 m²' },
+    { label: t.architecture.locationLabel || 'Location', value: t.architecture.locationValue || 'Polydroso, Marousi' },
     { label: t.architecture.completionLabel || 'Year of Completion', value: t.architecture.completionValue || '2028' },
     { label: t.architecture.officeLabel || 'Architectural Office', value: t.architecture.officeValue || 'Domisense Studio' },
     { label: t.architecture.developerLabel || 'Developer', value: t.architecture.developerValue || 'Domisense' },
@@ -79,6 +80,8 @@ function Architecture() {
               src={src}
               alt={`AKAKIWN 50 exterior view ${i + 1}`}
               className={i === heroIndex ? 'is-active' : ''}
+              decoding="async"
+              fetchpriority={i === 0 ? 'high' : 'low'}
             />
           ))}
         </div>
@@ -86,8 +89,8 @@ function Architecture() {
 
         <motion.div
           className="hero-content"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.3 }}
         >
           <h1 className="hero-title">{heroTitle}</h1>
@@ -145,7 +148,7 @@ function Architecture() {
               transition={{ duration: 0.7, ease: [0.4, 0, 0.2, 1] }}
             >
               <div className="arch-editorial-image">
-                <img src={row.image} alt={row.alt} loading="lazy" />
+                <img src={row.image} alt={row.alt} loading="lazy" decoding="async" />
               </div>
               <div className="arch-editorial-text">
                 {row.paragraphs.map((para, j) => (
@@ -163,7 +166,7 @@ function Architecture() {
                 transition={{ duration: 0.8 }}
               >
                 {editorialDuo.map((img, j) => (
-                  <img key={j} src={img.image} alt={img.alt} loading="lazy" />
+                  <img key={j} src={img.image} alt={img.alt} loading="lazy" decoding="async" />
                 ))}
               </motion.div>
             )}

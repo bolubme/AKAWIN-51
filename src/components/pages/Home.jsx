@@ -8,23 +8,29 @@ const EXT = '/media/NewImg/260719_views/EXTERNAL'
 const asset = (p) => encodeURI(p)
 const isVideo = (src) => /\.mp4($|\?)/i.test(src)
 
-// Hero rotation — videos with exterior stills interleaved between them
+// Hero rotation — all videos first, then the exterior stills
 const slides = [
-  { id: 1, src: asset(`${EXT}/V3B VID.mp4`) },
-  { id: 2, src: `${EXT}/V1.png` },
-  { id: 3, src: '/media/Video3_002.mp4' },
-  { id: 4, src: `${EXT}/V2.png` },
-  { id: 5, src: asset(`${EXT}/Video Project 12.mp4`) },
-  { id: 6, src: `${EXT}/V4.png` },
-  { id: 7, src: asset(`${EXT}/Video Project 13.mp4`) },
+  { id: 1, src: asset(`${EXT}/V3B-VID.mp4`) },
+  { id: 2, src: '/media/Video3_002.mp4' },
+  { id: 3, src: asset(`${EXT}/Video-Project-12.mp4`) },
+  { id: 4, src: asset(`${EXT}/Video-Project-13.mp4`) },
+  { id: 5, src: `${EXT}/V1.png` },
+  { id: 6, src: `${EXT}/V2.png` },
+  { id: 7, src: `${EXT}/V4.png` },
 ]
 
+// A matching full-res still to show instantly while a video buffers (no blank/white gap).
+const POSTER = {
+  [`${EXT}/V3B-VID.mp4`]: `${EXT}/V3B.png`,
+}
+
 // Renders a slide's media and calls onReady once the first frame is available.
-function SlideMedia({ slide, onReady }) {
+function SlideMedia({ src, onReady }) {
   const fill = { width: '100%', height: '100%', objectFit: 'cover', display: 'block' }
-  return isVideo(slide.src) ? (
+  return isVideo(src) ? (
     <video
-      src={slide.src}
+      src={src}
+      poster={POSTER[src]}
       autoPlay
       muted
       loop
@@ -35,22 +41,16 @@ function SlideMedia({ slide, onReady }) {
       style={fill}
     />
   ) : (
-    <img src={slide.src} alt="AKAKIWN 50" onLoad={onReady} onError={onReady} style={fill} />
+    <img src={src} alt="AKAKIWN 50" decoding="async" onLoad={onReady} onError={onReady} style={fill} />
   )
 }
 
 
 function Home() {
   const { t } = useLanguage()
-  const [currentSlide, setCurrentSlide] = useState(0)
-  const [prevIndex, setPrevIndex] = useState(null) // kept visible underneath until the new slide loads
-  const [slideLoaded, setSlideLoaded] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const containerRef = useRef(null)
   const heroRef = useRef(null)
-
-  // Directions kept for reference
-  const directions = ['right', 'bottom', 'left', 'top']
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -78,39 +78,61 @@ function Home() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Auto-advance — but the swap only happens once the current slide has actually
-  // loaded, so a still-downloading video/image is never shown blank.
   const SLIDE_DURATION = 6000
+  const FADE_DURATION = 2000 // crossfade length (ms) — kept in sync with the CSS transition
 
-  const changeSlide = (index) => {
-    if (index === currentSlide) return
-    setPrevIndex(currentSlide)
-    setSlideLoaded(false)
-    setCurrentSlide(index)
+  // Two-slot ("ping-pong") crossfade. Two persistent layers; only the hidden slot
+  // ever loads a new video, so the visible video is never remounted or reloaded —
+  // nothing goes blank between slides, so there's no flash.
+  const [slots, setSlots] = useState([slides[0].src, null]) // media src per slot
+  const [top, setTop] = useState(0)            // slot currently fully visible
+  const [pending, setPending] = useState(null) // { slot, ready } — the slot fading in
+  const topRef = useRef(0)
+  const pendingRef = useRef(null)
+  const indexRef = useRef(0)
+
+  const advanceTo = (target) => {
+    if (pendingRef.current) return             // ignore while a crossfade is running
+    const other = topRef.current === 0 ? 1 : 0
+    setSlots((s) => {
+      const n = [...s]
+      n[other] = slides[target].src
+      return n
+    })
+    const p = { slot: other, ready: false }
+    pendingRef.current = p
+    setPending(p)
+    indexRef.current = target
   }
 
-  const goNext = () => changeSlide((currentSlide + 1) % slides.length)
-  const goPrev = () => changeSlide((currentSlide - 1 + slides.length) % slides.length)
-  const handleSlideLoaded = () => setSlideLoaded(true)
+  const goNext = () => advanceTo((indexRef.current + 1) % slides.length)
+  const goPrev = () => advanceTo((indexRef.current - 1 + slides.length) % slides.length)
 
-  // Start the countdown for the next slide only after this one is visible.
-  useEffect(() => {
-    if (!slideLoaded) return
-    const t = setTimeout(() => {
-      setPrevIndex(currentSlide)
-      setSlideLoaded(false)
-      setCurrentSlide((prev) => (prev + 1) % slides.length)
-    }, SLIDE_DURATION)
-    return () => clearTimeout(t)
-  }, [slideLoaded, currentSlide])
+  const handleSlotReady = (slot) => {
+    setPending((p) => (p && p.slot === slot && !p.ready ? { ...p, ready: true } : p))
+  }
 
-  // Once the new slide has faded in on top, drop the previous one.
+  // Once the incoming slot has faded in on top, promote it to the visible slot.
   useEffect(() => {
-    if (slideLoaded && prevIndex !== null) {
-      const t = setTimeout(() => setPrevIndex(null), 1000)
+    if (pending && pending.ready) {
+      const t = setTimeout(() => {
+        topRef.current = pending.slot
+        setTop(pending.slot)
+        pendingRef.current = null
+        setPending(null)
+      }, FADE_DURATION) // matches the opacity transition
       return () => clearTimeout(t)
     }
-  }, [slideLoaded, prevIndex])
+  }, [pending])
+
+  // Auto-advance — the countdown restarts each time a slide settles on top.
+  useEffect(() => {
+    const t = setTimeout(() => {
+      advanceTo((indexRef.current + 1) % slides.length)
+    }, SLIDE_DURATION)
+    return () => clearTimeout(t)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [top])
 
   return (
     <div className={`page home-page ${isScrolled ? 'scrolled' : ''}`} ref={containerRef}>
@@ -133,23 +155,28 @@ function Home() {
         }}
       >
         <div className="hero-container">
-          {/* Background slider — previous slide stays fully opaque underneath
-              until the new one has loaded, so the background never shows. */}
-          {prevIndex !== null && (
-            <div className="hero-background hero-slide" style={{ zIndex: 1 }}>
-              <SlideMedia key={`prev-${prevIndex}`} slide={slides[prevIndex]} />
-            </div>
-          )}
-          <div
-            className="hero-background hero-slide"
-            style={{
-              zIndex: 2,
-              opacity: slideLoaded ? 1 : 0,
-              transition: 'opacity 1s ease',
-            }}
-          >
-            <SlideMedia key={`cur-${currentSlide}`} slide={slides[currentSlide]} onReady={handleSlideLoaded} />
-          </div>
+          {/* Two persistent slots — the visible one is never remounted, so the
+              video never reloads or flashes when slides change. */}
+          {[0, 1].map((slot) => {
+            const src = slots[slot]
+            if (!src) return null
+            const isPending = pending && pending.slot === slot
+            let zIndex = slot === top ? 2 : 1
+            let opacity = 1
+            if (isPending) {
+              zIndex = 3
+              opacity = pending.ready ? 1 : 0
+            }
+            return (
+              <div
+                key={slot}
+                className="hero-background hero-slide"
+                style={{ zIndex, opacity, transition: `opacity ${FADE_DURATION}ms ease-in-out` }}
+              >
+                <SlideMedia key={src} src={src} onReady={() => handleSlotReady(slot)} />
+              </div>
+            )
+          })}
           <div className="hero-overlay"></div>
 
           {/* Hero Content — text left, slide arrows right, balanced on one line */}
@@ -165,7 +192,7 @@ function Home() {
                 <h1 className="hero-logo-mark" role="img" aria-label="AKAKIWN 50 by Domisense"></h1>
                 <div className="hero-divider"></div>
                 <p className="hero-description">
-                  {t.home.heroDescription || 'A landmark residential project in the heart of Marousi, where modern architecture meets the warmth of Mediterranean living.'}
+                  {t.home.heroDescription || 'A residential building in the heart of Marousi. Designed to Inspire. Built to Last.'}
                 </p>
               </motion.div>
 

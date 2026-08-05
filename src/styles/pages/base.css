@@ -13,49 +13,7 @@
   padding: 0;
 }
 
-.page-header {
-  max-width: 800px;
-  margin-bottom: 60px;
-}
-
-.page-label {
-  display: inline-block;
-  font-family: var(--font-sans);
-  font-size: clamp(0.7rem, 0.8vw, 0.85rem);
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 20px;
-}
-
-.page-title {
-  font-family: var(--font-sans);
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
-  font-weight: 400;
-  line-height: 1.1;
-  color: var(--primary-dark);
-  margin-bottom: 24px;
-}
-
-.page-title .title-light {
-  font-style: italic;
-  opacity: 0.7;
-}
-
-.page-description {
-  font-family: var(--font-sans);
-  font-size: clamp(0.95rem, 1.1vw, 1.1rem);
-  line-height: 1.7;
-  color: rgba(20, 36, 51, 0.7);
-  max-width: 600px;
-}
-
 /* Page CTA */
-.page-cta {
-  margin-top: 80px;
-  padding-top: 40px;
-}
 
 .back-link {
   display: inline-flex;
@@ -81,23 +39,6 @@
 }
 
 /* Image overlays */
-.image-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(20, 36, 51, 0.1) 0%, transparent 50%);
-  pointer-events: none;
-}
 
 /* Responsive — .page padding now derives from the shared scale */
-@media (max-width: 1024px) {
-  .page-header {
-    margin-bottom: 40px;
-  }
-}
 
-@media (max-width: 768px) {
-  .page-cta {
-    margin-top: 60px;
-    padding-top: 30px;
-  }
-}

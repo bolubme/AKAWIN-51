@@ -218,7 +218,12 @@
   letter-spacing: 1px;
   text-transform: uppercase;
   color: var(--primary-light);
-  transition: var(--transition);
+  transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  /* fixed width so "MENU" and "CLOSE" don't shift the layout when toggled */
+  display: inline-block;
+  min-width: 4.5em;
+  text-align: right;
+  white-space: nowrap;
 }
 
 .menu-toggle.open .menu-icon {

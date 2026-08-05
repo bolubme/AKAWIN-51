@@ -97,68 +97,7 @@ section {
   overflow: hidden;
 }
 
-.section-label {
-  font-size: 0.7rem;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 1.5rem;
-}
-
-.section-title {
-  font-family: var(--font-sans);
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
-  font-weight: 300;
-  line-height: 1.2;
-  margin-bottom: 2rem;
-  color: var(--primary-dark);
-}
-
-.section-title .title-light {
-  opacity: 0.7;
-}
-
-.section-text {
-  max-width: 600px;
-  color: var(--text-light);
-  font-size: 1rem;
-  margin-bottom: 2rem;
-}
-
 /* Buttons */
-.btn-primary {
-  display: inline-block;
-  padding: 1.2rem 3rem;
-  background: var(--primary-dark);
-  color: var(--primary-light);
-  font-size: 0.75rem;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  border: none;
-  transition: var(--transition);
-}
-
-.btn-primary:hover {
-  background: var(--warm-grey);
-  color: var(--primary-dark);
-}
-
-.btn-secondary {
-  display: inline-block;
-  padding: 1.2rem 3rem;
-  background: transparent;
-  color: var(--primary-dark);
-  font-size: 0.75rem;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  border: 1px solid var(--primary-dark);
-  transition: var(--transition);
-}
-
-.btn-secondary:hover {
-  background: var(--primary-dark);
-  color: var(--primary-light);
-}
 
 /* Scrollbar */
 ::-webkit-scrollbar {
@@ -212,13 +151,6 @@ html[data-lang="GR"] .arch-hero .hero-title,
 html[data-lang="GR"] .intro-headline,
 html[data-lang="GR"] blockquote {
   letter-spacing: -0.01em;
-}
-
-html[data-lang="GR"] .editorial-label,
-html[data-lang="GR"] .explore-label,
-html[data-lang="GR"] .featured-title,
-html[data-lang="GR"] .section-label {
-  letter-spacing: 0.2em;
 }
 
 /* Greek-specific bump for small all-caps labels */

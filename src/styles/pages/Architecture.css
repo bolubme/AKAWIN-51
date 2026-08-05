@@ -12,6 +12,8 @@
   height: 100vh;
   min-height: 600px;
   overflow: hidden;
+  /* brand-navy base behind the render so no white shows while it loads */
+  background: var(--primary-dark);
 }
 
 .arch-hero .hero-background {
@@ -64,6 +66,8 @@
   color: #f8f7f5;
   line-height: 1.05;
   letter-spacing: -0.01em;
+  /* keeps the white title readable over both bright and dark renders */
+  text-shadow: 0 1px 3px rgba(20, 36, 51, 0.55), 0 2px 22px rgba(20, 36, 51, 0.75);
 }
 
 /* Prev / next view navigation — centred on the title line, always visible */
@@ -171,11 +175,14 @@
 .arch-editorial-image {
   border-radius: 10px;
   overflow: hidden;
+  /* soft placeholder tone shown while the render lazy-loads — never white */
+  background: var(--warm-grey);
 }
 
 .arch-editorial-image img {
   width: 100%;
-  aspect-ratio: 16 / 10;
+  /* match the render aspect (16:9) so it fills the frame AND shows the full building */
+  aspect-ratio: 16 / 9;
   object-fit: cover;
   display: block;
 }
@@ -190,10 +197,12 @@
 
 .arch-editorial-duo img {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
   display: block;
   border-radius: 10px;
+  /* soft placeholder tone shown while the render lazy-loads — never white */
+  background: var(--warm-grey);
 }
 
 .arch-editorial-text {
@@ -209,22 +218,6 @@
   line-height: 1.7;
   color: #142433;
   margin: 0;
-}
-
-.info-sidebar {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.project-info-title {
-  font-family: var(--font-sans);
-  font-size: 1.5rem;
-  font-weight: 400;
-  color: #142433;
-  margin: 0 0 4px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid rgba(20, 36, 51, 0.12);
 }
 
 .info-item {
@@ -248,99 +241,7 @@
   color: #142433;
 }
 
-.info-content {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.info-content p {
-  font-family: var(--font-sans);
-  font-size: 1.15rem;
-  line-height: 1.8;
-  color: rgba(20, 36, 51, 0.85);
-  text-align: justify;
-}
-
-.info-image {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.info-image img {
-  width: 100%;
-  height: 420px;
-  object-fit: cover;
-}
-
-.image-caption {
-  font-family: var(--font-sans);
-  font-size: 0.8rem;
-  line-height: 1.6;
-  color: rgba(20, 36, 51, 0.6);
-  padding-bottom: 16px;
-  border-bottom: 1px solid rgba(20, 36, 51, 0.1);
-}
-
 /* Thumbnail Grid - INDEX */
-.arch-thumbnails {
-  padding: 80px 60px !important;
-  margin-top: 60px;
-  background: #d2d1cf;
-  min-height: auto !important;
-}
-
-.index-title {
-  font-family: var(--font-sans);
-  font-size: 0.85rem;
-  font-weight: 500;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  text-align: center;
-  color: rgba(20, 36, 51, 0.7);
-  margin-bottom: 60px;
-}
-
-.thumbnail-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 28px;
-  max-width: 1500px;
-  margin: 0 auto;
-}
-
-.thumbnail-item {
-  display: flex;
-  flex-direction: column;
-  cursor: pointer;
-}
-
-.thumbnail-item .thumb-image {
-  aspect-ratio: 0.85;
-  overflow: hidden;
-  border-radius: 8px;
-}
-
-.thumbnail-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.thumbnail-item:hover img {
-  transform: scale(1.05);
-}
-
-.thumbnail-number {
-  display: block;
-  text-align: center;
-  margin-top: 12px;
-  font-family: var(--font-sans);
-  font-size: 0.7rem;
-  color: rgba(20, 36, 51, 0.5);
-}
 
 /* CTA removed (next-link) */
 
@@ -433,15 +334,6 @@
 }
 
 /* Lightbox Modal */
-.lightbox-overlay {
-  position: fixed;
-  inset: 0;
-  background: #f8f7f5;
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
 .lightbox-close {
   position: absolute;
