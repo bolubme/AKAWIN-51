@@ -115,6 +115,7 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
+  min-width: 0; /* let the name/type wrap instead of squeezing the distance */
 }
 
 .amenity-name {
@@ -138,6 +139,8 @@
   font-size: 14px;
   font-weight: 400;
   color: #142433;
+  white-space: nowrap; /* keep "1.4 km" on one line like "650 m" and "2 km" */
+  flex-shrink: 0;
 }
 
 /* Responsive */

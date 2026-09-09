@@ -34,14 +34,10 @@ const unitGalleries = {
   'three-bed-mez': [
     asset(`${VIEWS}/2-BED-DUPLEX/LV-4.jpg`),
     asset(`${VIEWS}/2-BED-DUPLEX/LV-5.jpg`),
-    asset(`${VIEWS}/2-BED-DUPLEX/mez-3.png`),
-    asset(`${VIEWS}/2-BED-DUPLEX/mez-4.png`),
   ],
   'penthouse': [
     asset(`${VIEWS}/3-BED-PENTHOUSE/LV-4.jpg`),
     asset(`${VIEWS}/3-BED-PENTHOUSE/LV-5.jpg`),
-    asset(`${VIEWS}/3-BED-PENTHOUSE/PLAN-LV-5-SOLID.png`),
-    asset(`${VIEWS}/3-BED-PENTHOUSE/lv-05-solid.png`),
     asset(`${VIEWS}/3-BED-PENTHOUSE/v1.png`),
     asset(`${VIEWS}/3-BED-PENTHOUSE/v3.png`),
     asset(`${VIEWS}/3-BED-PENTHOUSE/v4.png`),
