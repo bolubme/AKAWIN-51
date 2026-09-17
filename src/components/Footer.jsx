@@ -36,6 +36,7 @@ function Footer() {
         </a>
         <a href={`tel:${t.nav.phone.replace(/\s/g, '')}`}>{t.nav.phone}</a>
         <a href={`tel:${t.nav.phone2.replace(/\s/g, '')}`}>{t.nav.phone2}</a>
+        <a href={`tel:${t.nav.phone3.replace(/\s/g, '')}`}>{t.nav.phone3}</a>
       </div>
 
       <div className="footer-marquee" aria-label={t.footer.statement}>

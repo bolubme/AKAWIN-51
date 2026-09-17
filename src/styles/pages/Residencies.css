@@ -190,6 +190,20 @@
   opacity: 1;
 }
 
+/* Selector swipe progress line — mobile only */
+.residencies-selector-progress {
+  display: none;
+}
+
+/* The arrow row is mobile-only. On desktop the wrapper is inert (display:contents)
+   so the static tab strip lays out exactly as before, and the arrows are hidden. */
+.residencies-selector-row {
+  display: contents;
+}
+.selector-arrow {
+  display: none;
+}
+
 /* Main Split Layout — matches Architecture .arch-editorial-row--flip */
 .residencies-split {
   display: grid;
@@ -288,6 +302,39 @@
   white-space: nowrap;
 }
 
+/* Desktop: one consistent four-column spec row (Bedrooms | Bathrooms | Size |
+   Level) for every residence type. Columns never shrink below their label, and
+   a long value such as the Three-Bed Duplex size ("150.30 m² + 58.80 m² terrace")
+   wraps within its own Size column instead of pushing Level onto a second row.
+   Below this width the base flex layout wraps every unit the same way (the
+   inconsistency only appears on wide screens), so the grid applies only where
+   all four columns fit. Mobile is handled separately. */
+@media (min-width: 1440px) {
+  .residencies-pictograms {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(min-content, 1fr));
+    align-items: start;
+    gap: 28px 20px;
+  }
+
+  .pictogram-value {
+    white-space: normal;
+  }
+}
+
+/* Greek labels are wider than English, so four columns need a little more room.
+   Between 1440–1599px keep Greek on the base flex layout to avoid overflow; the
+   grid engages for Greek from 1600px up. */
+@media (min-width: 1440px) and (max-width: 1599px) {
+  html[data-lang="GR"] .residencies-pictograms {
+    display: flex;
+  }
+
+  html[data-lang="GR"] .pictogram-value {
+    white-space: nowrap;
+  }
+}
+
 .residencies-description {
   margin-bottom: 0;
   display: flex;
@@ -380,9 +427,18 @@
 .gallery-image-wrapper video {
   width: 100%;
   height: 100%;
-  aspect-ratio: 16 / 10;
   object-fit: cover;
   display: block;
+}
+
+/* Desktop: show the whole image (floor plans are near-square, renders are wide)
+   rather than cropping it to the frame. The navy .residencies-gallery background
+   fills the letterbox area. Mobile keeps cover for now and is handled separately. */
+@media (min-width: 1025px) {
+  .gallery-image-wrapper img,
+  .gallery-image-wrapper video {
+    object-fit: contain;
+  }
 }
 
 /* Navigation Arrows */
@@ -523,13 +579,28 @@
     order: 2;
   }
   
+  /* Below desktop the gallery is a STABLE frame — a fixed 4:3 box that stays the
+     same size as you flip through images, so nothing jumps. Each image is shown
+     COMPLETE inside it via object-fit:contain: wider renders and near-square floor
+     plans simply centre with a little whitespace rather than being cropped. */
   .residencies-gallery {
     order: 1;
-    height: 60vh;
-    min-height: 400px;
-    aspect-ratio: auto;
+    height: auto;
+    aspect-ratio: 4 / 3;
   }
-  
+
+  .residencies-gallery .gallery-image-wrapper {
+    position: absolute; /* fill the fixed frame; the frame sets the size, not the image */
+    inset: 0;
+    height: 100%;
+  }
+
+  .residencies-gallery .gallery-image-wrapper img,
+  .residencies-gallery .gallery-image-wrapper video {
+    height: 100%;
+    object-fit: contain; /* whole render/plan visible inside the fixed frame */
+  }
+
   .residencies-unit-tabs-grid {
     gap: 28px 40px;
   }
@@ -546,15 +617,17 @@
     right: var(--gutter);
   }
 
+  /* Let the shared .hero-nav-row (index.css) lay these out as one aligned row */
   .residencies-hero .hero-view-controls {
-    bottom: 40px;
-    left: var(--gutter);
+    position: static;
     transform: none;
+    inset: auto;
   }
 
   .residencies-hero .hero-view-counter {
-    bottom: 53px;
-    right: var(--gutter);
+    position: static;
+    inset: auto;
+    height: auto;
   }
 
   .residencies-hero .hero-view-nav {
@@ -573,17 +646,20 @@
   .residencies-title {
     font-size: clamp(1.25rem, 6.5vw, 1.5rem);
     letter-spacing: 0.01em;
-    white-space: nowrap;
+    /* allow long titles (e.g. Greek "ΜΕΖΟΝΕΤΑ 3 ΥΠΝΟΔΩΜΑΤΙΩΝ") to wrap on
+       narrow screens instead of overflowing the viewport */
+    white-space: normal;
   }
   
   
   
+  /* Phone: keep the same fixed 4:3 frame as ≤1024 (stable size, contain — no crop).
+     The wrapper/img overrides from the ≤1024 block still apply here. */
   .residencies-gallery {
-    height: 50vh;
-    min-height: 350px;
-    aspect-ratio: auto;
+    height: auto;
+    aspect-ratio: 4 / 3;
   }
-  
+
   .gallery-nav {
     width: 40px;
     height: 40px;
@@ -602,10 +678,76 @@
     right: 16px;
   }
   
-  .residencies-unit-tabs-grid {
-    gap: 22px 28px;
+  /* ---- Residence selector: centred item flanked by prev/next arrows ---- */
+  /* The current residence sits centred on screen; a ← arrow is on its left and a
+     → arrow on its right. Swiping the middle still changes residence. */
+  .residencies-unit-tabs {
+    padding: 40px 0 16px !important;
   }
-  
+
+  .residencies-selector-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 var(--gutter);
+  }
+
+  .selector-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    background: none;
+    border: none;
+    color: #142433;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  /* The carousel occupies the space between the two arrows and shows exactly one
+     centred residence at a time (no peeking neighbour). */
+  .residencies-unit-tabs-grid {
+    position: relative;
+    flex: 1;
+    min-width: 0;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 0;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 0;
+    scroll-padding-inline: 0;
+  }
+  .residencies-unit-tabs-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .residencies-tab {
+    flex: 0 0 100%;             /* one full-width item, centred, no peek */
+    scroll-snap-align: center;
+    align-items: center;        /* centre the label + value */
+    text-align: center;
+    padding: 2px 0;
+    gap: 6px;
+    transition: opacity 0.4s ease;
+  }
+  .residencies-tab .residencies-tab-label {
+    font-size: 15px;
+    white-space: normal;        /* allow long Greek titles to wrap, still centred */
+  }
+  .residencies-tab .residencies-tab-value {
+    font-size: 14px;
+    opacity: 0.85;
+    white-space: normal;
+  }
+
   
   
   
@@ -645,8 +787,17 @@
     gap: 10px !important;
   }
 
+  /* Mobile: a clean, consistent 2×2 spec grid (Bedrooms | Bathrooms /
+     Size | Level) for every unit and both languages. Long values (e.g. the
+     penthouse size) wrap within their half-column instead of overflowing. */
   .residencies-pictograms {
-    gap: 16px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    gap: 22px 16px;
+  }
+  .pictogram-value {
+    white-space: normal;
   }
 }
 
@@ -778,9 +929,22 @@
 }
 
 @media (max-width: 768px) {
-  
-
-  
+  /* Thumbnails must show the COMPLETE image too. This block sits after the base
+     .gallery-menu-item rules, so it reliably overrides the square + cover crop.
+     Uniform 4:3 tiles with contain keep the grid tidy while the whole render/plan
+     stays visible (light whitespace where the source proportion differs); the
+     hover zoom is dropped so a tap never magnifies/clips the image. */
+  .gallery-menu-item {
+    aspect-ratio: 4 / 3;
+  }
+  .gallery-menu-item img,
+  .gallery-menu-item video {
+    object-fit: contain;
+  }
+  .gallery-menu-item:hover img,
+  .gallery-menu-item:hover video {
+    transform: none;
+  }
 
   .residencies-lightbox .lightbox-nav {
     width: 42px;

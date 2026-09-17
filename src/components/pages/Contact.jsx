@@ -1,11 +1,19 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { useLanguage } from '../../i18n/LanguageContext'
+import { useSeo } from '../../utils/useSeo'
 import '../../styles/pages/Contact.css'
+
+// Contact form delivery via Web3Forms (free, no backend).
+// Get a free access key at https://web3forms.com — enter the inbox that should
+// receive enquiries; the key is emailed instantly. Paste it below. The key
+// carries the destination address, so the real email is never exposed here.
+const WEB3FORMS_ACCESS_KEY = '4eecb293-c721-41fe-b57a-875e1667fdf9'
 
 function Contact() {
   const { t } = useLanguage()
+  useSeo('contact')
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -13,16 +21,51 @@ function Contact() {
     interest: '',
     message: '',
   })
-  const [submitted, setSubmitted] = useState(false)
+  // idle · sending · success · error
+  const [status, setStatus] = useState('idle')
+  const feedbackRef = useRef(null)
 
-  const handleSubmit = (e) => {
+  // Bring the confirmation/error panel into view after submitting (esp. mobile)
+  useEffect(() => {
+    if ((status === 'success' || status === 'error') && feedbackRef.current) {
+      feedbackRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    }
+  }, [status])
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    setSubmitted(true)
-    setFormData({ name: '', email: '', phone: '', interest: '', message: '' })
+    if (status === 'sending') return
+    setStatus('sending')
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: 'New enquiry — AKAKIWN 50 website',
+          from_name: 'AKAKIWN 50 Website',
+          botcheck: e.target.botcheck?.checked || false,
+          Name: formData.name,
+          Email: formData.email,
+          Phone: formData.phone,
+          'Interested in': formData.interest,
+          Message: formData.message,
+        }),
+      })
+      const data = await res.json().catch(() => ({}))
+      if (res.ok && data.success) {
+        setStatus('success')
+        setFormData({ name: '', email: '', phone: '', interest: '', message: '' })
+      } else {
+        setStatus('error')
+      }
+    } catch {
+      setStatus('error')
+    }
   }
 
   const handleChange = (e) => {
-    if (submitted) setSubmitted(false)
+    if (status !== 'idle') setStatus('idle')
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -68,11 +111,21 @@ function Contact() {
       >
         <div className="contact-content">
           {/* Form */}
-          <motion.form 
+          <motion.form
             className="contact-form"
             variants={itemVariants}
             onSubmit={handleSubmit}
           >
+            {/* Spam honeypot — hidden from real users, bots tick it */}
+            <input
+              type="checkbox"
+              name="botcheck"
+              tabIndex={-1}
+              autoComplete="off"
+              style={{ display: 'none' }}
+              aria-hidden="true"
+            />
+
             <div className="form-group full-width">
               <label htmlFor="name">{t.contact.fullName}</label>
               <input
@@ -122,10 +175,9 @@ function Contact() {
                 required
               >
                 <option value="">{t.contact.selectOption}</option>
-                <option value="studio">{t.contact.optionStudio}</option>
-                <option value="1bed">{t.contact.option1Bed}</option>
-                <option value="2bed">{t.contact.option2Bed}</option>
-                <option value="penthouse">{t.contact.optionPenthouse}</option>
+                {t.residencies.units.map((unit) => (
+                  <option key={unit.id} value={unit.id}>{unit.type}</option>
+                ))}
                 <option value="general">{t.contact.optionGeneral}</option>
               </select>
             </div>
@@ -145,27 +197,59 @@ function Contact() {
             <motion.button
               type="submit"
               className="submit-btn"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              disabled={status === 'sending'}
+              whileHover={status === 'sending' ? {} : { scale: 1.02 }}
+              whileTap={status === 'sending' ? {} : { scale: 0.98 }}
             >
-              {t.contact.sendMessage}
+              {status === 'sending' ? (t.contact.sending || 'Sending…') : t.contact.sendMessage}
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M5 12h14M12 5l7 7-7 7"/>
               </svg>
             </motion.button>
 
             <AnimatePresence>
-              {submitted && (
-                <motion.p
-                  className="form-success"
+              {status === 'success' && (
+                <motion.div
+                  ref={feedbackRef}
+                  className="form-feedback form-feedback--success"
                   role="status"
-                  initial={{ opacity: 0, y: 8 }}
+                  initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 8 }}
-                  transition={{ duration: 0.3 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
                 >
-                  {t.contact.successMessage || 'Thank you — your message has been sent. We will be in touch shortly.'}
-                </motion.p>
+                  <span className="form-feedback-icon" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M20 6L9 17l-5-5" />
+                    </svg>
+                  </span>
+                  <div className="form-feedback-text">
+                    <p className="form-feedback-title">{t.contact.successTitle}</p>
+                    <p className="form-feedback-body">{t.contact.successBody}</p>
+                  </div>
+                </motion.div>
+              )}
+              {status === 'error' && (
+                <motion.div
+                  ref={feedbackRef}
+                  className="form-feedback form-feedback--error"
+                  role="alert"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
+                >
+                  <span className="form-feedback-icon" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M12 8v5" />
+                      <circle cx="12" cy="16.5" r="0.6" fill="currentColor" stroke="none" />
+                    </svg>
+                  </span>
+                  <div className="form-feedback-text">
+                    <p className="form-feedback-title">{t.contact.errorTitle}</p>
+                    <p className="form-feedback-body">{t.contact.errorBody}</p>
+                  </div>
+                </motion.div>
               )}
             </AnimatePresence>
           </motion.form>
@@ -178,6 +262,7 @@ function Contact() {
                   <strong>{t.contact.phoneTitle}</strong>
                   <a href={`tel:${t.nav.phone.replace(/\s/g, '')}`}>{t.nav.phone}</a>
                   <a href={`tel:${t.nav.phone2.replace(/\s/g, '')}`}>{t.nav.phone2}</a>
+                  <a href={`tel:${t.nav.phone3.replace(/\s/g, '')}`}>{t.nav.phone3}</a>
                 </div>
 
                 <div className="info-item">

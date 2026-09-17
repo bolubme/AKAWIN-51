@@ -143,15 +143,16 @@
     gap: 40px;
   }
 
-  .about-slider-text {
-    order: 1;
-  }
-
+  /* Mobile: show the company image first, then the text */
   .about-slider-image-container {
-    order: 2;
+    order: 1;
     /* stacked: fixed height instead of stretching to the text */
     height: 55vh;
     min-height: 360px;
+  }
+
+  .about-slider-text {
+    order: 2;
   }
 
   

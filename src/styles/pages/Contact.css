@@ -136,15 +136,64 @@
   transform: translateX(5px);
 }
 
-.form-success {
-  margin-top: 20px;
-  padding: 14px 18px;
-  background: rgba(210, 209, 207, 0.12);
-  border-left: 2px solid var(--accent);
+/* Submission feedback panel (success / error) — a deliberate confirmation
+   component, not a line of body text. Minimal + architectural. */
+.form-feedback {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-top: 28px;
+  padding: 22px 24px;
+  background: rgba(210, 209, 207, 0.16);
+  border: 1px solid rgba(20, 36, 51, 0.12);
+  border-left: 3px solid var(--accent);
+}
+
+.form-feedback--error {
+  background: rgba(158, 59, 47, 0.05);
+  border-left-color: #9e3b2f;
+}
+
+.form-feedback-icon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  margin-top: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+}
+.form-feedback--error .form-feedback-icon {
+  border-color: #9e3b2f;
+  color: #9e3b2f;
+}
+
+.form-feedback-title {
+  margin: 0 0 6px;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--primary-dark);
+}
+
+.form-feedback-body {
+  margin: 0;
   font-family: var(--font-sans);
   font-size: 0.9rem;
-  line-height: 1.6;
+  line-height: 1.65;
   color: var(--primary-dark);
+  opacity: 0.82;
+}
+
+/* Disabled submit (while sending) keeps the design, just softened */
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
 }
 
 /* Contact Info */

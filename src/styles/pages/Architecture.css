@@ -181,7 +181,6 @@
 
 .arch-editorial-image img {
   width: 100%;
-  /* match the render aspect (16:9) so it fills the frame AND shows the full building */
   aspect-ratio: 16 / 9;
   object-fit: cover;
   display: block;
@@ -203,6 +202,16 @@
   border-radius: 10px;
   /* soft placeholder tone shown while the render lazy-loads — never white */
   background: var(--warm-grey);
+}
+
+/* Desktop: show the full render regardless of proportions. 16:9 renders fill the
+   frame exactly; wider ones (e.g. V4 2.12:1) letterbox onto the warm-grey bg
+   instead of being cropped. Mobile keeps cover for now and is handled separately. */
+@media (min-width: 769px) {
+  .arch-editorial-image img,
+  .arch-editorial-duo img {
+    object-fit: contain;
+  }
 }
 
 .arch-editorial-text {
@@ -235,6 +244,11 @@
   color: #142433;
 }
 
+.info-label--preserve-case {
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+
 .info-value {
   font-family: var(--font-sans);
   font-size: 14px;
@@ -253,6 +267,12 @@
 
   .arch-info-grid {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Greek labels are longer than English; at narrow widths let them wrap
+     within their column instead of being clipped by the desktop nowrap. */
+  html[data-lang="GR"] .arch-info-grid .info-label {
+    white-space: normal;
   }
 
   .arch-editorial {
@@ -286,8 +306,23 @@
     padding: 10px var(--gutter) 0;
   }
 
+  /* Mobile: stack the image pair so each render is full-width and legible,
+     rather than two cramped side-by-side thumbnails. */
   .arch-editorial-duo {
-    gap: 10px;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* Content renders must show the COMPLETE architecture on mobile. These are all
+     landscape images; forcing them into a 16:9 cover frame cropped the building.
+     Drop the fixed ratio so the container adapts to the image — a wide render
+     simply appears as a shorter rectangle at its natural proportions, never cropped.
+     (Desktop keeps its approved 16:9 contain frame via the min-width:769px rule.) */
+  .arch-editorial-image img,
+  .arch-editorial-duo img {
+    aspect-ratio: auto;
+    height: auto;
+    object-fit: contain;
   }
 
   .arch-editorial-row {

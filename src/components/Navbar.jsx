@@ -231,9 +231,15 @@ function Navbar() {
                 </div>
                 <div className="menu-contact-col">
                   <p className="contact-label">{t.nav.telLabel}</p>
-                  <a href={`tel:${t.nav.phone.replace(/\s/g, '')}`} className="contact-value">
-                    {t.nav.phone}
-                  </a>
+                  {[t.nav.phone, t.nav.phone2, t.nav.phone3].map((num) => (
+                    <a
+                      key={num}
+                      href={`tel:${num.replace(/\s/g, '')}`}
+                      className="contact-value"
+                    >
+                      {num}
+                    </a>
+                  ))}
                 </div>
               </motion.div>
             </motion.aside>

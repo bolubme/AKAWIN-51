@@ -1,7 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { useLanguage } from '../../i18n/LanguageContext'
+import { buildSrcSet } from '../../utils/responsiveImage'
+import { useSeo } from '../../utils/useSeo'
 import '../../styles/pages/Residencies.css'
 
 // Full-quality source images served straight from /public (no optimization).
@@ -12,35 +14,36 @@ const isVideo = (src) => /\.mp4($|\?)/i.test(src)
 // Hero cycles through interior views + walkthrough video
 const heroViews = [
   asset(`${VIEWS}/3-BED-PENTHOUSE/v1vid.mp4`),
-  asset(`${VIEWS}/3-BED/shapes-11.png`),
-  asset(`${VIEWS}/3-BED/shapes-5.png`),
-  asset(`${VIEWS}/2-BED-DUPLEX/mez-4.png`),
+  asset(`${VIEWS}/3-BED/shapes-11.webp`),
+  asset(`${VIEWS}/3-BED/shapes-5.webp`),
+  asset(`${VIEWS}/2-BED-DUPLEX/mez-4.webp`),
 ]
 
 // Unit gallery images — one folder per unit type. The floor plan (LV-*) leads.
 const unitGalleries = {
   'one-bed-gf': [
-    asset(`${VIEWS}/1-BED/LV-0.jpg`),
-    asset(`${VIEWS}/1-BED/v1.png`),
-    asset(`${VIEWS}/1-BED/v2.png`),
+    asset(`${VIEWS}/1-BED/LV-0.webp`),
+    asset(`${VIEWS}/1-BED/v1.webp`),
+    asset(`${VIEWS}/1-BED/v2.webp`),
   ],
   'three-bed': [
-    asset(`${VIEWS}/3-BED/LV-3.jpg`),
-    asset(`${VIEWS}/3-BED/shapes-3.png`),
-    asset(`${VIEWS}/3-BED/shapes-5.png`),
-    asset(`${VIEWS}/3-BED/shapes-6.png`),
-    asset(`${VIEWS}/3-BED/shapes-11.png`),
+    asset(`${VIEWS}/3-BED/LV-3.webp`),
+    asset(`${VIEWS}/3-BED/shapes-5.webp`),
+    asset(`${VIEWS}/3-BED/shapes-6.webp`),
+    asset(`${VIEWS}/3-BED/shapes-11.webp`),
   ],
   'three-bed-mez': [
-    asset(`${VIEWS}/2-BED-DUPLEX/LV-4.jpg`),
-    asset(`${VIEWS}/2-BED-DUPLEX/LV-5.jpg`),
+    asset(`${VIEWS}/2-BED-DUPLEX/LV-4.webp`),
+    asset(`${VIEWS}/2-BED-DUPLEX/LV-5.webp`),
+    asset(`${VIEWS}/2-BED-DUPLEX/mez-3.webp`),
+    asset(`${VIEWS}/2-BED-DUPLEX/mez-4.webp`),
   ],
   'penthouse': [
-    asset(`${VIEWS}/3-BED-PENTHOUSE/LV-4.jpg`),
-    asset(`${VIEWS}/3-BED-PENTHOUSE/LV-5.jpg`),
-    asset(`${VIEWS}/3-BED-PENTHOUSE/v1.png`),
-    asset(`${VIEWS}/3-BED-PENTHOUSE/v3.png`),
-    asset(`${VIEWS}/3-BED-PENTHOUSE/v4.png`),
+    asset(`${VIEWS}/3-BED-PENTHOUSE/LV-4.webp`),
+    asset(`${VIEWS}/3-BED-PENTHOUSE/LV-5.webp`),
+    asset(`${VIEWS}/3-BED-PENTHOUSE/v1.webp`),
+    asset(`${VIEWS}/3-BED-PENTHOUSE/v3.webp`),
+    asset(`${VIEWS}/3-BED-PENTHOUSE/v4.webp`),
   ],
 }
 
@@ -75,8 +78,14 @@ const amenityIcons = [
 
 function Residencies() {
   const { t } = useLanguage()
+  useSeo('residencies')
   const unitTypes = t.residencies.units
-  const [selectedUnit, setSelectedUnit] = useState(unitTypes[0])
+  // Track the selected unit by its language-independent id and derive the unit
+  // object from the live translations, so the title/description/specs always
+  // follow the current language instead of retaining the language that was
+  // active when it was first selected.
+  const [selectedId, setSelectedId] = useState(unitTypes[0].id)
+  const selectedUnit = unitTypes.find((u) => u.id === selectedId) || unitTypes[0]
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
   // Hero view carousel
@@ -114,9 +123,67 @@ function Residencies() {
 
   // Reset image index when unit changes
   const handleUnitChange = (unit) => {
-    setSelectedUnit(unit)
+    setSelectedId(unit.id)
     setCurrentImageIndex(0)
   }
+
+  const selectedIndex = unitTypes.findIndex((u) => u.id === selectedUnit.id)
+
+  // Mobile selector arrows — step to the previous / next residence (wraps around).
+  const goToUnitIndex = (idx) => {
+    const n = unitTypes.length
+    handleUnitChange(unitTypes[((idx % n) + n) % n])
+  }
+  const prevUnit = () => goToUnitIndex(selectedIndex - 1)
+  const nextUnit = () => goToUnitIndex(selectedIndex + 1)
+
+  // --- Mobile residence carousel (swipe) ---
+  // The selector below is a horizontal scroll-snap carousel on mobile. It drives
+  // the SAME selectedId state as the desktop grid, so swiping, tapping and the
+  // arrows all stay in sync with the residence content and gallery.
+  const selectorRef = useRef(null)
+  const suppressScrollSelect = useRef(false)
+
+  // When the user swipes and a card settles nearest the centre, select that unit.
+  const handleSelectorScroll = () => {
+    if (suppressScrollSelect.current) return
+    const el = selectorRef.current
+    if (!el) return
+    clearTimeout(el._snapTimer)
+    el._snapTimer = setTimeout(() => {
+      const cRect = el.getBoundingClientRect()
+      const centre = cRect.left + cRect.width / 2
+      let nearestId = null
+      let best = Infinity
+      for (const child of el.children) {
+        const r = child.getBoundingClientRect()
+        const d = Math.abs(r.left + r.width / 2 - centre)
+        if (d < best) { best = d; nearestId = child.dataset.unitId }
+      }
+      if (nearestId && nearestId !== selectedId) {
+        setSelectedId(nearestId)
+        setCurrentImageIndex(0)
+      }
+    }, 90)
+  }
+
+  // Keep the active card centred when the selection changes via tap or arrows
+  // (skipped when it is already centred, so natural swipe-snaps aren't fought).
+  useEffect(() => {
+    if (typeof window === 'undefined' || !window.matchMedia('(max-width: 768px)').matches) return
+    const el = selectorRef.current
+    if (!el) return
+    const active = el.querySelector(`[data-unit-id="${selectedId}"]`)
+    if (!active) return
+    const cRect = el.getBoundingClientRect()
+    const aRect = active.getBoundingClientRect()
+    const delta = (aRect.left + aRect.width / 2) - (cRect.left + cRect.width / 2)
+    if (Math.abs(delta) < 6) return
+    suppressScrollSelect.current = true
+    el.scrollTo({ left: el.scrollLeft + delta, behavior: 'smooth' })
+    clearTimeout(el._suppressTimer)
+    el._suppressTimer = setTimeout(() => { suppressScrollSelect.current = false }, 450)
+  }, [selectedId])
 
   return (
     <div className="page residencies-page">
@@ -128,7 +195,7 @@ function Residencies() {
               <video
                 key={i}
                 src={src}
-                poster={asset(`${VIEWS}/3-BED-PENTHOUSE/v1.png`)}
+                poster={asset(`${VIEWS}/3-BED-PENTHOUSE/v1.webp`)}
                 autoPlay
                 muted
                 loop
@@ -140,6 +207,8 @@ function Residencies() {
               <img
                 key={i}
                 src={src}
+                srcSet={buildSrcSet(src)}
+                sizes="100vw"
                 alt={`AKAKIWN 50 Residencies view ${i + 1}`}
                 className={i === heroIndex ? 'is-active' : ''}
                 decoding="async"
@@ -159,41 +228,75 @@ function Residencies() {
           <h1 className="hero-title">{(t.residencies.pageHeroTitle || 'The Residencies.').replace(/\n/g, ' ')}</h1>
         </motion.div>
 
-        {/* Prev / next arrows — centred on the title line, always visible */}
-        <div className="hero-view-controls">
-          <button className="hero-view-nav hero-view-prev" onClick={prevView} aria-label="Previous view">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <path d="M15 18l-6-6 6-6" />
-            </svg>
-          </button>
-          <button className="hero-view-nav hero-view-next" onClick={nextView} aria-label="Next view">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <path d="M9 18l6-6-6-6" />
-            </svg>
-          </button>
-        </div>
+        {/* Prev/next arrows + counter. Desktop: arrows centred, counter right.
+            Mobile: this wrapper becomes one aligned row (arrows left, counter right). */}
+        <div className="hero-nav-row">
+          <div className="hero-view-controls">
+            <button className="hero-view-nav hero-view-prev" onClick={prevView} aria-label="Previous view">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <path d="M15 18l-6-6 6-6" />
+              </svg>
+            </button>
+            <button className="hero-view-nav hero-view-next" onClick={nextView} aria-label="Next view">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <path d="M9 18l6-6-6-6" />
+              </svg>
+            </button>
+          </div>
 
-        <div className="hero-view-counter" aria-label={`View ${heroIndex + 1} of ${heroViews.length}`}>
-          <span className="current">{String(heroIndex + 1).padStart(4, '0')}</span>
-          <span className="sep">/</span>
-          <span className="total">{String(heroViews.length).padStart(4, '0')}</span>
+          <div className="hero-view-counter" aria-label={`View ${heroIndex + 1} of ${heroViews.length}`}>
+            <span className="current">{String(heroIndex + 1).padStart(4, '0')}</span>
+            <span className="sep">/</span>
+            <span className="total">{String(heroViews.length).padStart(4, '0')}</span>
+          </div>
         </div>
       </section>
 
-      {/* Unit Selector — matches Architecture info strip */}
+      {/* Unit Selector — desktop: static strip · mobile: centred item flanked by
+          prev/next arrows (swipe still works). The row wrapper is inert on desktop
+          (display:contents) so the desktop strip is unchanged. */}
       <div className="residencies-unit-tabs">
-        <div className="residencies-unit-tabs-grid">
-          {unitTypes.map((unit) => (
-            <button
-              key={unit.id}
-              type="button"
-              className={`residencies-tab ${selectedUnit.id === unit.id ? 'active' : ''}`}
-              onClick={() => handleUnitChange(unit)}
-            >
-              <span className="residencies-tab-label">{unit.tab || unit.type}</span>
-              <span className="residencies-tab-value">{unit.size}</span>
-            </button>
-          ))}
+        <div className="residencies-selector-row">
+          <button
+            type="button"
+            className="selector-arrow selector-arrow-prev"
+            onClick={prevUnit}
+            aria-label="Previous residence"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <path d="M15 18l-6-6 6-6" />
+            </svg>
+          </button>
+
+          <div
+            className="residencies-unit-tabs-grid"
+            ref={selectorRef}
+            onScroll={handleSelectorScroll}
+          >
+            {unitTypes.map((unit) => (
+              <button
+                key={unit.id}
+                type="button"
+                data-unit-id={unit.id}
+                className={`residencies-tab ${selectedUnit.id === unit.id ? 'active' : ''}`}
+                onClick={() => handleUnitChange(unit)}
+              >
+                <span className="residencies-tab-label">{unit.tab || unit.type}</span>
+                <span className="residencies-tab-value">{unit.size}</span>
+              </button>
+            ))}
+          </div>
+
+          <button
+            type="button"
+            className="selector-arrow selector-arrow-next"
+            onClick={nextUnit}
+            aria-label="Next residence"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <path d="M9 18l6-6-6-6" />
+            </svg>
+          </button>
         </div>
       </div>
 
@@ -240,7 +343,9 @@ function Residencies() {
               </div>
 
               <div className="residencies-description">
-                <p>{selectedUnit.description}</p>
+                {selectedUnit.description.split('\n\n').map((para, i) => (
+                  <p key={i}>{para}</p>
+                ))}
 
                 {/* Amenities moved into each unit — 3 with icons */}
                 <div className="residencies-amenities-inline">
@@ -286,6 +391,8 @@ function Residencies() {
               ) : (
                 <img
                   src={currentImages[currentImageIndex]}
+                  srcSet={buildSrcSet(currentImages[currentImageIndex])}
+                  sizes="(max-width: 1024px) 100vw, 65vw"
                   alt={`${selectedUnit.type} view ${currentImageIndex + 1}`}
                   decoding="async"
                 />
@@ -338,7 +445,7 @@ function Residencies() {
               {isVideo(src) ? (
                 <video src={src} muted loop playsInline autoPlay />
               ) : (
-                <img src={src} alt={`${selectedUnit.type} detail ${index + 1}`} loading="lazy" decoding="async" />
+                <img src={src} srcSet={buildSrcSet(src)} sizes="(max-width: 768px) 45vw, 22vw" alt={`${selectedUnit.type} detail ${index + 1}`} loading="lazy" decoding="async" />
               )}
               <span className="gallery-menu-zoom">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">

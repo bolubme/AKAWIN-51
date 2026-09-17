@@ -200,3 +200,36 @@ html[data-lang="GR"] .contact-label {
   font-family: var(--font-serif) !important;
   text-transform: uppercase;
 }
+
+/* ── Mobile hero gallery navigation ─────────────────────────────────────────
+   Arrows (grouped left) + image counter (right) read as ONE aligned row that
+   shares the same vertical centre, with page-consistent left/right margins.
+   Used by both the Architecture and Residencies hero carousels.
+   Desktop is untouched: the wrapper is display:contents so the existing
+   centred-arrows / right-counter layout stays exactly as designed. */
+.hero-nav-row {
+  display: contents;
+}
+
+@media (max-width: 768px) {
+  .hero-nav-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    left: var(--gutter);
+    right: var(--gutter);
+    bottom: 40px;
+    z-index: 3;
+  }
+  .hero-nav-row .hero-view-controls {
+    position: static;
+    transform: none;
+    inset: auto;
+  }
+  .hero-nav-row .hero-view-counter {
+    position: static;
+    inset: auto;
+    height: auto;
+  }
+}

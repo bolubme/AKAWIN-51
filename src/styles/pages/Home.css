@@ -121,6 +121,12 @@
   border: 1px solid rgba(20, 36, 51, 0.12);
   border-radius: 50%;
   cursor: pointer;
+  /* Remove the 300ms mobile tap delay and the grey tap flash; keep the whole
+     circle a reliable touch target. */
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  user-select: none;
   transition:
     background 0.3s ease,
     color 0.3s ease;
@@ -270,9 +276,9 @@
 }
 
 @media (max-width: 768px) {
-  .home-page .hero-view-nav {
-    width: 42px;
-    height: 42px;
+  /* On mobile the hero is driven by swipe, so the arrow buttons are removed. */
+  .home-page .hero-view-controls {
+    display: none;
   }
 
   

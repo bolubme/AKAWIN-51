@@ -1,9 +1,11 @@
 import { motion } from 'framer-motion'
 import { useLanguage } from '../../i18n/LanguageContext'
+import { useSeo } from '../../utils/useSeo'
 import '../../styles/pages/Location.css'
 
 function Location() {
   const { t } = useLanguage()
+  useSeo('location')
   const nearbyAmenities = t.location.amenities
 
   const containerVariants = {
@@ -61,7 +63,11 @@ function Location() {
 
           {/* Right column: intro text, then nearby amenities */}
           <div className="location-side">
-            <p className="location-intro">{t.location.description}</p>
+            <div className="location-intro">
+              {t.location.description.split('\n\n').map((para, i) => (
+                <p key={i}>{para}</p>
+              ))}
+            </div>
 
             <div className="amenities-section">
               <h4 className="amenities-title">{t.location.amenitiesTitle}</h4>

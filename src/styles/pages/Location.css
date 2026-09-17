@@ -21,6 +21,11 @@
 }
 
 .location-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.location-intro p {
   font-family: var(--font-sans);
   font-size: 14px;
   line-height: 1.7;
