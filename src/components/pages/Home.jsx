@@ -15,6 +15,29 @@ function Home() {
   const [isScrolled, setIsScrolled] = useState(false)
   const containerRef = useRef(null)
   const heroRef = useRef(null)
+  const videoRef = useRef(null)
+
+  // Mobile autoplay: React doesn't always reflect the `muted` prop to the DOM
+  // property, and iOS/Android only autoplay a video they consider muted +
+  // inline. Force both via the element and kick off play() (retry once ready).
+  useEffect(() => {
+    const v = videoRef.current
+    if (!v) return
+    v.muted = true
+    v.defaultMuted = true
+    v.playsInline = true
+    const tryPlay = () => {
+      const p = v.play()
+      if (p && typeof p.catch === 'function') p.catch(() => {})
+    }
+    tryPlay()
+    v.addEventListener('canplay', tryPlay, { once: true })
+    v.addEventListener('loadeddata', tryPlay, { once: true })
+    return () => {
+      v.removeEventListener('canplay', tryPlay)
+      v.removeEventListener('loadeddata', tryPlay)
+    }
+  }, [])
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -65,6 +88,7 @@ function Home() {
         <div className="hero-container">
           {/* Single looping hero video — same on desktop and mobile */}
           <video
+            ref={videoRef}
             className="hero-video"
             src={HERO_VIDEO}
             poster={HERO_POSTER}
