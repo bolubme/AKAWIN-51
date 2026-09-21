@@ -135,8 +135,9 @@ function Navbar() {
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
       >
-        <Link to="/" className="logo" aria-label="AKAKIWN 50 by Domisense">
-          <span className="logo-mark" role="img" aria-label="AKAKIWN 50 by Domisense"></span>
+        <Link to="/" className="logo" aria-label="AKAKIWN 50 by Domisense Residential Constructions">
+          <span className="logo-wordmark" role="img" aria-label="AKAKIWN 50"></span>
+          <span className="logo-tagline">By Domisense Residential Constructions</span>
         </Link>
 
         <div className="lang-toggle">

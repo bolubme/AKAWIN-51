@@ -11,7 +11,7 @@ const translations = {
       menu: 'Menu',
       close: 'Close',
       getInTouch: 'Get in touch',
-      phone: '+30 694 725 9191',
+      phone: '+30 694 725 9196',
       phone2: '+30 697 722 2043',
       phone3: '+30 210 639 8330',
       email: 'info@domisense.gr',
@@ -24,7 +24,7 @@ const translations = {
 
     // Footer
     footer: {
-      subtitle: 'by Domisense',
+      subtitle: 'by Domisense Residential Constructions',
       statement: 'Where Clean Design Meets Everyday Comfort.',
       disclaimer: 'All renders are intended to illustrate the architectural design intent and should not be considered a final representation of the completed development. Images, finishes, materials, fixtures, landscaping, furnishings, and other visual elements are indicative only and may be subject to change as part of the ongoing design and construction process.',
       copyright: `© ${new Date().getFullYear()} AKAKIWN 50 by Domisense Residential Constructions`,
@@ -274,13 +274,13 @@ const translations = {
       ctaText: 'Ready to find your perfect residence?',
       ctaButton: 'Make an Inquiry',
       nextLabel: 'Next',
-      nextTitle: 'About Domisense',
+      nextTitle: 'About Domisense Residential Constructions',
     },
 
     // About Page
     about: {
-      label: 'About Domisense',
-      heroTitle: 'About\nDomisense.',
+      label: 'About Domisense Residential Constructions',
+      heroTitle: 'About\nDomisense Residential Constructions.',
       heroPrompt1: 'Get to know us below',
       heroPrompt1Sub: 'Scroll down to learn more',
       heroPrompt2: 'Got a question?',
@@ -291,7 +291,7 @@ const translations = {
       sliderPara2: 'From concept to completion, the entire process is managed under one roof — designing, constructing, and developing homes with a commitment to quality, precision, and attention to detail. Every residence is carefully tailored to meet the aspirations of its future owners, ensuring each home reflects both exceptional design and individual lifestyle requirements.',
       // Philosophy section
       philosophyTitle: 'MAXIMISE POTENTIAL',
-      philosophyPara1: 'At Domisense our philosophy is simple. Maximise the potential of the property within our client\'s budget, whether that be a simple refurbishment, structural renovation or high-end fit out. We build strong, trusted relationships with our clients through honest, professional and creative advice, cutting-edge design and budget-conscious intelligent build solutions.',
+      philosophyPara1: 'At Domisense Residential Constructions our philosophy is simple. Maximise the potential of the property within our client\'s budget, whether that be a simple refurbishment, structural renovation or high-end fit out. We build strong, trusted relationships with our clients through honest, professional and creative advice, cutting-edge design and budget-conscious intelligent build solutions.',
       philosophyPara2: 'Our aim is to provide the best possible solution to meet our clients\' requirements and aspirations, focusing on creatively reimagined spaces, luxuriously tactile interiors and bespoke storage solutions, all under the guiding principle of maximising natural light.',
       philosophyPara3: 'We pride ourselves on being able to listen to our clients\' needs and translate your vision into beautifully thought-out spaces, unique to you. Each completed project is the result of a process that starts with listening and learning about our clients, to understand how they live and the environment in which they wish to live.',
       philosophyPara4: 'Reflecting a love of simplicity and a sense of order, the originality and authenticity of our design schemes are always carefully considered yet effortlessly inspirational.',
@@ -318,7 +318,7 @@ const translations = {
       ],
       journeyTitle: 'Our Journey',
       milestones: [
-        { year: '2010', event: 'Domisense founded' },
+        { year: '2010', event: 'Domisense Residential Constructions founded' },
         { year: '2015', event: '25 projects completed' },
         { year: '2020', event: 'Sustainability award' },
         { year: '2024', event: 'AKAKIWN 50 launch' },
@@ -413,7 +413,7 @@ const translations = {
       menu: 'Μενού',
       close: 'Κλείσιμο',
       getInTouch: 'Επικοινωνήστε μαζί μας',
-      phone: '+30 694 725 9191',
+      phone: '+30 694 725 9196',
       phone2: '+30 697 722 2043',
       phone3: '+30 210 639 8330',
       email: 'info@domisense.gr',
@@ -426,7 +426,7 @@ const translations = {
 
     // Footer
     footer: {
-      subtitle: 'από Domisense',
+      subtitle: 'από Domisense Residential Constructions',
       statement: 'Διαμορφώνουμε χώρους όπου η σύγχρονη ζωή βρίσκει τη μορφή της.',
       disclaimer: 'Οι φωτορεαλιστικές απεικονίσεις έχουν ως στόχο να παρουσιάσουν τη σχεδιαστική πρόθεση και την αρχιτεκτονική κατεύθυνση του έργου και δεν αποτελούν τελική απεικόνιση της ολοκληρωμένης κατασκευής. Οι εικόνες, τα υλικά, οι εξοπλισμοί, η διαμόρφωση του περιβάλλοντος χώρου, η επίπλωση και λοιπά σχεδιαστικά στοιχεία είναι ενδεικτικά και ενδέχεται να τροποποιηθούν κατά τη διάρκεια της μελέτης και της κατασκευής του έργου.',
       copyright: `© ${new Date().getFullYear()} AKAKIWN 50 από Domisense Residential Constructions`,
@@ -670,13 +670,13 @@ const translations = {
       ctaText: 'Έτοιμοι να βρείτε την ιδανική σας κατοικία;',
       ctaButton: 'Υποβολή Ερωτήματος',
       nextLabel: 'Επόμενο',
-      nextTitle: 'Σχετικά με Domisense',
+      nextTitle: 'Σχετικά με Domisense Residential Constructions',
     },
 
     // About Page
     about: {
-      label: 'Σχετικά με Domisense',
-      heroTitle: 'Σχετικά με\nτη Domisense.',
+      label: 'Σχετικά με Domisense Residential Constructions',
+      heroTitle: 'Σχετικά με\nτη Domisense Residential Constructions.',
       heroPrompt1: 'Γνωρίστε μας παρακάτω',
       heroPrompt1Sub: 'Κάντε scroll για περισσότερα',
       heroPrompt2: 'Έχετε ερώτηση;',
@@ -687,7 +687,7 @@ const translations = {
       sliderPara2: 'Από τον αρχικό σχεδιασμό έως την ολοκλήρωση της κατασκευής, όλη η διαδικασία πραγματοποιείται με ενιαία προσέγγιση, συνδυάζοντας τον σχεδιασμό, την κατασκευή και την ανάπτυξη κατοικιών με έμφαση στην ποιότητα, την ακρίβεια και τη λεπτομέρεια. Κάθε κατοικία διαμορφώνεται με γνώμονα τις ανάγκες και τις προσδοκίες των μελλοντικών ιδιοκτητών της, ώστε να εκφράζει έναν μοναδικό συνδυασμό υψηλής αισθητικής, λειτουργικότητας και προσωπικού τρόπου ζωής.',
       // Philosophy section
       philosophyTitle: 'ΜΕΓΙΣΤΟΠΟΙΗΣΗ ΔΥΝΑΜΙΚΟΥ',
-      philosophyPara1: 'Στη Domisense η φιλοσοφία μας είναι απλή. Μεγιστοποιήστε τις δυνατότητες του ακινήτου εντός του προϋπολογισμού του πελάτη μας, είτε πρόκειται για απλή ανακαίνιση, δομική ανακαίνιση ή υψηλής ποιότητας διαμόρφωση. Χτίζουμε ισχυρές, αξιόπιστες σχέσεις με τους πελάτες μας μέσω ειλικρινούς, επαγγελματικής και δημιουργικής συμβουλευτικής.',
+      philosophyPara1: 'Στη Domisense Residential Constructions η φιλοσοφία μας είναι απλή. Μεγιστοποιήστε τις δυνατότητες του ακινήτου εντός του προϋπολογισμού του πελάτη μας, είτε πρόκειται για απλή ανακαίνιση, δομική ανακαίνιση ή υψηλής ποιότητας διαμόρφωση. Χτίζουμε ισχυρές, αξιόπιστες σχέσεις με τους πελάτες μας μέσω ειλικρινούς, επαγγελματικής και δημιουργικής συμβουλευτικής.',
       philosophyPara2: 'Στόχος μας είναι να παρέχουμε την καλύτερη δυνατή λύση για να ανταποκριθούμε στις απαιτήσεις και τις φιλοδοξίες των πελατών μας, εστιάζοντας σε δημιουργικά επανασχεδιασμένους χώρους, πολυτελή απτικά εσωτερικά και εξατομικευμένες λύσεις αποθήκευσης.',
       philosophyPara3: 'Υπερηφανευόμαστε που μπορούμε να ακούμε τις ανάγκες των πελατών μας και να μεταφράζουμε το όραμά σας σε όμορφα μελετημένους χώρους, μοναδικούς για εσάς. Κάθε ολοκληρωμένο έργο είναι το αποτέλεσμα μιας διαδικασίας που ξεκινά με την ακρόαση.',
       philosophyPara4: 'Αντανακλώντας μια αγάπη για την απλότητα και μια αίσθηση τάξης, η πρωτοτυπία και η αυθεντικότητα των σχεδιαστικών μας προτάσεων είναι πάντα προσεκτικά μελετημένες αλλά αβίαστα εμπνευσμένες.',
@@ -714,7 +714,7 @@ const translations = {
       ],
       journeyTitle: 'Η Πορεία μας',
       milestones: [
-        { year: '2010', event: 'Ίδρυση Domisense' },
+        { year: '2010', event: 'Ίδρυση Domisense Residential Constructions' },
         { year: '2015', event: '25 ολοκληρωμένα έργα' },
         { year: '2020', event: 'Βραβείο βιωσιμότητας' },
         { year: '2024', event: 'Λανσάρισμα AKAKIWN 50' },

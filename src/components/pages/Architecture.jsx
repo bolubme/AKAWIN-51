@@ -58,12 +58,10 @@ function Architecture() {
     {
       label: t.architecture.officeLabel || 'Architectural Office',
       value: t.architecture.officeValue || 'Domisense Studio',
-      preserveLabelCase: true,
     },
     {
       label: t.architecture.developerLabel || 'Developer',
       value: t.architecture.developerValue || 'Domisense Residential Constructions',
-      preserveLabelCase: true,
     },
   ]
 

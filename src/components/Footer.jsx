@@ -11,7 +11,7 @@ function Footer() {
 
   return (
     <footer className="footer">
-      <Link to="/" className="footer-logo" aria-label="AKAKIWN 50 by Domisense">
+      <Link to="/" className="footer-logo" aria-label="AKAKIWN 50 by Domisense Residential Constructions">
         <svg
           className="footer-logo-mark"
           xmlns="http://www.w3.org/2000/svg"

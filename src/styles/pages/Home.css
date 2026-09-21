@@ -163,16 +163,30 @@
   max-width: 600px;
 }
 
-/* Brand lockup (AKAKIWN 50 / By Domisense) as a recolourable mask */
-.hero-logo-mark {
-  width: clamp(300px, 44vw, 560px);
-  aspect-ratio: 488 / 122;
+/* Brand lockup: AKAKIWN 50 wordmark (mask) + tagline as real text. */
+.hero-logo-lockup {
   margin: 0 0 28px 0;
+}
+
+.hero-wordmark {
+  width: clamp(300px, 44vw, 560px);
+  aspect-ratio: 488 / 74;
+  margin: 0;
   background-color: var(--primary-light);
-  -webkit-mask: url('/media/akakiwn-logo.svg') no-repeat left center;
+  -webkit-mask: url('/media/akakiwn-wordmark.svg') no-repeat left center;
   -webkit-mask-size: contain;
-  mask: url('/media/akakiwn-logo.svg') no-repeat left center;
+  mask: url('/media/akakiwn-wordmark.svg') no-repeat left center;
   mask-size: contain;
+}
+
+.hero-tagline {
+  display: block;
+  margin-top: 12px;
+  font-family: var(--font-sans);
+  font-size: clamp(0.72rem, 1.2vw, 0.95rem);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--primary-light);
 }
 
 .hero-divider {

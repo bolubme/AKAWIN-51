@@ -12,13 +12,30 @@
 /* Same brand lockup as the navbar (AKAKIWN 50 / By Domisense),
    rendered as a recolourable mask so it shows white on the dark panel. */
 .preloader-logo {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
   width: clamp(230px, 42vw, 460px);
-  aspect-ratio: 172 / 44;
-  background-color: #f8f7f5;
-  -webkit-mask: url('/media/akakiwn-logo.svg') no-repeat center center;
-  -webkit-mask-size: contain;
-  mask: url('/media/akakiwn-logo.svg') no-repeat center center;
-  mask-size: contain;
   will-change: clip-path, opacity;
+}
+
+.preloader-wordmark {
+  display: block;
+  width: 100%;
+  aspect-ratio: 488 / 74;
+  background-color: #f8f7f5;
+  -webkit-mask: url('/media/akakiwn-wordmark.svg') no-repeat center center;
+  -webkit-mask-size: contain;
+  mask: url('/media/akakiwn-wordmark.svg') no-repeat center center;
+  mask-size: contain;
+}
+
+.preloader-tagline {
+  font-family: var(--font-sans);
+  font-size: clamp(0.7rem, 1.6vw, 0.9rem);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: #f8f7f5;
+  text-align: center;
 }

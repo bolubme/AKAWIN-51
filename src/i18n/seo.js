@@ -6,7 +6,7 @@ export const SEO = {
   EN: {
     home: {
       path: '/',
-      title: 'AKAKIWN 50 | New Residences in Marousi, Athens — Domisense',
+      title: 'AKAKIWN 50 | New Residences in Marousi, Athens — Domisense Residential Constructions',
       description:
         'AKAKIWN 50 — a boutique collection of new-build 1–3 bedroom apartments and duplexes in Marousi, Athens, by Domisense Residential Constructions.',
     },
@@ -38,13 +38,13 @@ export const SEO = {
       path: '/contact',
       title: 'Contact | AKAKIWN 50 — Enquire About Residences in Marousi',
       description:
-        'Contact AKAKIWN 50 to enquire about new residences for sale in Marousi, Athens. Call or send a message to the Domisense team.',
+        'Contact AKAKIWN 50 to enquire about new residences for sale in Marousi, Athens. Call or send a message to the Domisense Residential Constructions team.',
     },
   },
   GR: {
     home: {
       path: '/',
-      title: 'AKAKIWN 50 | Νέες Κατοικίες στο Μαρούσι, Αθήνα — Domisense',
+      title: 'AKAKIWN 50 | Νέες Κατοικίες στο Μαρούσι, Αθήνα — Domisense Residential Constructions',
       description:
         'AKAKIWN 50 — μια συλλογή νεόδμητων διαμερισμάτων 1–3 υπνοδωματίων και μεζονετών στο Μαρούσι, Αθήνα, από την Domisense Residential Constructions.',
     },
@@ -76,7 +76,7 @@ export const SEO = {
       path: '/contact',
       title: 'Επικοινωνία | AKAKIWN 50 — Ρωτήστε για Κατοικίες στο Μαρούσι',
       description:
-        'Επικοινωνήστε με το AKAKIWN 50 για νέες κατοικίες προς πώληση στο Μαρούσι, Αθήνα. Καλέστε ή στείλτε μήνυμα στην ομάδα της Domisense.',
+        'Επικοινωνήστε με το AKAKIWN 50 για νέες κατοικίες προς πώληση στο Μαρούσι, Αθήνα. Καλέστε ή στείλτε μήνυμα στην ομάδα της Domisense Residential Constructions.',
     },
   },
 }

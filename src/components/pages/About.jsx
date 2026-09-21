@@ -32,7 +32,7 @@ function About() {
               src="/media/NewImg/ABOUT.webp"
               srcSet={buildSrcSet('/media/NewImg/ABOUT.webp')}
               sizes="(max-width: 768px) 100vw, 50vw"
-              alt="AKAKIWN 50 by Domisense"
+              alt="AKAKIWN 50 by Domisense Residential Constructions"
               className="about-slider-image"
               loading="lazy"
               decoding="async"
