@@ -34,13 +34,6 @@
       1920
     ]
   },
-  "/media/NewImg/260719_views/2-BED-DUPLEX/mez-3.webp": {
-    "w": 2560,
-    "variants": [
-      1280,
-      1920
-    ]
-  },
   "/media/NewImg/260719_views/2-BED-DUPLEX/mez-4.webp": {
     "w": 2560,
     "variants": [
@@ -147,6 +140,27 @@
     ]
   },
   "/media/NewImg/ABOUT.webp": {
+    "w": 2560,
+    "variants": [
+      1280,
+      1920
+    ]
+  },
+  "/media/NewImg/260719_views/2-BED-DUPLEX/mez-1.webp": {
+    "w": 2560,
+    "variants": [
+      1280,
+      1920
+    ]
+  },
+  "/media/NewImg/260719_views/2-BED-DUPLEX/mez-2.webp": {
+    "w": 2560,
+    "variants": [
+      1280,
+      1920
+    ]
+  },
+  "/media/NewImg/260719_views/3-BED/int-1.webp": {
     "w": 2560,
     "variants": [
       1280,

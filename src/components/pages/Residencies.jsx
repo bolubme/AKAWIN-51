@@ -28,15 +28,15 @@ const unitGalleries = {
   ],
   'three-bed': [
     asset(`${VIEWS}/3-BED/LV-3.webp`),
-    asset(`${VIEWS}/3-BED/shapes-5.webp`),
+    asset(`${VIEWS}/3-BED/int-1.webp`),
     asset(`${VIEWS}/3-BED/shapes-6.webp`),
     asset(`${VIEWS}/3-BED/shapes-11.webp`),
   ],
   'three-bed-mez': [
     asset(`${VIEWS}/2-BED-DUPLEX/LV-4.webp`),
     asset(`${VIEWS}/2-BED-DUPLEX/LV-5.webp`),
-    asset(`${VIEWS}/2-BED-DUPLEX/mez-3.webp`),
-    asset(`${VIEWS}/2-BED-DUPLEX/mez-4.webp`),
+    asset(`${VIEWS}/2-BED-DUPLEX/mez-1.webp`),
+    asset(`${VIEWS}/2-BED-DUPLEX/mez-2.webp`),
   ],
   'penthouse': [
     asset(`${VIEWS}/3-BED-PENTHOUSE/LV-4.webp`),
