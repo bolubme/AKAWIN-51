@@ -108,10 +108,7 @@ function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              <div className="hero-logo-lockup">
-                <h1 className="hero-wordmark" role="img" aria-label="AKAKIWN 50"></h1>
-                <span className="hero-tagline">By Domisense Residential Constructions</span>
-              </div>
+              <h1 className="hero-logo-mark" role="img" aria-label="AKAKIWN 50 by Domisense"></h1>
               <div className="hero-divider"></div>
               <p className="hero-description">
                 {t.home.heroDescription ||

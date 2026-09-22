@@ -34,13 +34,6 @@
       1920
     ]
   },
-  "/media/NewImg/260719_views/2-BED-DUPLEX/mez-4.webp": {
-    "w": 2560,
-    "variants": [
-      1280,
-      1920
-    ]
-  },
   "/media/NewImg/260719_views/3-BED/LV-3.webp": {
     "w": 2048,
     "variants": [
@@ -161,6 +154,13 @@
     ]
   },
   "/media/NewImg/260719_views/3-BED/int-1.webp": {
+    "w": 2560,
+    "variants": [
+      1280,
+      1920
+    ]
+  },
+  "/media/NewImg/260719_views/EXTERNAL/hero-int.webp": {
     "w": 2560,
     "variants": [
       1280,

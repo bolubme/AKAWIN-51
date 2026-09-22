@@ -403,7 +403,9 @@
   color: var(--accent);
 }
 
-/* Right Side - Image Gallery — matches .arch-editorial-image */
+/* Right Side - Image Gallery — the container hugs the image at its natural aspect
+   ratio (no letterbox bars, no crop). Height follows the image; the container top
+   aligns with the text column (align-self:start). */
 .residencies-gallery {
   position: relative;
   overflow: hidden;
@@ -411,34 +413,20 @@
   border-radius: 10px;
   min-width: 0;
   width: 100%;
-  aspect-ratio: 16 / 10;
-  height: auto;
-  align-self: stretch;
+  align-self: start;
 }
 
 .gallery-image-wrapper {
-  position: absolute;
-  inset: 0;
+  position: relative;
   width: 100%;
-  height: 100%;
+  line-height: 0; /* no inline gap under the media */
 }
 
 .gallery-image-wrapper img,
 .gallery-image-wrapper video {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto; /* natural aspect ratio — image defines the container height */
   display: block;
-}
-
-/* Desktop: show the whole image (floor plans are near-square, renders are wide)
-   rather than cropping it to the frame. The navy .residencies-gallery background
-   fills the letterbox area. Mobile keeps cover for now and is handled separately. */
-@media (min-width: 1025px) {
-  .gallery-image-wrapper img,
-  .gallery-image-wrapper video {
-    object-fit: contain;
-  }
 }
 
 /* Navigation Arrows */
@@ -579,26 +567,10 @@
     order: 2;
   }
   
-  /* Below desktop the gallery is a STABLE frame — a fixed 4:3 box that stays the
-     same size as you flip through images, so nothing jumps. Each image is shown
-     COMPLETE inside it via object-fit:contain: wider renders and near-square floor
-     plans simply centre with a little whitespace rather than being cropped. */
+  /* Gallery moves above the text; it keeps hugging the image (base rules), so it
+     adapts to the mobile width at the image's natural aspect ratio — no crop. */
   .residencies-gallery {
     order: 1;
-    height: auto;
-    aspect-ratio: 4 / 3;
-  }
-
-  .residencies-gallery .gallery-image-wrapper {
-    position: absolute; /* fill the fixed frame; the frame sets the size, not the image */
-    inset: 0;
-    height: 100%;
-  }
-
-  .residencies-gallery .gallery-image-wrapper img,
-  .residencies-gallery .gallery-image-wrapper video {
-    height: 100%;
-    object-fit: contain; /* whole render/plan visible inside the fixed frame */
   }
 
   .residencies-unit-tabs-grid {
@@ -653,29 +625,11 @@
   
   
   
-  /* Phone: keep the same fixed 4:3 frame as ≤1024 (stable size, contain — no crop).
-     The wrapper/img overrides from the ≤1024 block still apply here. */
-  .residencies-gallery {
-    height: auto;
-    aspect-ratio: 4 / 3;
-  }
-
-  .gallery-nav {
-    width: 40px;
-    height: 40px;
-  }
-  
-  .gallery-prev {
-    left: 16px;
-  }
-  
-  .gallery-next {
-    right: 16px;
-  }
-  
+  /* Phone: gallery hugs the image at its natural aspect ratio (base rules).
+     Navigation is by swipe, so the arrows and counter are hidden. */
+  .gallery-view-controls,
   .gallery-counter {
-    bottom: 16px;
-    right: 16px;
+    display: none;
   }
   
   /* ---- Residence selector: centred item flanked by prev/next arrows ---- */

@@ -33,7 +33,7 @@ const translations = {
     // Home Page
     home: {
       // Hero Section
-      heroDescription: 'A residential building in the heart of Marousi. Designed to Inspire. Built to Last.',
+      heroDescription: 'A residential building in the heart of Marousi.\nDesigned to Inspire. Built to Last.',
       // Editorial Section
       editorialLabel: 'The Building',
       editorialHeadline1: 'One Address.',
@@ -104,15 +104,15 @@ const translations = {
       yearValue: '2025',
       // Project Info box
       projectInfoTitle: 'Project Info',
-      officeLabel: 'Architectural Office',
-      officeValue: 'Domisense Studio',
+      officeLabel: 'Architecture & Design',
+      officeValue: 'Domisense Residential Constructions',
       areaLabel: 'Area',
       areaValue: '680 m²',
       structuralLabel: 'Structural Engineer',
       structuralValue: 'Domisense Engineering',
       mechanicalLabel: 'Mechanical Engineer',
       mechanicalValue: 'Domisense Engineering',
-      developerLabel: 'Developer',
+      developerLabel: 'Construction & Development',
       developerValue: 'Domisense Residential Constructions',
       completionLabel: 'Year of Completion',
       completionValue: '2028',
@@ -500,7 +500,7 @@ const translations = {
       // Project Info box
       projectInfoTitle: 'Στοιχεία Έργου',
       officeLabel: 'Αρχιτεκτονικός Σχεδιασμός',
-      officeValue: 'Domisense Studio',
+      officeValue: 'Domisense Residential Constructions',
       areaLabel: 'Συνολική Επιφάνεια',
       areaValue: '680 τ.μ.',
       structuralLabel: 'Στατικός Μηχανικός',

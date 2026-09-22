@@ -37,7 +37,7 @@ function Preloader({ onDone }) {
     >
       <motion.span
         className="preloader-logo"
-        aria-label="AKAKIWN 50 by Domisense Residential Constructions"
+        aria-label="AKAKIWN 50 by Domisense"
         initial={{ clipPath: 'inset(0 100% 0 0)' }}
         animate={{
           clipPath: 'inset(0 0% 0 0)',
@@ -47,10 +47,7 @@ function Preloader({ onDone }) {
           clipPath: { duration: REVEAL / 1000, ease: [0.65, 0, 0.35, 1] },
           opacity: { duration: LOGO_FADE / 1000, ease: 'easeInOut' },
         }}
-      >
-        <span className="preloader-wordmark" aria-hidden="true" />
-        <span className="preloader-tagline">By Domisense Residential Constructions</span>
-      </motion.span>
+      />
     </motion.div>
   )
 }

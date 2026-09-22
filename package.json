@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "framer-motion": "^11.0.0",
+    "puppeteer-core": "^25.11.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-intersection-observer": "^9.5.0",
@@ -21,5 +22,18 @@
     "@vitejs/plugin-react": "^4.2.0",
     "sharp": "^0.35.4",
     "vite": "^5.0.0"
-  }
+  },
+  "main": "vite.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bolubme/AKAWIN-51.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bolubme/AKAWIN-51/issues"
+  },
+  "homepage": "https://github.com/bolubme/AKAWIN-51#readme",
+  "description": ""
 }

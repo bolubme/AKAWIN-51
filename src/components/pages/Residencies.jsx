@@ -15,8 +15,8 @@ const isVideo = (src) => /\.mp4($|\?)/i.test(src)
 const heroViews = [
   asset(`${VIEWS}/3-BED-PENTHOUSE/v1vid.mp4`),
   asset(`${VIEWS}/3-BED/shapes-11.webp`),
-  asset(`${VIEWS}/3-BED/shapes-5.webp`),
-  asset(`${VIEWS}/2-BED-DUPLEX/mez-4.webp`),
+  asset(`${VIEWS}/1-BED/v2.webp`),
+  asset(`${VIEWS}/EXTERNAL/hero-int.webp`),
 ]
 
 // Unit gallery images — one folder per unit type. The floor plan (LV-*) leads.
@@ -120,6 +120,24 @@ function Residencies() {
 
   const nextImage = () => setCurrentImageIndex((prev) => (prev + 1) % currentImages.length)
   const prevImage = () => setCurrentImageIndex((prev) => (prev - 1 + currentImages.length) % currentImages.length)
+
+  // Swipe navigation for the gallery (primary control on mobile, harmless on desktop)
+  const galleryTouch = useRef(null)
+  const onGalleryTouchStart = (e) => {
+    const t = e.changedTouches[0]
+    galleryTouch.current = { x: t.clientX, y: t.clientY }
+  }
+  const onGalleryTouchEnd = (e) => {
+    if (!galleryTouch.current) return
+    const t = e.changedTouches[0]
+    const dx = t.clientX - galleryTouch.current.x
+    const dy = t.clientY - galleryTouch.current.y
+    galleryTouch.current = null
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.4) {
+      if (dx < 0) nextImage()
+      else prevImage()
+    }
+  }
 
   // Reset image index when unit changes
   const handleUnitChange = (unit) => {
@@ -370,7 +388,7 @@ function Residencies() {
         </motion.div>
 
         {/* Right Side - Image Slider */}
-        <div className="residencies-gallery">
+        <div className="residencies-gallery" onTouchStart={onGalleryTouchStart} onTouchEnd={onGalleryTouchEnd}>
           <AnimatePresence mode="wait">
             <motion.div
               key={`${selectedUnit.id}-${currentImageIndex}`}
