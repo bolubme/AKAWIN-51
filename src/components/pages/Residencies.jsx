@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { useLanguage } from '../../i18n/LanguageContext'
-import { buildSrcSet } from '../../utils/responsiveImage'
+import { buildSrcSet, imageAspect } from '../../utils/responsiveImage'
 import { useSeo } from '../../utils/useSeo'
 import '../../styles/pages/Residencies.css'
 
@@ -413,6 +413,7 @@ function Residencies() {
                   sizes="(max-width: 1024px) 100vw, 65vw"
                   alt={`${selectedUnit.type} view ${currentImageIndex + 1}`}
                   decoding="async"
+                  style={{ aspectRatio: imageAspect(currentImages[currentImageIndex]) }}
                 />
               )}
             </motion.div>

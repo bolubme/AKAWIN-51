@@ -299,7 +299,19 @@
 
   .arch-info-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 22px 28px;
+    gap: 22px 20px;
+  }
+
+  /* Let long labels/values wrap instead of overflowing the viewport (the base
+     info-label is nowrap for the desktop single-line strip). min-width:0 lets the
+     grid cells shrink below their content so nothing spills past the right edge. */
+  .arch-info-grid .info-item {
+    min-width: 0;
+  }
+  .arch-info-grid .info-label,
+  .arch-info-grid .info-value {
+    white-space: normal;
+    overflow-wrap: break-word;
   }
 
   .arch-editorial {
@@ -307,10 +319,12 @@
   }
 
   /* Mobile: stack the image pair so each render is full-width and legible,
-     rather than two cramped side-by-side thumbnails. */
+     rather than two cramped side-by-side thumbnails. Reset the tablet edge-bleed
+     margin so the duo keeps the same gutters as the row image (no overflow). */
   .arch-editorial-duo {
     grid-template-columns: 1fr;
     gap: 16px;
+    margin-right: 0;
   }
 
   /* Content renders must show the COMPLETE architecture on mobile. These are all

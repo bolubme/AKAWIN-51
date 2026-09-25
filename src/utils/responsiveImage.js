@@ -18,3 +18,13 @@ export function buildSrcSet(src) {
   parts.push(`${src} ${entry.w}w`) // original, at its true width
   return parts.join(', ')
 }
+
+// The image's intrinsic aspect ratio (e.g. "2560 / 1429"), for reserving the
+// layout box before the image loads — prevents the container collapsing/jumping
+// in height while a new gallery image downloads. Returns undefined if unknown.
+export function imageAspect(src) {
+  if (!src) return undefined
+  const entry = manifest[decodeURI(src)]
+  if (!entry || !entry.w || !entry.h) return undefined
+  return `${entry.w} / ${entry.h}`
+}

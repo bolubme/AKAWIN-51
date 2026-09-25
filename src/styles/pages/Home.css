@@ -293,6 +293,20 @@
     display: none;
   }
 
+  /* Scale the AKAKIWN 50 / By Domisense lockup down so it's proportional to the
+     phone/tablet viewport (≈36–42px cap height) instead of near full-width. The
+     SVG lockup scales as a whole, so the subtitle shrinks with it. */
+  .hero-logo-mark {
+    width: clamp(240px, 72vw, 285px);
+    margin-bottom: 22px;
+  }
+
+  .hero-description {
+    font-size: 0.85rem;
+    line-height: 1.65;
+    max-width: 340px;
+  }
+
   
 
   

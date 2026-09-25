@@ -1,170 +1,194 @@
 {
   "/media/NewImg/260719_views/1-BED/LV-0.webp": {
-    "w": 2048,
+    "w": 2560,
     "variants": [
       1280,
       1920
-    ]
+    ],
+    "h": 1446
   },
   "/media/NewImg/260719_views/1-BED/v1.webp": {
     "w": 2560,
     "variants": [
       1280,
       1920
-    ]
+    ],
+    "h": 1429
   },
   "/media/NewImg/260719_views/1-BED/v2.webp": {
     "w": 2560,
     "variants": [
       1280,
       1920
-    ]
+    ],
+    "h": 1429
   },
   "/media/NewImg/260719_views/2-BED-DUPLEX/LV-4.webp": {
     "w": 2048,
     "variants": [
       1280,
       1920
-    ]
+    ],
+    "h": 1714
   },
   "/media/NewImg/260719_views/2-BED-DUPLEX/LV-5.webp": {
     "w": 2048,
     "variants": [
       1280,
       1920
-    ]
+    ],
+    "h": 1714
   },
   "/media/NewImg/260719_views/3-BED/LV-3.webp": {
     "w": 2048,
     "variants": [
       1280,
       1920
-    ]
+    ],
+    "h": 1348
   },
   "/media/NewImg/260719_views/3-BED/shapes-11.webp": {
     "w": 2560,
     "variants": [
       1280,
       1920
-    ]
+    ],
+    "h": 1429
   },
   "/media/NewImg/260719_views/3-BED/shapes-5.webp": {
     "w": 2560,
     "variants": [
       1280,
       1920
-    ]
+    ],
+    "h": 1429
   },
   "/media/NewImg/260719_views/3-BED/shapes-6.webp": {
     "w": 2560,
     "variants": [
       1280,
       1920
-    ]
+    ],
+    "h": 1429
   },
   "/media/NewImg/260719_views/3-BED-PENTHOUSE/LV-4.webp": {
     "w": 2048,
     "variants": [
       1280,
       1920
-    ]
+    ],
+    "h": 1714
   },
   "/media/NewImg/260719_views/3-BED-PENTHOUSE/LV-5.webp": {
     "w": 2048,
     "variants": [
       1280,
       1920
-    ]
+    ],
+    "h": 1714
   },
   "/media/NewImg/260719_views/3-BED-PENTHOUSE/v1.webp": {
     "w": 2560,
     "variants": [
       1280,
       1920
-    ]
+    ],
+    "h": 1429
   },
   "/media/NewImg/260719_views/3-BED-PENTHOUSE/v3.webp": {
     "w": 2560,
     "variants": [
       1280,
       1920
-    ]
+    ],
+    "h": 1429
   },
   "/media/NewImg/260719_views/3-BED-PENTHOUSE/v4.webp": {
     "w": 2560,
     "variants": [
       1280,
       1920
-    ]
+    ],
+    "h": 1429
   },
   "/media/NewImg/260719_views/EXTERNAL/V1.webp": {
     "w": 2560,
     "variants": [
       1280,
       1920
-    ]
+    ],
+    "h": 1441
   },
   "/media/NewImg/260719_views/EXTERNAL/V2.webp": {
     "w": 2560,
     "variants": [
       1280,
       1920
-    ]
+    ],
+    "h": 1441
   },
   "/media/NewImg/260719_views/EXTERNAL/V3B.webp": {
     "w": 2560,
     "variants": [
       1280,
       1920
-    ]
+    ],
+    "h": 1441
   },
   "/media/NewImg/260719_views/EXTERNAL/V4.webp": {
     "w": 2560,
     "variants": [
       1280,
       1920
-    ]
+    ],
+    "h": 1441
   },
   "/media/NewImg/260719_views/EXTERNAL/generated-image-1.webp": {
     "w": 2560,
     "variants": [
       1280,
       1920
-    ]
+    ],
+    "h": 1429
   },
   "/media/NewImg/ABOUT.webp": {
     "w": 2560,
     "variants": [
       1280,
       1920
-    ]
+    ],
+    "h": 1441
   },
   "/media/NewImg/260719_views/2-BED-DUPLEX/mez-1.webp": {
     "w": 2560,
     "variants": [
       1280,
       1920
-    ]
+    ],
+    "h": 1429
   },
   "/media/NewImg/260719_views/2-BED-DUPLEX/mez-2.webp": {
     "w": 2560,
     "variants": [
       1280,
       1920
-    ]
+    ],
+    "h": 1446
   },
   "/media/NewImg/260719_views/3-BED/int-1.webp": {
     "w": 2560,
     "variants": [
       1280,
       1920
-    ]
+    ],
+    "h": 1429
   },
   "/media/NewImg/260719_views/EXTERNAL/hero-int.webp": {
     "w": 2560,
     "variants": [
       1280,
       1920
-    ]
+    ],
+    "h": 1446
   }
 }

@@ -134,7 +134,6 @@ function Contact() {
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                placeholder={t.contact.namePlaceholder}
                 required
               />
             </div>
@@ -148,7 +147,6 @@ function Contact() {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder={t.contact.emailPlaceholder}
                   required
                 />
               </div>
@@ -160,7 +158,6 @@ function Contact() {
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  placeholder={t.contact.phonePlaceholder}
                 />
               </div>
             </div>
@@ -189,7 +186,6 @@ function Contact() {
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
-                placeholder={t.contact.messagePlaceholder}
                 rows={5}
               ></textarea>
             </div>
