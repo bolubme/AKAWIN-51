@@ -4,10 +4,19 @@ import { useLanguage } from '../../i18n/LanguageContext'
 import { useSeo } from '../../utils/useSeo'
 import '../../styles/pages/Home.css'
 
-// Single full-screen hero video (web-optimized 1080p export of the 4K master).
+// Full-screen hero video (web-optimized 1080p export of the 4K master).
 // A poster (first frame) paints instantly while the video loads — no blank/flash.
 const HERO_VIDEO = '/media/intro2-web.mp4'
 const HERO_POSTER = '/media/intro2-poster.webp'
+
+// Phones get a dedicated portrait cut (web-optimized export of intro-mobile.mp4).
+// Chosen in JS so only one of the two videos is ever downloaded.
+const HERO_VIDEO_MOBILE = '/media/intro-mobile-web.mp4'
+const HERO_POSTER_MOBILE = '/media/intro-mobile-poster.webp'
+const MOBILE_QUERY = '(max-width: 768px)'
+
+const matchesMobile = () =>
+  typeof window !== 'undefined' && window.matchMedia(MOBILE_QUERY).matches
 
 function Home() {
   const { t } = useLanguage()
@@ -16,6 +25,14 @@ function Home() {
   const containerRef = useRef(null)
   const heroRef = useRef(null)
   const videoRef = useRef(null)
+  const [isMobile, setIsMobile] = useState(matchesMobile)
+
+  useEffect(() => {
+    const mq = window.matchMedia(MOBILE_QUERY)
+    const onChange = () => setIsMobile(mq.matches)
+    mq.addEventListener('change', onChange)
+    return () => mq.removeEventListener('change', onChange)
+  }, [])
 
   // Mobile autoplay: React doesn't always reflect the `muted` prop to the DOM
   // property, and iOS/Android only autoplay a video they consider muted +
@@ -37,7 +54,7 @@ function Home() {
       v.removeEventListener('canplay', tryPlay)
       v.removeEventListener('loadeddata', tryPlay)
     }
-  }, [])
+  }, [isMobile])
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -86,12 +103,12 @@ function Home() {
         }}
       >
         <div className="hero-container">
-          {/* Single looping hero video — same on desktop and mobile */}
+          {/* Looping hero video — portrait cut on mobile, landscape on wider screens */}
           <video
             ref={videoRef}
             className="hero-video"
-            src={HERO_VIDEO}
-            poster={HERO_POSTER}
+            src={isMobile ? HERO_VIDEO_MOBILE : HERO_VIDEO}
+            poster={isMobile ? HERO_POSTER_MOBILE : HERO_POSTER}
             autoPlay
             muted
             loop

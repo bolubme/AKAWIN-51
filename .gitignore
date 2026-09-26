@@ -32,3 +32,4 @@ src/media/*.jpg
 
 # 4K master for the hero video — keep local, ship the optimized intro2-web.mp4 only
 public/media/intro2.mp4
+public/media/intro-mobile.mp4
