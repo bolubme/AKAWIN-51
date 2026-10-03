@@ -17,19 +17,36 @@ const viewDusk = `${EXTERNAL}/generated-image-1.webp`
 // Hero cycles through the external render views
 const heroViews = [viewFront, viewCorner, viewVilla, viewRooftop, viewDusk]
 
+// Phones show a single portrait hero instead of the carousel. Chosen in JS so
+// mobile never downloads the desktop renders (and vice versa).
+const heroMobile = `${EXTERNAL}/arch-hero-mobile.webp`
+const MOBILE_QUERY = '(max-width: 768px)'
+const matchesMobile = () =>
+  typeof window !== 'undefined' && window.matchMedia(MOBILE_QUERY).matches
+
 function Architecture() {
   const { t } = useLanguage()
   useSeo('architecture')
   const [heroIndex, setHeroIndex] = useState(0)
+  const [isMobile, setIsMobile] = useState(matchesMobile)
+
+  useEffect(() => {
+    const mq = window.matchMedia(MOBILE_QUERY)
+    const onChange = () => setIsMobile(mq.matches)
+    mq.addEventListener('change', onChange)
+    return () => mq.removeEventListener('change', onChange)
+  }, [])
 
   const nextView = () => setHeroIndex((p) => (p + 1) % heroViews.length)
   const prevView = () => setHeroIndex((p) => (p - 1 + heroViews.length) % heroViews.length)
 
-  // Auto-advance the hero; timer resets whenever the slide changes (incl. manual nav)
+  // Auto-advance the hero (desktop carousel only); timer resets whenever the
+  // slide changes (incl. manual nav)
   useEffect(() => {
+    if (isMobile) return
     const id = setTimeout(() => setHeroIndex((p) => (p + 1) % heroViews.length), 5000)
     return () => clearTimeout(id)
-  }, [heroIndex])
+  }, [heroIndex, isMobile])
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -86,7 +103,15 @@ function Architecture() {
       {/* Hero Section — external render views with hover navigation */}
       <section className="arch-hero">
         <div className="hero-background">
-          {heroViews.map((src, i) => (
+          {isMobile ? (
+            <img
+              src={heroMobile}
+              alt="AKAKIWN 50 interior view"
+              className="is-active"
+              decoding="async"
+              fetchpriority="high"
+            />
+          ) : heroViews.map((src, i) => (
             <img
               key={i}
               src={src}
@@ -112,6 +137,7 @@ function Architecture() {
 
         {/* Prev/next arrows + counter. Desktop: arrows centred, counter right.
             Mobile: this wrapper becomes one aligned row (arrows left, counter right). */}
+        {!isMobile && (
         <div className="hero-nav-row">
           <div className="hero-view-controls">
             <button className="hero-view-nav hero-view-prev" onClick={prevView} aria-label="Previous view">
@@ -132,6 +158,7 @@ function Architecture() {
             <span className="total">{String(heroViews.length).padStart(4, '0')}</span>
           </div>
         </div>
+        )}
       </section>
 
       {/* Info Section — horizontal project info strip */}
